@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
@@ -77,12 +78,12 @@ export default function PostInfo({ resultUrl }) {
   ));
 
   return (
-    <div className="post">
-      <div className="above">
+    <div className="post-container ">
+      <div className="post-user-info">
         <a href={`/users/${owner}/`}>
           {" "}
-          <img src={ownerImgUrl} alt="owner_image" />
-          <p>{owner}</p>
+          <img src={ownerImgUrl} alt="owner_image" className="post-owner-image"/>
+          <p className="post-owner-name">{owner}</p>
         </a>
         <p>
           <a href={`/posts/${postId}/`}>{created}</a>

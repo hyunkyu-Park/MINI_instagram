@@ -1,0 +1,67 @@
+
+.post-owner-image {
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    border: 2px solid #fff; 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); 
+}
+
+.post-owner-name {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.post-container {
+    border: 1px solid #ccc;
+    margin-bottom: 20px; 
+    padding: 15px; 
+    margin-top: 5%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.post-user-info {
+    /* 첫 번째 구간 스타일 설정 */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.post-timestamp {
+/* 타임스탬프 스타일 설정 */
+color: #888;
+}
+
+.post-image {
+/* 두 번째 구간(포스트 이미지) 스타일 설정 */
+width: 100%;
+max-height: 400px; /* 이미지 최대 높이 설정 */
+object-fit: cover; /* 이미지를 확대/축소하여 채우기 */
+margin-bottom: 10px;
+}
+
+.post-actions {
+/* 세 번째 구간(좋아요, 댓글 등) 스타일 설정 */
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.like-button {
+/* 좋아요 버튼 스타일 설정 */
+cursor: pointer;
+}
+
+.like-count {
+/* 좋아요 갯수 스타일 설정 */
+margin-left: 5px;
+color: #888;
+}
+
+.comment-section {
+/* 댓글 섹션 스타일 설정 */
+margin-top: 10px;
+}
+
