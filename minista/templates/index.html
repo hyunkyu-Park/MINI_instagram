@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>minista</title>
+  </head>
+  <body>
+    <a href="/">Logo</a>
+    <a href="/explore/">explore</a>
+    <a href="/users/{{logname}}/">{{logname}}</a>
+
+    <div id="reactEntry">
+      Loading ...
+    </div>
+    <!-- Load JavaScript -->
+    <script src="{{ url_for('static', filename='js/bundle.js') }}"></script>
+  </body>
+</html>
