@@ -28,9 +28,7 @@ It consists of a total of 11 webpages, each focusing on specific functionalities
   • Shows detailed information about a specific post.
 11. User Page
   • Displays a page for a specific user.
-
 </pre>
-
 
 ## Technology Stack
 <pre>
