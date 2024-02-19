@@ -4,13 +4,15 @@
         <title> minista</title>
     </head>
     <body>
-        <a href = "/">Logo</a>
+        <a href="/">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" width="48">
+        </a>
         <a href = "/explore/">explore</a>
         <a href = "/users/{{logname}}/">{{logname}}</a>
             <a href = "/users/{{owner}}/">{{owner}}</a>
             <a href = "/posts/{{postid}}/">{{timestamp}}</a>
             <a href = "/users/{{owner}}/">
-                <img src = "{{ url_for('upload_file', filename = owner_img_url) }}" alt = "{{owner}}">
+                <img src = "{{ url_for('upload_file', filename = owner_img_url) }}" alt = "{{owner}}" style="width: 200px;">
             </a>
             {{likes}}
             {% if likes == 1 %}
@@ -33,7 +35,7 @@
                     <input type="submit" name="like" value="like"/>
                 </form>
             {% endif %}
-            <img src = "{{ url_for('upload_file', filename = img_url) }}" alt = "{{postid}}">
+            <img src = "{{ url_for('upload_file', filename = img_url) }}" alt = "{{postid}}" style="width: 600px;">
             {% for comment in comments %}
                 <a href = "/users/{{comment.owner}}/">{{comment.owner}}</a>
                 {{comment.text}}

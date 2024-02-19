@@ -60,7 +60,6 @@ function Button(_ref) {
     });
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    "data-testid": "like-unlike-button",
     type: "button",
     onClick: lognameLikesThis === true ? unlike : like
   }, lognameLikesThis === true ? "unlike" : "like"));
@@ -139,7 +138,6 @@ function Comment(_ref) {
     }
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("form", {
-    "data-testid": "comment-form",
     onSubmit: handleSubmit
   }, "Comment:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("input", {
     className: "ui input",
@@ -191,7 +189,6 @@ function DeleteComment(_ref) {
     });
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    "data-testid": "delete-comment-button",
     type: "button",
     onClick: deleteComment
   }, "Delete comment"));
@@ -260,7 +257,11 @@ function Double(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: imgUrl,
     alt: "image_url",
-    onDoubleClick: handleDoubleClick
+    onDoubleClick: handleDoubleClick,
+    style: {
+      width: '100%',
+      height: 'auto'
+    }
   }));
 }
 Double.propTypes = {
@@ -472,53 +473,64 @@ function PostInfo(_ref) {
   }
   var renderedComments = comments.map(function (comment) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
-      key: comment.commentid
+      key: comment.commentid,
+      className: "comment"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+      className: "comment-content"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("b", null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("a", {
       href: "/users/".concat(comment.owner, "/")
-    }, comment.owner), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("span", {
-      "data-testid": "comment-text"
-    }, " ", comment.text, " "), comment.lognameOwnsThis ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_deleteComment__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }, comment.owner), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("span", null, " ", comment.text, " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+      className: "comment-actions"
+    }, comment.lognameOwnsThis ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_deleteComment__WEBPACK_IMPORTED_MODULE_7__["default"], {
       commentUrl: comment.url ? comment.url : "",
       comments: comments,
       commentid: comment.commentid,
       setComments: setComments
-    }) : "");
+    }) : ""));
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
-    className: "post-container "
+    className: "contents"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
-    className: "post-user-info"
+    className: "posts"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("article", {
+    className: "post"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+    className: "post_header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+    className: "post_profile"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("a", {
     href: "/users/".concat(owner, "/")
-  }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("img", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("img", {
     src: ownerImgUrl,
     alt: "owner_image",
-    className: "post-owner-image"
+    className: "post_user_profile"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", {
-    className: "post-owner-name"
-  }, owner)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("a", {
+    className: "post_user_name"
+  }, owner))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("a", {
     href: "/posts/".concat(postId, "/")
-  }, created))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
-    className: "post_img"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_doubleClick__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }, created))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_doubleClick__WEBPACK_IMPORTED_MODULE_8__["default"], {
     imgUrl: imgUrl,
     postid: postId,
     setLikes: setLikes,
     lognameLikesThis: likes.lognameLikesThis,
     numLikes: likes.numLikes
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+    className: "post_footer"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+    className: "post_likes"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, likes.numLikes, " ", likes.numLikes === 1 ? "like" : "likes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
     likesUrl: likes.url ? likes.url : "",
     postid: postId,
     lognameLikesThis: likes.lognameLikesThis,
     numLikes: likes.numLikes,
     setLikes: setLikes
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
-    className: "below"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, likes.numLikes, " ", likes.numLikes === 1 ? "like" : "likes"), renderedComments, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_CommentCreate__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    className: "comments"
+  }, renderedComments, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_CommentCreate__WEBPACK_IMPORTED_MODULE_6__["default"], {
     postid: postId,
     setComments: setComments,
     commentsList: comments
-  })));
+  }))))));
 }
 PostInfo.propTypes = {
   resultUrl: (prop_types__WEBPACK_IMPORTED_MODULE_9___default().string).isRequired
@@ -546,74 +558,227 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `
-.post-owner-image {
-    width: 40px; 
-    height: 40px; 
-    border-radius: 50%; 
-    border: 2px solid #fff; 
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); 
+___CSS_LOADER_EXPORT___.push([module.id, `.top_right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 1%;
+    margin-right: 1%;
 }
 
-.post-owner-name {
-    font-weight: bold;
-    margin-left: 10px;
+.contents{
+    width: 100%;
+    max-width: 614px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.posts {
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 24px;
+}
+
+.post{
+    border: 1px solid var(--border);
+    border-radius: 4px;
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.post_header{
+    background-color: var(--primary);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    height: 40px;
+}
+
+.post_profile{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.post_user_profile{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-top: 10%;
+    margin-left: 10%;
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+    float: left;
+}
+
+.post_user_name{
+    margin-left: 120%;
+    margin-top: 35%;
+}
+
+.post_timestamp{
+    margin-left: auto;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+.post_footer{
+    /* padding: 4px 8px 12px; */
+    background-color: var(--primary);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.post_likes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 25px;
+}
+
+.post_description{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.comment{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user_info{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+
+
+/* 포스트 컨테이너 스타일링 */
+.post-container {
+    border: 1px solid #ccc;
+    margin: 20px auto;
+    max-width: 600px;
+    background-color: #ffffff;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px; /* 적절한 여백 조정 */
+}
+
+.post-owner-info {
+    display: flex;
+    align-items: center;
+}
+
+.post-owner-image {
+    width: 50px; /* 적절한 크기로 조절 */
+    height: 50px; /* 적절한 크기로 조절 */
+    border-radius: 50%; /* 이미지를 원형으로 만들기 위한 속성 */
+    object-fit: cover; /* 이미지가 정사각형 영역을 가득 채우도록 함 */
+    margin-top: 30%;
+    margin-left: 30%;
+}
+
+.post-owner-username {
+margin-left: 10px; /* 필요에 따라 조절 */
 }
 
 .post-container {
     border: 1px solid #ccc;
-    margin-bottom: 20px; 
-    padding: 15px; 
-    margin-top: 5%;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin: 20px auto;
+    max-width: 600px;
+    background-color: #ffffff;
 }
 
-.post-user-info {
-    /* 첫 번째 구간 스타일 설정 */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.post-timestamp {
-/* 타임스탬프 스타일 설정 */
-color: #888;
-}
-
+/* 포스트 이미지 스타일링 */
 .post-image {
-/* 두 번째 구간(포스트 이미지) 스타일 설정 */
+width: 600px;
+height: auto;
+object-fit: cover;
+}
+
+/* 포스트 하단 스타일링 */
+.post-footer {
+padding: 10px;
+}
+
+.likes {
+font-weight: bold;
+}
+
+.comment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px; /* 적절한 여백 조정 */
+}
+
+.comment-content {
+flex-grow: 1; /* 나머지 공간을 채우도록 설정 */
+}
+
+.comment-actions {
+margin-left: 10px; /* 필요에 따라 조절 */
+}
+
+/* 버튼 스타일링 */
+button {
+    cursor: pointer;
+    background-color: #3897f0;
+    color: #ffffff;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+/* 모달 스타일링 (예시) */
+.modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
 width: 100%;
-max-height: 400px; /* 이미지 최대 높이 설정 */
-object-fit: cover; /* 이미지를 확대/축소하여 채우기 */
-margin-bottom: 10px;
-}
-
-.post-actions {
-/* 세 번째 구간(좋아요, 댓글 등) 스타일 설정 */
-display: flex;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+justify-content: center;
 align-items: center;
-justify-content: space-between;
 }
 
-.like-button {
-/* 좋아요 버튼 스타일 설정 */
-cursor: pointer;
+.modal-content {
+background-color: #ffffff;
+padding: 20px;
+border-radius: 5px;
 }
 
-.like-count {
-/* 좋아요 갯수 스타일 설정 */
-margin-left: 5px;
-color: #888;
+.post-owner-image {
+    width: 50px; /* 적절한 크기로 조절 */
+    height: 50px; /* 적절한 크기로 조절 */
+    border-radius: 50%; /* 이미지를 원형으로 만들기 위한 속성 */
+    object-fit: cover; /* 이미지가 정사각형 영역을 가득 채우도록 함 */
+    margin-top: 30%;
+    margin-left: 30%;
 }
-
-.comment-section {
-/* 댓글 섹션 스타일 설정 */
-margin-top: 10px;
-}
-
-`, "",{"version":3,"sources":["webpack://./minista/static/css/style.css"],"names":[],"mappings":";AACA;IACI,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,sBAAsB;IACtB,sCAAsC;AAC1C;;AAEA;IACI,iBAAiB;IACjB,iBAAiB;AACrB;;AAEA;IACI,sBAAsB;IACtB,mBAAmB;IACnB,aAAa;IACb,cAAc;IACd,gBAAgB;IAChB,iBAAiB;AACrB;;AAEA;IACI,mBAAmB;IACnB,aAAa;IACb,mBAAmB;IACnB,8BAA8B;IAC9B,mBAAmB;AACvB;;AAEA;AACA,iBAAiB;AACjB,WAAW;AACX;;AAEA;AACA,4BAA4B;AAC5B,WAAW;AACX,iBAAiB,EAAE,iBAAiB;AACpC,iBAAiB,EAAE,qBAAqB;AACxC,mBAAmB;AACnB;;AAEA;AACA,8BAA8B;AAC9B,aAAa;AACb,mBAAmB;AACnB,8BAA8B;AAC9B;;AAEA;AACA,kBAAkB;AAClB,eAAe;AACf;;AAEA;AACA,kBAAkB;AAClB,gBAAgB;AAChB,WAAW;AACX;;AAEA;AACA,iBAAiB;AACjB,gBAAgB;AAChB","sourcesContent":["\n.post-owner-image {\n    width: 40px; \n    height: 40px; \n    border-radius: 50%; \n    border: 2px solid #fff; \n    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); \n}\n\n.post-owner-name {\n    font-weight: bold;\n    margin-left: 10px;\n}\n\n.post-container {\n    border: 1px solid #ccc;\n    margin-bottom: 20px; \n    padding: 15px; \n    margin-top: 5%;\n    margin-left: 20%;\n    margin-right: 20%;\n}\n\n.post-user-info {\n    /* 첫 번째 구간 스타일 설정 */\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    margin-bottom: 10px;\n}\n\n.post-timestamp {\n/* 타임스탬프 스타일 설정 */\ncolor: #888;\n}\n\n.post-image {\n/* 두 번째 구간(포스트 이미지) 스타일 설정 */\nwidth: 100%;\nmax-height: 400px; /* 이미지 최대 높이 설정 */\nobject-fit: cover; /* 이미지를 확대/축소하여 채우기 */\nmargin-bottom: 10px;\n}\n\n.post-actions {\n/* 세 번째 구간(좋아요, 댓글 등) 스타일 설정 */\ndisplay: flex;\nalign-items: center;\njustify-content: space-between;\n}\n\n.like-button {\n/* 좋아요 버튼 스타일 설정 */\ncursor: pointer;\n}\n\n.like-count {\n/* 좋아요 갯수 스타일 설정 */\nmargin-left: 5px;\ncolor: #888;\n}\n\n.comment-section {\n/* 댓글 섹션 스타일 설정 */\nmargin-top: 10px;\n}\n\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./minista/static/css/style.css"],"names":[],"mappings":"AAAA;IACI,kBAAkB;IAClB,MAAM;IACN,QAAQ;IACR,cAAc;IACd,gBAAgB;AACpB;;AAEA;IACI,WAAW;IACX,gBAAgB;IAChB,cAAc;IACd,aAAa;IACb,sBAAsB;AAC1B;;AAEA;IACI,sBAAsB;IACtB,aAAa;IACb,sBAAsB;IACtB,OAAO;IACP,SAAS;AACb;;AAEA;IACI,+BAA+B;IAC/B,kBAAkB;;IAElB,WAAW;IACX,aAAa;IACb,sBAAsB;IACtB,gBAAgB;AACpB;;AAEA;IACI,gCAAgC;IAChC,sCAAsC;IACtC,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;IACnB,aAAa;IACb,YAAY;AAChB;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,eAAe;IACf,gBAAgB;IAChB,gBAAgB;IAChB,kBAAkB;IAClB,sBAAsB;IACtB,WAAW;AACf;;AAEA;IACI,iBAAiB;IACjB,eAAe;AACnB;;AAEA;IACI,iBAAiB;IACjB,6BAA6B;IAC7B,YAAY;IACZ,eAAe;AACnB;;;AAGA;IACI,2BAA2B;IAC3B,gCAAgC;IAChC,aAAa;IACb,sBAAsB;IACtB,QAAQ;AACZ;;AAEA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;IACnB,YAAY;AAChB;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,SAAS;AACb;;;;;AAKA,kBAAkB;AAClB;IACI,sBAAsB;IACtB,iBAAiB;IACjB,gBAAgB;IAChB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;IACnB,kBAAkB,EAAE,cAAc;AACtC;;AAEA;IACI,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,WAAW,EAAE,eAAe;IAC5B,YAAY,EAAE,eAAe;IAC7B,kBAAkB,EAAE,wBAAwB;IAC5C,iBAAiB,EAAE,4BAA4B;IAC/C,eAAe;IACf,gBAAgB;AACpB;;AAEA;AACA,iBAAiB,EAAE,cAAc;AACjC;;AAEA;IACI,sBAAsB;IACtB,iBAAiB;IACjB,gBAAgB;IAChB,yBAAyB;AAC7B;;AAEA,iBAAiB;AACjB;AACA,YAAY;AACZ,YAAY;AACZ,iBAAiB;AACjB;;AAEA,gBAAgB;AAChB;AACA,aAAa;AACb;;AAEA;AACA,iBAAiB;AACjB;;AAEA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;IACnB,mBAAmB,EAAE,cAAc;AACvC;;AAEA;AACA,YAAY,EAAE,oBAAoB;AAClC;;AAEA;AACA,iBAAiB,EAAE,cAAc;AACjC;;AAEA,YAAY;AACZ;IACI,eAAe;IACf,yBAAyB;IACzB,cAAc;IACd,YAAY;IACZ,gBAAgB;IAChB,kBAAkB;IAClB,kBAAkB;AACtB;;AAEA,iBAAiB;AACjB;AACA,aAAa;AACb,eAAe;AACf,MAAM;AACN,OAAO;AACP,WAAW;AACX,YAAY;AACZ,oCAAoC;AACpC,uBAAuB;AACvB,mBAAmB;AACnB;;AAEA;AACA,yBAAyB;AACzB,aAAa;AACb,kBAAkB;AAClB;;AAEA;IACI,WAAW,EAAE,eAAe;IAC5B,YAAY,EAAE,eAAe;IAC7B,kBAAkB,EAAE,wBAAwB;IAC5C,iBAAiB,EAAE,4BAA4B;IAC/C,eAAe;IACf,gBAAgB;AACpB","sourcesContent":[".top_right {\n    position: absolute;\n    top: 0;\n    right: 0;\n    margin-top: 1%;\n    margin-right: 1%;\n}\n\n.contents{\n    width: 100%;\n    max-width: 614px;\n    margin: 0 auto;\n    display: flex;\n    flex-direction: column;\n}\n\n.posts {\n    border: 1px solid #ccc;\n    display: flex;\n    flex-direction: column;\n    flex: 1;\n    gap: 24px;\n}\n\n.post{\n    border: 1px solid var(--border);\n    border-radius: 4px;\n\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n    overflow: hidden;\n}\n\n.post_header{\n    background-color: var(--primary);\n    border-bottom: 1px solid var(--border);\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    padding: 16px;\n    height: 40px;\n}\n\n.post_profile{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n.post_user_profile{\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    margin-top: 10%;\n    margin-left: 10%;\n    overflow: hidden;\n    position: relative;\n    vertical-align: middle;\n    float: left;\n}\n\n.post_user_name{\n    margin-left: 120%;\n    margin-top: 35%;\n}\n\n.post_timestamp{\n    margin-left: auto;\n    background-color: transparent;\n    border: none;\n    cursor: pointer;\n}\n\n\n.post_footer{\n    /* padding: 4px 8px 12px; */\n    background-color: var(--primary);\n    display: flex;\n    flex-direction: column;\n    gap: 4px;\n}\n\n.post_likes{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    height: 25px;\n}\n\n.post_description{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n.comment{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n.user_info{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n\n\n\n/* 포스트 컨테이너 스타일링 */\n.post-container {\n    border: 1px solid #ccc;\n    margin: 20px auto;\n    max-width: 600px;\n    background-color: #ffffff;\n}\n\n.post-header {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 5px; /* 적절한 여백 조정 */\n}\n\n.post-owner-info {\n    display: flex;\n    align-items: center;\n}\n\n.post-owner-image {\n    width: 50px; /* 적절한 크기로 조절 */\n    height: 50px; /* 적절한 크기로 조절 */\n    border-radius: 50%; /* 이미지를 원형으로 만들기 위한 속성 */\n    object-fit: cover; /* 이미지가 정사각형 영역을 가득 채우도록 함 */\n    margin-top: 30%;\n    margin-left: 30%;\n}\n\n.post-owner-username {\nmargin-left: 10px; /* 필요에 따라 조절 */\n}\n\n.post-container {\n    border: 1px solid #ccc;\n    margin: 20px auto;\n    max-width: 600px;\n    background-color: #ffffff;\n}\n\n/* 포스트 이미지 스타일링 */\n.post-image {\nwidth: 600px;\nheight: auto;\nobject-fit: cover;\n}\n\n/* 포스트 하단 스타일링 */\n.post-footer {\npadding: 10px;\n}\n\n.likes {\nfont-weight: bold;\n}\n\n.comment {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 10px; /* 적절한 여백 조정 */\n}\n\n.comment-content {\nflex-grow: 1; /* 나머지 공간을 채우도록 설정 */\n}\n\n.comment-actions {\nmargin-left: 10px; /* 필요에 따라 조절 */\n}\n\n/* 버튼 스타일링 */\nbutton {\n    cursor: pointer;\n    background-color: #3897f0;\n    color: #ffffff;\n    border: none;\n    padding: 4px 8px;\n    border-radius: 5px;\n    margin-right: 10px;\n}\n\n/* 모달 스타일링 (예시) */\n.modal {\ndisplay: none;\nposition: fixed;\ntop: 0;\nleft: 0;\nwidth: 100%;\nheight: 100%;\nbackground-color: rgba(0, 0, 0, 0.5);\njustify-content: center;\nalign-items: center;\n}\n\n.modal-content {\nbackground-color: #ffffff;\npadding: 20px;\nborder-radius: 5px;\n}\n\n.post-owner-image {\n    width: 50px; /* 적절한 크기로 조절 */\n    height: 50px; /* 적절한 크기로 조절 */\n    border-radius: 50%; /* 이미지를 원형으로 만들기 위한 속성 */\n    object-fit: cover; /* 이미지가 정사각형 영역을 가득 채우도록 함 */\n    margin-top: 30%;\n    margin-left: 30%;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

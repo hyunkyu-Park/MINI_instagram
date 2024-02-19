@@ -4,7 +4,9 @@
         <title> minista </title>
     </head>
     <body>
-        <a href = "/">Logo</a>
+        <a href="/">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" width="48">
+        </a>
         <a href = "/explore/">explore</a>
         <a href = "/users/{{logname}}/">{{logname}}</a>
             <h2>Discover People</h2>

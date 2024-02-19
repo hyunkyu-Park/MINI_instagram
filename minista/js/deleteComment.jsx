@@ -23,7 +23,6 @@ export default function DeleteComment({
   return (
     <div>
       <button
-        data-testid="delete-comment-button"
         type="button"
         onClick={deleteComment}
       >

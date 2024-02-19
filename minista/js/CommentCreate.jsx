@@ -41,7 +41,7 @@ export default function Comment({ postid, setComments }) {
 
   return (
     <div>
-      <form data-testid="comment-form" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         Comment:
         <input
           className="ui input"

@@ -58,65 +58,80 @@ export default function PostInfo({ resultUrl }) {
   }
 
   const renderedComments = comments.map((comment) => (
-    <div key={comment.commentid}>
-      <b>
-        {" "}
-        <a href={`/users/${comment.owner}/`}>{comment.owner}</a>{" "}
-      </b>
-      <span data-testid="comment-text"> {comment.text} </span>
-      {comment.lognameOwnsThis ? (
-        <CommentDelete
-          commentUrl={comment.url ? comment.url : ""}
-          comments={comments}
-          commentid={comment.commentid}
-          setComments={setComments}
-        />
-      ) : (
-        ""
-      )}
+    <div key={comment.commentid} className="comment">
+      <div className="comment-content">
+        <b>
+          {" "}
+          <a href={`/users/${comment.owner}/`}>{comment.owner}</a>{" "}
+        </b>
+        <span> {comment.text} </span>
+      </div>
+      <div className="comment-actions">
+        {comment.lognameOwnsThis ? (
+          <CommentDelete
+            commentUrl={comment.url ? comment.url : ""}
+            comments={comments}
+            commentid={comment.commentid}
+            setComments={setComments}
+          />
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   ));
 
   return (
-    <div className="post-container ">
-      <div className="post-user-info">
-        <a href={`/users/${owner}/`}>
-          {" "}
-          <img src={ownerImgUrl} alt="owner_image" className="post-owner-image"/>
-          <p className="post-owner-name">{owner}</p>
-        </a>
-        <p>
-          <a href={`/posts/${postId}/`}>{created}</a>
-        </p>
-      </div>
+    <div className="contents">
+      <div className="posts">
+        <article className="post">
+          <div className="post_header">
+            <div className="post_profile">
+              <a href={`/users/${owner}/`}>
+                {/* {" "} */}
+                <img src={ownerImgUrl} alt="owner_image" className="post_user_profile" />
+                <p className="post_user_name">{owner}</p>
+              </a>
+            </div>
+            <div>
+              <a href={`/posts/${postId}/`}>{created}</a>
+            </div>
+          </div>
 
-      <div className="post_img">
-        <Double
-          imgUrl={imgUrl}
-          postid={postId}
-          setLikes={setLikes}
-          lognameLikesThis={likes.lognameLikesThis}
-          numLikes={likes.numLikes}
-        />
-        <Button
-          likesUrl={likes.url ? likes.url : ""}
-          postid={postId}
-          lognameLikesThis={likes.lognameLikesThis}
-          numLikes={likes.numLikes}
-          setLikes={setLikes}
-        />
-      </div>
+          <div>
+            <Double
+              imgUrl={imgUrl}
+              postid={postId}
+              setLikes={setLikes}
+              lognameLikesThis={likes.lognameLikesThis}
+              numLikes={likes.numLikes}
+            />
+          </div>
 
-      <div className="below">
-        <p>
-          {likes.numLikes} {likes.numLikes === 1 ? "like" : "likes"}
-        </p>
-        {renderedComments}
-        <Comment
-          postid={postId}
-          setComments={setComments}
-          commentsList={comments}
-        />
+          <div className="post_footer">
+            <div className="post_likes">
+              <p>
+                {likes.numLikes} {likes.numLikes === 1 ? "like" : "likes"}
+              </p>
+              <Button
+                likesUrl={likes.url ? likes.url : ""}
+                postid={postId}
+                lognameLikesThis={likes.lognameLikesThis}
+                numLikes={likes.numLikes}
+                setLikes={setLikes}
+              />
+            </div>
+            
+            <div className="comments">
+              {renderedComments}
+              <Comment
+                postid={postId}
+                setComments={setComments}
+                commentsList={comments}
+              />
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   );

@@ -4,12 +4,14 @@
         <title> minista </title>
     </head>
     <body>
-        <a href = "/">Logo</a>
+        <a href="/">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" width="48">
+        </a>
         <a href = "/explore/">explore</a>
         <a href = "/users/{{logname}}/">{{logname}}</a>
             <h2>Following</h2>
             {% for follow in following %}
-                <img src = "{{ url_for('upload_file', filename = follow.user_img_url) }}" alt = "{{follow.username}}">
+                <img src = "{{ url_for('upload_file', filename = follow.user_img_url) }}" alt = "{{follow.username}}" style="width: 600px;">
                 <a href = "/users/{{follow.username}}/">{{follow.username}}</a>
                 {% if logname != follow.username %}
                     {% if follow.logname_follows_username %}

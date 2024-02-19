@@ -50,8 +50,7 @@ export default function Button({
 
   return (
     <div>
-      <button
-        data-testid="like-unlike-button"
+      <button 
         type="button"
         onClick={lognameLikesThis === true ? unlike : like}
       >

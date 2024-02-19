@@ -9,13 +9,15 @@
 </head>
 <body>
   <nav>
-    <a href="/">Logo</a>
+    <a href="/">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" width="48">
+    </a>
     <a href="/explore/">explore</a>
     <a href="/users/{{username}}/">{{username}}</a>
 </nav>
 <h2>Edit Account</h2>
 
-<img src="{{ url_for('upload_file', filename = user_photo_url) }}" alt="User Photo">
+<img src="{{ url_for('upload_file', filename = user_photo_url) }}" alt="User Photo" style="width: 600px;">
 <p>{{ username }}</p>
 <form action="/accounts/?target=/accounts/edit/" method="post" enctype="multipart/form-data">
     <label for="file">Photo:</label>

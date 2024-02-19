@@ -1,67 +1,220 @@
-
-.post-owner-image {
-    width: 40px; 
-    height: 40px; 
-    border-radius: 50%; 
-    border: 2px solid #fff; 
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); 
+.top_right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 1%;
+    margin-right: 1%;
 }
 
-.post-owner-name {
-    font-weight: bold;
-    margin-left: 10px;
+.contents{
+    width: 100%;
+    max-width: 614px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.posts {
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 24px;
+}
+
+.post{
+    border: 1px solid var(--border);
+    border-radius: 4px;
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.post_header{
+    background-color: var(--primary);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    height: 40px;
+}
+
+.post_profile{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.post_user_profile{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-top: 10%;
+    margin-left: 10%;
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+    float: left;
+}
+
+.post_user_name{
+    margin-left: 120%;
+    margin-top: 35%;
+}
+
+.post_timestamp{
+    margin-left: auto;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+.post_footer{
+    /* padding: 4px 8px 12px; */
+    background-color: var(--primary);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.post_likes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 25px;
+}
+
+.post_description{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.comment{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user_info{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+
+
+/* 포스트 컨테이너 스타일링 */
+.post-container {
+    border: 1px solid #ccc;
+    margin: 20px auto;
+    max-width: 600px;
+    background-color: #ffffff;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px; /* 적절한 여백 조정 */
+}
+
+.post-owner-info {
+    display: flex;
+    align-items: center;
+}
+
+.post-owner-image {
+    width: 50px; /* 적절한 크기로 조절 */
+    height: 50px; /* 적절한 크기로 조절 */
+    border-radius: 50%; /* 이미지를 원형으로 만들기 위한 속성 */
+    object-fit: cover; /* 이미지가 정사각형 영역을 가득 채우도록 함 */
+    margin-top: 30%;
+    margin-left: 30%;
+}
+
+.post-owner-username {
+margin-left: 10px; /* 필요에 따라 조절 */
 }
 
 .post-container {
     border: 1px solid #ccc;
-    margin-bottom: 20px; 
-    padding: 15px; 
-    margin-top: 5%;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin: 20px auto;
+    max-width: 600px;
+    background-color: #ffffff;
 }
 
-.post-user-info {
-    /* 첫 번째 구간 스타일 설정 */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.post-timestamp {
-/* 타임스탬프 스타일 설정 */
-color: #888;
-}
-
+/* 포스트 이미지 스타일링 */
 .post-image {
-/* 두 번째 구간(포스트 이미지) 스타일 설정 */
+width: 600px;
+height: auto;
+object-fit: cover;
+}
+
+/* 포스트 하단 스타일링 */
+.post-footer {
+padding: 10px;
+}
+
+.likes {
+font-weight: bold;
+}
+
+.comment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px; /* 적절한 여백 조정 */
+}
+
+.comment-content {
+flex-grow: 1; /* 나머지 공간을 채우도록 설정 */
+}
+
+.comment-actions {
+margin-left: 10px; /* 필요에 따라 조절 */
+}
+
+/* 버튼 스타일링 */
+button {
+    cursor: pointer;
+    background-color: #3897f0;
+    color: #ffffff;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+/* 모달 스타일링 (예시) */
+.modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
 width: 100%;
-max-height: 400px; /* 이미지 최대 높이 설정 */
-object-fit: cover; /* 이미지를 확대/축소하여 채우기 */
-margin-bottom: 10px;
-}
-
-.post-actions {
-/* 세 번째 구간(좋아요, 댓글 등) 스타일 설정 */
-display: flex;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+justify-content: center;
 align-items: center;
-justify-content: space-between;
 }
 
-.like-button {
-/* 좋아요 버튼 스타일 설정 */
-cursor: pointer;
+.modal-content {
+background-color: #ffffff;
+padding: 20px;
+border-radius: 5px;
 }
 
-.like-count {
-/* 좋아요 갯수 스타일 설정 */
-margin-left: 5px;
-color: #888;
+.post-owner-image {
+    width: 50px; /* 적절한 크기로 조절 */
+    height: 50px; /* 적절한 크기로 조절 */
+    border-radius: 50%; /* 이미지를 원형으로 만들기 위한 속성 */
+    object-fit: cover; /* 이미지가 정사각형 영역을 가득 채우도록 함 */
+    margin-top: 30%;
+    margin-left: 30%;
 }
-
-.comment-section {
-/* 댓글 섹션 스타일 설정 */
-margin-top: 10px;
-}
-
