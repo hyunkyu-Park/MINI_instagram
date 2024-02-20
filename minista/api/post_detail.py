@@ -5,7 +5,7 @@ import minista
 from posts import check_auth
 
 @minista.app.route('/api/v1/posts/<int:postid_url_slug>/')
-def api_show_post(postid_url_slug):
+def get_post_detail(postid_url_slug):
     """Display post information"""
     logname = check_auth()
     if logname is None:
