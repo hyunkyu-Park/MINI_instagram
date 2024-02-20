@@ -2,13 +2,16 @@
 <html lang="en">
     <head>
         <title> minista </title>
+        <link href="/static/css/style.css" rel="stylesheet" >
     </head>
     <body>
         <a href="/">
             <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" width="48">
         </a>
-        <a href = "/explore/">explore</a>
-        <a href = "/users/{{logname}}/">{{logname}}</a>
+        <div class="top_right">
+            <a href="/explore/" style="font-size: x-large;">explore</a> |
+            <a href="/users/{{logname}}/" style="font-size: x-large;">{{logname}}</a>
+        </div>
             <h2>Followers</h2>
             {% for follower in followers %}
                 <img src = "{{ url_for('upload_file', filename = follower.user_img_url) }}" alt = "{{follower.username}}" style="width: 600px;">

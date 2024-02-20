@@ -321,6 +321,8 @@ function Post(_ref) {
       if (!ignoreStaleRequest) {
         setResults(data.results);
         setNext(data.next);
+        console.log(111);
+        console.log(data);
       }
     })["catch"](function (error) {
       return console.log(error);

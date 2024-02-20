@@ -88,7 +88,6 @@ export default function PostInfo({ resultUrl }) {
           <div className="post_header">
             <div className="post_profile">
               <a href={`/users/${owner}/`}>
-                {/* {" "} */}
                 <img src={ownerImgUrl} alt="owner_image" className="post_user_profile" />
                 <p className="post_user_name">{owner}</p>
               </a>
