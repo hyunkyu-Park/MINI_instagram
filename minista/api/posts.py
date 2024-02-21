@@ -210,7 +210,12 @@ def get_post(postid_url_slug):
         )
     }
 
+    lognameOwnsPost = False
+    if logname == post_info['owner']:
+        lognameOwnsPost = True
+
     context = {
+        "lognameOwnsPost": lognameOwnsPost,
         "owner": post_info['owner'],
         "ownerImgUrl": f"/uploads/{post_info['u_f']}",
         "ownerShowUrl": f"/users/{post_info['owner']}/",

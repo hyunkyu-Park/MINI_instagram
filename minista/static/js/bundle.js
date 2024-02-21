@@ -459,6 +459,8 @@ function PostInfo(_ref) {
         setOwner(data.owner);
         setOwnerImgUrl(data.ownerImgUrl);
         setPostId(data.postid.toString());
+        console.log(222);
+        console.log(data);
       }
     })["catch"](function (error) {
       return console.log(error);

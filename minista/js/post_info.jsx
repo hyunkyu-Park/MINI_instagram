@@ -41,6 +41,8 @@ export default function PostInfo({ resultUrl }) {
           setOwner(data.owner);
           setOwnerImgUrl(data.ownerImgUrl);
           setPostId(data.postid.toString());
+          console.log(222)
+          console.log(data)
         }
       })
       .catch((error) => console.log(error));
