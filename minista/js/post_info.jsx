@@ -8,6 +8,7 @@ import Button from "./Button";
 import Comment from "./CommentCreate";
 import CommentDelete from "./deleteComment";
 import Double from "./doubleClick";
+import PostDetail from "./post_detail";
 
 dayjs.extend(relativeTime);
 dayjs.extend(utc);
@@ -20,6 +21,7 @@ export default function PostInfo({ resultUrl }) {
   const [owner, setOwner] = useState("");
   const [ownerImgUrl, setOwnerImgUrl] = useState("");
   const [postId, setPostId] = useState("");
+  const [postUrl, setPostUrl] = useState("");
 
   useEffect(() => {
     // Declare a boolean flag that we can use to cancel the API request.
@@ -41,6 +43,7 @@ export default function PostInfo({ resultUrl }) {
           setOwner(data.owner);
           setOwnerImgUrl(data.ownerImgUrl);
           setPostId(data.postid.toString());
+          setPostUrl(data.url);
           console.log(222)
           console.log(data)
         }
@@ -95,6 +98,7 @@ export default function PostInfo({ resultUrl }) {
               </a>
             </div>
             <div>
+              {/* <PostDetail postUrl = {postUrl}>{created}</PostDetail> */}
               <a href={`/posts/${postId}/`}>{created}</a>
             </div>
           </div>

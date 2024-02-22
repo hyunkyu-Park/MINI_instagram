@@ -79,3 +79,30 @@ def get_post_detail(postid_url_slug):
 
     return flask.jsonify(**context)
 
+@minista.app.route('/api/v1/posts/<int:postid_url_slug>/', methods=['DELETE'])
+def delete_comment(postid):
+    """Delete post."""
+    logname = check_auth()
+    if logname is None:
+        return flask.jsonify({"error": "Invalid Auth"}), 403
+    connection = minista.model.get_db()
+
+    cur_comment = connection.execute(
+        "SELECT owner FROM posts WHERE postid = ?",
+        (postid,)
+    )
+    existing_post = cur_comment.fetchone()
+
+    if existing_post is None:
+        return flask.jsonify({"error": "Comment ID not found"}), 404
+
+    if existing_post['owner'] != logname:
+        return flask.jsonify({"error": "No permission to delete comment"}), 403
+
+    connection.execute(
+        "DELETE FROM posts WHERE postid = ?",
+        (postid,)
+    )
+    connection.commit()
+
+    return flask.jsonify({}), 204

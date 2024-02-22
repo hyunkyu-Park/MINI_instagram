@@ -12,7 +12,7 @@ import Double from "./doubleClick";
 dayjs.extend(relativeTime);
 dayjs.extend(utc);
 
-export default function PostDetail({ resultUrl }) {
+export default function PostDetail({ postUrl }) {
     const [lognameOwnsPost, setLognameOwnsPost] = useState(false);
     const [comments, setComments] = useState([]);
     const [created, setCreated] = useState("");
@@ -21,12 +21,13 @@ export default function PostDetail({ resultUrl }) {
     const [owner, setOwner] = useState("");
     const [ownerImgUrl, setOwnerImgUrl] = useState("");
     const [postId, setPostId] = useState("");
+    const [postUrl, setPostUrl] = useState("");
 
     useEffect(() => {
         // Declare a boolean flag that we can use to cancel the API request.
         let ignoreStaleRequest = false;
         // Call REST API to get the post's information
-        fetch(resultUrl, { credentials: "same-origin" })
+        fetch(postUrl, { credentials: "same-origin" })
         .then((response) => {
             if (!response.ok) throw Error(response.statusText);
             return response.json();
@@ -43,6 +44,7 @@ export default function PostDetail({ resultUrl }) {
             setOwner(data.owner);
             setOwnerImgUrl(data.ownerImgUrl);
             setPostId(data.postid.toString());
+            setPostUrl(data.url);
             console.log(222)
             console.log(data)
             }
@@ -55,7 +57,7 @@ export default function PostDetail({ resultUrl }) {
         // should avoid updating state.
         ignoreStaleRequest = true;
         };
-    }, [resultUrl]);
+    }, [postUrl]);
 
     if (postId === "") {
         return <div>Loading~</div>;
@@ -71,16 +73,9 @@ export default function PostDetail({ resultUrl }) {
             <span> {comment.text} </span>
         </div>
         <div className="comment-actions">
-            {comment.lognameOwnsThis ? (
-            <CommentDelete
-                commentUrl={comment.url ? comment.url : ""}
-                comments={comments}
-                commentid={comment.commentid}
-                setComments={setComments}
-            />
-            ) : (
-            ""
-            )}
+            {comment.lognameOwnsThis ? 
+                ( <CommentDelete postUrl = {postUrl}/> ) : ( "" )
+            }
         </div>
         </div>
     ));
@@ -134,7 +129,13 @@ export default function PostDetail({ resultUrl }) {
                         />
                         </div>
                         <div>
-                            
+                            {lognameOwnsPost ? (
+                            <DeletePost
+                                postUrl = {postUrl}
+                            />
+                            ) : (
+                            ""
+                            )}
                         </div>
                     </div>
 
@@ -145,5 +146,5 @@ export default function PostDetail({ resultUrl }) {
 }
 
 PostInfo.propTypes = {
-    resultUrl: PropTypes.string.isRequired,
+    postUrl: PropTypes.string.isRequired,
 };
