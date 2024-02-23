@@ -1,21 +1,21 @@
-<!-- account_edit.ninja -->
+.<!-- account_edit.ninja -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="/static/css/style.css" rel="stylesheet" >
-  <title>Edit Account</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/style.css" rel="stylesheet" >
+    <title>Edit Account</title>
 </head>
 <body>
-  <nav>
-    <a href="/">
-      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" width="48">
-    </a>
-    <div class="top_right">
-      <a href="/explore/" style="font-size: x-large;">explore</a> |
-      <a href="/users/{{logname}}/" style="font-size: x-large;">{{logname}}</a>
+    <nav>
+        <a href="/">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" width="48">
+        </a>
+        <div class="top_right">
+        <a href="/explore/" style="font-size: x-large;">explore</a> |
+        <a href="/users/{{logname}}/" style="font-size: x-large;">{{logname}}</a>
     </div>
 </nav>
 <h2>Edit Account</h2>

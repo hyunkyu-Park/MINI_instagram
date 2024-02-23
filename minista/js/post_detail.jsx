@@ -8,6 +8,7 @@ import Button from "./Button";
 import Comment from "./CommentCreate";
 import CommentDelete from "./deleteComment";
 import Double from "./doubleClick";
+import DeletePost from "./deletePost";
 
 dayjs.extend(relativeTime);
 dayjs.extend(utc);
@@ -21,7 +22,6 @@ export default function PostDetail({ postUrl }) {
     const [owner, setOwner] = useState("");
     const [ownerImgUrl, setOwnerImgUrl] = useState("");
     const [postId, setPostId] = useState("");
-    const [postUrl, setPostUrl] = useState("");
 
     useEffect(() => {
         // Declare a boolean flag that we can use to cancel the API request.
@@ -145,6 +145,6 @@ export default function PostDetail({ postUrl }) {
     );
 }
 
-PostInfo.propTypes = {
+PostDetail.propTypes = {
     postUrl: PropTypes.string.isRequired,
 };

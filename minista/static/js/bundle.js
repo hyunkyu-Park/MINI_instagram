@@ -209,6 +209,47 @@ DeleteComment.propTypes = {
 
 /***/ }),
 
+/***/ "./minista/js/deletePost.jsx":
+/*!***********************************!*\
+  !*** ./minista/js/deletePost.jsx ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ DeletePost)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function DeletePost(_ref) {
+  var postUrl = _ref.postUrl;
+  var deletePost = function deletePost() {
+    fetch(postUrl, {
+      method: "DELETE",
+      credentials: "same-origin"
+    }).then(function (response) {
+      if (!response.ok) throw Error(response.statusText);
+      console.log(333);
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    type: "button",
+    onClick: deletePost
+  }, "Delete post"));
+}
+DeletePost.propTypes = {
+  postUrl: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string).isRequired
+};
+
+/***/ }),
+
 /***/ "./minista/js/doubleClick.jsx":
 /*!************************************!*\
   !*** ./minista/js/doubleClick.jsx ***!
@@ -375,9 +416,177 @@ Post.propTypes = {
 /*!************************************!*\
   !*** ./minista/js/post_detail.jsx ***!
   \************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/hyunkp/Desktop/Projects/MINI_instagram/minista/js/post_detail.jsx: Identifier 'postUrl' has already been declared. (15:37)\n\n\u001b[0m \u001b[90m 13 |\u001b[39m dayjs\u001b[33m.\u001b[39mextend(utc)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 14 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mdefault\u001b[39m \u001b[36mfunction\u001b[39m \u001b[33mPostDetail\u001b[39m({ postUrl }) {\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 16 |\u001b[39m     \u001b[36mconst\u001b[39m [lognameOwnsPost\u001b[33m,\u001b[39m setLognameOwnsPost] \u001b[33m=\u001b[39m useState(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 17 |\u001b[39m     \u001b[36mconst\u001b[39m [comments\u001b[33m,\u001b[39m setComments] \u001b[33m=\u001b[39m useState([])\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 18 |\u001b[39m     \u001b[36mconst\u001b[39m [created\u001b[33m,\u001b[39m setCreated] \u001b[33m=\u001b[39m useState(\u001b[32m\"\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n    at constructor (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:353:19)\n    at JSXParserMixin.raise (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:3277:19)\n    at ScopeHandler.checkRedeclarationInScope (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:1491:19)\n    at ScopeHandler.declareName (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:1474:14)\n    at JSXParserMixin.declareNameFromIdentifier (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:7348:16)\n    at JSXParserMixin.checkIdentifier (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:7344:12)\n    at JSXParserMixin.checkLVal (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:7290:12)\n    at JSXParserMixin.checkLVal (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:7318:14)\n    at JSXParserMixin.checkLVal (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:7318:14)\n    at JSXParserMixin.checkParams (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:11637:12)\n    at JSXParserMixin.<anonymous> (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:11612:14)\n    at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:12802:48)\n    at JSXParserMixin.parseBlockBody (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:12779:10)\n    at JSXParserMixin.parseBlock (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:12767:10)\n    at JSXParserMixin.parseFunctionBody (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:11606:24)\n    at JSXParserMixin.parseFunctionBodyAndFinish (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:11592:10)\n    at /Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:12909:12\n    at JSXParserMixin.withSmartMixTopicForbiddingContext (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:11903:14)\n    at JSXParserMixin.parseFunction (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:12908:10)\n    at JSXParserMixin.parseExportDefaultExpression (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:13359:19)\n    at JSXParserMixin.parseExport (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:13287:25)\n    at JSXParserMixin.parseStatementContent (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:12342:27)\n    at JSXParserMixin.parseStatementLike (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:12229:17)\n    at JSXParserMixin.parseModuleItem (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:12206:17)\n    at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:12786:36)\n    at JSXParserMixin.parseBlockBody (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:12779:10)\n    at JSXParserMixin.parseProgram (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:12106:10)\n    at JSXParserMixin.parseTopLevel (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:12096:25)\n    at JSXParserMixin.parse (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:13895:10)\n    at parse (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/parser/lib/index.js:13937:38)\n    at parser (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/core/lib/parser/index.js:41:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)\n    at normalizeFile.next (<anonymous>)\n    at run (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/core/lib/transformation/index.js:21:50)\n    at run.next (<anonymous>)\n    at transform (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/@babel/core/lib/transform.js:22:33)\n    at transform.next (<anonymous>)\n    at step (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/gensync/index.js:261:32)\n    at /Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/gensync/index.js:273:13\n    at async.call.result.err.err (/Users/hyunkp/Desktop/Projects/MINI_instagram/node_modules/gensync/index.js:223:11)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ PostDetail)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! dayjs */ "./node_modules/dayjs/dayjs.min.js");
+/* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(dayjs__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var dayjs_plugin_relativeTime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! dayjs/plugin/relativeTime */ "./node_modules/dayjs/plugin/relativeTime.js");
+/* harmony import */ var dayjs_plugin_relativeTime__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(dayjs_plugin_relativeTime__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var dayjs_plugin_utc__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! dayjs/plugin/utc */ "./node_modules/dayjs/plugin/utc.js");
+/* harmony import */ var dayjs_plugin_utc__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(dayjs_plugin_utc__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Button */ "./minista/js/Button.jsx");
+/* harmony import */ var _CommentCreate__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./CommentCreate */ "./minista/js/CommentCreate.jsx");
+/* harmony import */ var _deleteComment__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./deleteComment */ "./minista/js/deleteComment.jsx");
+/* harmony import */ var _doubleClick__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./doubleClick */ "./minista/js/doubleClick.jsx");
+/* harmony import */ var _deletePost__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./deletePost */ "./minista/js/deletePost.jsx");
+
+
+
+
+
+
+
+
+
+
+
+dayjs__WEBPACK_IMPORTED_MODULE_2___default().extend((dayjs_plugin_relativeTime__WEBPACK_IMPORTED_MODULE_3___default()));
+dayjs__WEBPACK_IMPORTED_MODULE_2___default().extend((dayjs_plugin_utc__WEBPACK_IMPORTED_MODULE_4___default()));
+function PostDetail(_ref) {
+  var postUrl = _ref.postUrl;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+    _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState, 2),
+    lognameOwnsPost = _useState2[0],
+    setLognameOwnsPost = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+    _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState3, 2),
+    comments = _useState4[0],
+    setComments = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+    _useState6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState5, 2),
+    created = _useState6[0],
+    setCreated = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+    _useState8 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState7, 2),
+    imgUrl = _useState8[0],
+    setImgUrl = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+    _useState10 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState9, 2),
+    likes = _useState10[0],
+    setLikes = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+    _useState12 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState11, 2),
+    owner = _useState12[0],
+    setOwner = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+    _useState14 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState13, 2),
+    ownerImgUrl = _useState14[0],
+    setOwnerImgUrl = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+    _useState16 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState15, 2),
+    postId = _useState16[0],
+    setPostId = _useState16[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    // Declare a boolean flag that we can use to cancel the API request.
+    var ignoreStaleRequest = false;
+    // Call REST API to get the post's information
+    fetch(postUrl, {
+      credentials: "same-origin"
+    }).then(function (response) {
+      if (!response.ok) throw Error(response.statusText);
+      return response.json();
+    }).then(function (data) {
+      // If ignoreStaleRequest was set to true, we want to ignore the results of the
+      // the request. Otherwise, update the state to trigger a new render.
+      if (!ignoreStaleRequest) {
+        setLognameOwnsPost(data.lognameOwnsPost);
+        setComments(data.comments);
+        setCreated(dayjs__WEBPACK_IMPORTED_MODULE_2___default()(data.created).fromNow());
+        setImgUrl(data.imgUrl);
+        setLikes(data.likes);
+        setOwner(data.owner);
+        setOwnerImgUrl(data.ownerImgUrl);
+        setPostId(data.postid.toString());
+        setPostUrl(data.url);
+        console.log(222);
+        console.log(data);
+      }
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+    return function () {
+      // This is a cleanup function that runs whenever the Post component
+      // unmounts or re-renders. If a Post is about to unmount or re-render, we
+      // should avoid updating state.
+      ignoreStaleRequest = true;
+    };
+  }, [postUrl]);
+  if (postId === "") {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", null, "Loading~");
+  }
+  var renderedComments = comments.map(function (comment) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+      key: comment.commentid,
+      className: "comment"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+      className: "comment-content"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("b", null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("a", {
+      href: "/users/".concat(comment.owner, "/")
+    }, comment.owner), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("span", null, " ", comment.text, " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+      className: "comment-actions"
+    }, comment.lognameOwnsThis ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_deleteComment__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      postUrl: postUrl
+    }) : ""));
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+    className: "contents"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+    className: "posts"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("article", {
+    className: "post"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+    className: "post_header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+    className: "post_profile"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("a", {
+    href: "/users/".concat(owner, "/")
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("img", {
+    src: ownerImgUrl,
+    alt: "owner_image",
+    className: "post_user_profile"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", {
+    className: "post_user_name"
+  }, owner))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("a", {
+    href: "/posts/".concat(postId, "/")
+  }, created))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_doubleClick__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    imgUrl: imgUrl,
+    postid: postId,
+    setLikes: setLikes,
+    lognameLikesThis: likes.lognameLikesThis,
+    numLikes: likes.numLikes
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+    className: "post_footer"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+    className: "post_likes"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, likes.numLikes, " ", likes.numLikes === 1 ? "like" : "likes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    likesUrl: likes.url ? likes.url : "",
+    postid: postId,
+    lognameLikesThis: likes.lognameLikesThis,
+    numLikes: likes.numLikes,
+    setLikes: setLikes
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+    className: "comments"
+  }, renderedComments, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_CommentCreate__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    postid: postId,
+    setComments: setComments,
+    commentsList: comments
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", null, lognameOwnsPost ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_deletePost__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    postUrl: postUrl
+  }) : "")))));
+}
+PostDetail.propTypes = {
+  postUrl: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().string).isRequired
+};
 
 /***/ }),
 
@@ -408,7 +617,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _deleteComment__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./deleteComment */ "./minista/js/deleteComment.jsx");
 /* harmony import */ var _doubleClick__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./doubleClick */ "./minista/js/doubleClick.jsx");
 /* harmony import */ var _post_detail__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./post_detail */ "./minista/js/post_detail.jsx");
-/* harmony import */ var _post_detail__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_post_detail__WEBPACK_IMPORTED_MODULE_9__);
 
 
 
@@ -510,6 +718,11 @@ function PostInfo(_ref) {
       setComments: setComments
     }) : ""));
   });
+  var handleTimeStampClick = function handleTimeStampClick() {
+    /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_post_detail__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      postUrl: postUrl
+    });
+  };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
     className: "contents"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
