@@ -44,7 +44,6 @@ export default function PostDetail({ postUrl }) {
             setOwner(data.owner);
             setOwnerImgUrl(data.ownerImgUrl);
             setPostId(data.postid.toString());
-            setPostUrl(data.url);
             console.log(222)
             console.log(data)
             }

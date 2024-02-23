@@ -86,7 +86,8 @@ export default function PostInfo({ resultUrl }) {
     </div>
   ));
 
-  const handleTimeStampClick = () => {
+  const handleTimeStampClick = (event) => {
+    console.log(333);
     <PostDetail postUrl={postUrl}/>
   }
 
@@ -103,12 +104,12 @@ export default function PostInfo({ resultUrl }) {
             </div>
             <div>
               {/* <PostDetail postUrl = {postUrl}>{created}</PostDetail> */}
-              <a href={`/posts/${postId}/`}>{created}</a>
-              {/* <button
+              {/* <a href={`/posts/${postId}/`}>{created}</a> */}
+              <button
                     type="button"
                     onClick={handleTimeStampClick}>
                     {created}
-              </button> */}
+              </button>
             </div>
           </div>
 
