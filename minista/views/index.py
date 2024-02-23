@@ -409,69 +409,69 @@ def show_explore():
     return flask.redirect(target_url)
 
 
-# @minista.app.route('/posts/<postid_url_slug>/')
-# def show_post_page(postid_url_slug):
-#     """Display / route."""
-#     # Connect to database
-#     connection = minista.model.get_db()
-#     if "logged_in_user" in session:
-#         logname = session["logged_in_user"]
-#         context = {}
-#         context["logname"] = logname
-#         context["postid"] = postid_url_slug
-#         context["is_like"] = False
+@minista.app.route('/posts/<postid_url_slug>/')
+def show_post_page(postid_url_slug):
+    """Display / route."""
+    # Connect to database
+    connection = minista.model.get_db()
+    if "logged_in_user" in session:
+        logname = session["logged_in_user"]
+        context = {}
+        context["logname"] = logname
+        context["postid"] = postid_url_slug
+        context["is_like"] = False
 
-#         cur5 = connection.execute(
-#             "SELECT COUNT(*) as is_like "
-#             "FROM likes "
-#             "WHERE owner = ? AND postid = ?",
-#             (logname, postid_url_slug)
-#         )
-#         is_like = cur5.fetchone()["is_like"]
-#         context["is_like"] = bool(is_like)
+        cur5 = connection.execute(
+            "SELECT COUNT(*) as is_like "
+            "FROM likes "
+            "WHERE owner = ? AND postid = ?",
+            (logname, postid_url_slug)
+        )
+        is_like = cur5.fetchone()["is_like"]
+        context["is_like"] = bool(is_like)
 
-#         cur6 = connection.execute(
-#             "SELECT filename, owner, created "
-#             "FROM posts "
-#             "WHERE postid = ? ",
-#             (postid_url_slug,)
-#         )
-#         results = cur6.fetchone()
-#         owner = results["owner"]
-#         context["owner"] = results["owner"]
-#         context["img_url"] = results["filename"]
-#         read_time = arrow.get(results["created"])
-#         context["timestamp"] = read_time.humanize()
+        cur6 = connection.execute(
+            "SELECT filename, owner, created "
+            "FROM posts "
+            "WHERE postid = ? ",
+            (postid_url_slug,)
+        )
+        results = cur6.fetchone()
+        owner = results["owner"]
+        context["owner"] = results["owner"]
+        context["img_url"] = results["filename"]
+        read_time = arrow.get(results["created"])
+        context["timestamp"] = read_time.humanize()
 
-#         cur7 = connection.execute(
-#             "SELECT filename "
-#             "FROM users "
-#             "WHERE username = ? ",
-#             (owner,)
-#         )
-#         results = cur7.fetchone()
-#         context["owner_img_url"] = results["filename"]
-#         cur8 = connection.execute(
-#             "SELECT COUNT(*) as like_count "
-#             "FROM likes "
-#             "WHERE postid = ? ",
-#             (postid_url_slug,)
-#         )
-#         results = cur8.fetchall()
-#         context["likes"] = results[0]["like_count"]
+        cur7 = connection.execute(
+            "SELECT filename "
+            "FROM users "
+            "WHERE username = ? ",
+            (owner,)
+        )
+        results = cur7.fetchone()
+        context["owner_img_url"] = results["filename"]
+        cur8 = connection.execute(
+            "SELECT COUNT(*) as like_count "
+            "FROM likes "
+            "WHERE postid = ? ",
+            (postid_url_slug,)
+        )
+        results = cur8.fetchall()
+        context["likes"] = results[0]["like_count"]
 
-#         cur9 = connection.execute(
-#             "SELECT owner, text, commentid "
-#             "FROM comments "
-#             "WHERE postid = ? ",
-#             (postid_url_slug,)
-#         )
-#         results = cur9.fetchall()
-#         context["comments"] = results
-
-#         return flask.render_template("index.html", **context)
-#     target_url = "/accounts/login/"
-#     return flask.redirect(target_url)
+        cur9 = connection.execute(
+            "SELECT owner, text, commentid "
+            "FROM comments "
+            "WHERE postid = ? ",
+            (postid_url_slug,)
+        )
+        results = cur9.fetchall()
+        context["comments"] = results
+        # owner, post_id, owner_img_url, likes, img_url, comments
+        return flask.render_template("post.html", **context)
+    target_url = "/accounts/login/"
+    return flask.redirect(target_url)
 
 
 @minista.app.route('/likes/', methods=['POST'])
