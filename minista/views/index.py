@@ -469,7 +469,7 @@ def show_post_page(postid_url_slug):
         results = cur9.fetchall()
         context["comments"] = results
 
-        return flask.render_template("post.html", **context)
+        return flask.render_template("index.html", **context)
     target_url = "/accounts/login/"
     return flask.redirect(target_url)
 
