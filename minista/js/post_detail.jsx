@@ -9,11 +9,13 @@ import Comment from "./CommentCreate";
 import CommentDelete from "./deleteComment";
 import Double from "./doubleClick";
 import DeletePost from "./deletePost";
+import { useParams } from "react-router-dom";
 
 dayjs.extend(relativeTime);
 dayjs.extend(utc);
 
-export default function PostDetail({ postUrl }) {
+export default function PostDetail({  }) {
+    const { id } = useParams();
     const [lognameOwnsPost, setLognameOwnsPost] = useState(false);
     const [comments, setComments] = useState([]);
     const [created, setCreated] = useState("");
@@ -22,6 +24,8 @@ export default function PostDetail({ postUrl }) {
     const [owner, setOwner] = useState("");
     const [ownerImgUrl, setOwnerImgUrl] = useState("");
     const [postId, setPostId] = useState("");
+    const postUrl = `/api/v1/posts/${id}/`
+
 
     useEffect(() => {
         // Declare a boolean flag that we can use to cancel the API request.
@@ -44,9 +48,9 @@ export default function PostDetail({ postUrl }) {
             setOwner(data.owner);
             setOwnerImgUrl(data.ownerImgUrl);
             setPostId(data.postid.toString());
-            setPostUrl(data.url);
             console.log(222)
             console.log(data)
+            console.log(postUrl)
             }
         })
         .catch((error) => console.log(error));
@@ -73,9 +77,16 @@ export default function PostDetail({ postUrl }) {
             <span> {comment.text} </span>
         </div>
         <div className="comment-actions">
-            {comment.lognameOwnsThis ? 
-                ( <CommentDelete postUrl = {postUrl}/> ) : ( "" )
-            }
+        {comment.lognameOwnsThis ? (
+            <CommentDelete
+                commentUrl={comment.url ? comment.url : ""}
+                comments={comments}
+                commentid={comment.commentid}
+                setComments={setComments}
+            />
+            ) : (
+            ""
+            )}
         </div>
         </div>
     ));
@@ -146,5 +157,4 @@ export default function PostDetail({ postUrl }) {
 }
 
 PostDetail.propTypes = {
-    postUrl: PropTypes.string.isRequired,
 };

@@ -1,15 +1,35 @@
-import React, { StrictMode } from "react";
+import React from "react";
 import { createRoot } from "react-dom/client";
 import Post from "./post";
 import '../static/css/style.css'; 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import PostDetail from "./post_detail";
+import UserPage from "./userPage";
 
 // Create a root
 const root = createRoot(document.getElementById("reactEntry"));
 
-// This method is only called once
-// Insert the post component into the DOM
+
 root.render(
-  <StrictMode>
-    <Post url="/api/v1/posts/" />
-  </StrictMode>,
+  <Router>
+    <div>
+      <Routes>
+        <Route 
+          path="/"
+          element={<Post url="/api/v1/posts/"/>}
+        />
+
+        <Route
+          path="/posts/:id/"
+          element={<PostDetail />}
+        />
+
+        <Route 
+          path="/users/:username/" 
+          element={<UserPage />}
+        />
+
+      </Routes>
+    </div>
+  </Router>
 );
