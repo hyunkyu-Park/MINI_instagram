@@ -68,32 +68,31 @@ export default function UserPage({  }) {
 
 
     const renderedPosts = posts.map((post) => (
-        <img src = {post.filename} key = {post.postid}/>
+        <img src={post.filename} key={post.postid} style={{ width: '250px' }} />
     ));
 
     return (
-        <div className="contents">
-            <div>
+        <div className="user_contents">
+            <div className="user_header">
                 <div>
                     <img src={filename} alt="user_image" className="user_img" />
                 </div>
 
-                <div>
+                <div className="user_info">
                     <div className="user_id">
-                        <p>{username}</p>
-                        <p>edit profile</p>
+                        <p style={{ marginRight: '40px' }}>{username}</p>
+                        <p >edit profile</p>
                     </div>
 
-                    <div>
-                        <p>{total_posts}</p>
-                        followers
-                        following
-                    </div>
-
-                    <div>
-                        {full_name}
+                    <div className="user_stats">
+                        <p style={{ marginRight: '30px' }}>Posts: {total_posts}</p>
+                        <p style={{ marginRight: '30px' }}>followers: {followers}</p>
+                        <p>following: {following}</p>
                     </div>
                     
+                    <div className="full_name">
+                        {full_name}
+                    </div>
                 </div>
             </div>
 

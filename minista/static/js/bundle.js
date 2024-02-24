@@ -5238,18 +5238,41 @@ function UserPage(_ref) {
   var renderedPosts = posts.map(function (post) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("img", {
       src: post.filename,
-      key: post.postid
+      key: post.postid,
+      style: {
+        width: '250px'
+      }
     });
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
-    className: "contents"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("img", {
+    className: "user_contents"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+    className: "user_header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("img", {
     src: filename,
     alt: "user_image",
     className: "user_img"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+    className: "user_info"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     className: "user_id"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "edit profile")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, total_posts), "followers following"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, full_name))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, renderedPosts));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
+    style: {
+      marginRight: '40px'
+    }
+  }, username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "edit profile")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+    className: "user_stats"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
+    style: {
+      marginRight: '30px'
+    }
+  }, "Posts: ", total_posts), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
+    style: {
+      marginRight: '30px'
+    }
+  }, "followers: ", followers), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "following: ", following)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+    className: "full_name"
+  }, full_name))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, renderedPosts));
 }
 
 /***/ }),
@@ -5376,11 +5399,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.top_right {
     gap: 12px;
 }
 
-.user_info{
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
 
 
 
@@ -5495,23 +5513,52 @@ border-radius: 5px;
     margin-left: 30%;
 }
 
+.user_contents{
+    width: 100%;
+    max-width: 768px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
 
-.user_img{
-    width: 100px;
-    height: 100px;
+.user_header {
+    display: flex;
+    align-items: center;
+}
+
+.user_img {
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     overflow: hidden;
-    position: relative;
-    vertical-align: middle;
-    float: left;
-    border: 10;
+    margin-left: 30px;
 }
 
-.user_id{
-    margin-left: 20%;
-    height: 30px;
+.user_info {
+    padding-left: 100px;
 }
-`, "",{"version":3,"sources":["webpack://./minista/static/css/style.css"],"names":[],"mappings":"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","sourcesContent":[".top_right {\n    position: absolute;\n    top: 0;\n    right: 0;\n    margin-top: 1%;\n    margin-right: 1%;\n}\n\n.contents{\n    width: 100%;\n    max-width: 614px;\n    margin: 0 auto;\n    display: flex;\n    flex-direction: column;\n}\n\n.posts {\n    border: 1px solid #ccc;\n    display: flex;\n    flex-direction: column;\n    flex: 1;\n    gap: 24px;\n}\n\n.post{\n    border: 1px solid var(--border);\n    border-radius: 4px;\n\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n    overflow: hidden;\n}\n\n.post_header{\n    background-color: var(--primary);\n    border-bottom: 1px solid var(--border);\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    padding: 16px;\n    height: 40px;\n}\n\n.post_profile{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n.post_user_profile{\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    margin-top: 10%;\n    margin-left: 10%;\n    overflow: hidden;\n    position: relative;\n    vertical-align: middle;\n    float: left;\n}\n\n.post_user_name{\n    margin-left: 120%;\n    margin-top: 35%;\n}\n\n.post_timestamp{\n    margin-left: auto;\n    background-color: transparent;\n    border: none;\n    cursor: pointer;\n}\n\n\n.post_footer{\n    /* padding: 4px 8px 12px; */\n    background-color: var(--primary);\n    display: flex;\n    flex-direction: column;\n    gap: 4px;\n}\n\n.post_likes{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    height: 25px;\n}\n\n.post_description{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n.comment{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n.user_info{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n\n\n\n/* 포스트 컨테이너 스타일링 */\n.post-container {\n    border: 1px solid #ccc;\n    margin: 20px auto;\n    max-width: 600px;\n    background-color: #ffffff;\n}\n\n.post-header {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 5px; /* 적절한 여백 조정 */\n}\n\n.post-owner-info {\n    display: flex;\n    align-items: center;\n}\n\n.post-owner-image {\n    width: 50px; /* 적절한 크기로 조절 */\n    height: 50px; /* 적절한 크기로 조절 */\n    border-radius: 50%; /* 이미지를 원형으로 만들기 위한 속성 */\n    object-fit: cover; /* 이미지가 정사각형 영역을 가득 채우도록 함 */\n    margin-top: 30%;\n    margin-left: 30%;\n}\n\n.post-owner-username {\nmargin-left: 10px; /* 필요에 따라 조절 */\n}\n\n.post-container {\n    border: 1px solid #ccc;\n    margin: 20px auto;\n    max-width: 600px;\n    background-color: #ffffff;\n}\n\n/* 포스트 이미지 스타일링 */\n.post-image {\nwidth: 600px;\nheight: auto;\nobject-fit: cover;\n}\n\n/* 포스트 하단 스타일링 */\n.post-footer {\npadding: 10px;\n}\n\n.likes {\nfont-weight: bold;\n}\n\n.comment {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 10px; /* 적절한 여백 조정 */\n}\n\n.comment-content {\nflex-grow: 1; /* 나머지 공간을 채우도록 설정 */\n}\n\n.comment-actions {\nmargin-left: 10px; /* 필요에 따라 조절 */\n}\n\n/* 버튼 스타일링 */\nbutton {\n    cursor: pointer;\n    background-color: #3897f0;\n    color: #ffffff;\n    border: none;\n    padding: 4px 8px;\n    border-radius: 5px;\n    margin-right: 10px;\n}\n\n/* 모달 스타일링 (예시) */\n.modal {\ndisplay: none;\nposition: fixed;\ntop: 0;\nleft: 0;\nwidth: 100%;\nheight: 100%;\nbackground-color: rgba(0, 0, 0, 0.5);\njustify-content: center;\nalign-items: center;\n}\n\n.modal-content {\nbackground-color: #ffffff;\npadding: 20px;\nborder-radius: 5px;\n}\n\n.post-owner-image {\n    width: 50px; /* 적절한 크기로 조절 */\n    height: 50px; /* 적절한 크기로 조절 */\n    border-radius: 50%; /* 이미지를 원형으로 만들기 위한 속성 */\n    object-fit: cover; /* 이미지가 정사각형 영역을 가득 채우도록 함 */\n    margin-top: 30%;\n    margin-left: 30%;\n}\n\n\n.user_img{\n    width: 100px;\n    height: 100px;\n    border-radius: 50%;\n    overflow: hidden;\n    position: relative;\n    vertical-align: middle;\n    float: left;\n    border: 10;\n}\n\n.user_id{\n    margin-left: 20%;\n    height: 30px;\n}\n"],"sourceRoot":""}]);
+
+.user_id {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    font-size: 32px;
+    margin-top: -50px;
+}
+
+.user_stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 28px;
+}
+
+.full_name {
+    margin-top: 10px; /* 원하는 여백 값으로 조절 */
+    font-size: 24px;
+}
+
+`, "",{"version":3,"sources":["webpack://./minista/static/css/style.css"],"names":[],"mappings":"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","sourcesContent":[".top_right {\n    position: absolute;\n    top: 0;\n    right: 0;\n    margin-top: 1%;\n    margin-right: 1%;\n}\n\n.contents{\n    width: 100%;\n    max-width: 614px;\n    margin: 0 auto;\n    display: flex;\n    flex-direction: column;\n}\n\n.posts {\n    border: 1px solid #ccc;\n    display: flex;\n    flex-direction: column;\n    flex: 1;\n    gap: 24px;\n}\n\n.post{\n    border: 1px solid var(--border);\n    border-radius: 4px;\n\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n    overflow: hidden;\n}\n\n.post_header{\n    background-color: var(--primary);\n    border-bottom: 1px solid var(--border);\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    padding: 16px;\n    height: 40px;\n}\n\n.post_profile{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n.post_user_profile{\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    margin-top: 10%;\n    margin-left: 10%;\n    overflow: hidden;\n    position: relative;\n    vertical-align: middle;\n    float: left;\n}\n\n.post_user_name{\n    margin-left: 120%;\n    margin-top: 35%;\n}\n\n.post_timestamp{\n    margin-left: auto;\n    background-color: transparent;\n    border: none;\n    cursor: pointer;\n}\n\n\n.post_footer{\n    /* padding: 4px 8px 12px; */\n    background-color: var(--primary);\n    display: flex;\n    flex-direction: column;\n    gap: 4px;\n}\n\n.post_likes{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    height: 25px;\n}\n\n.post_description{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n.comment{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n\n\n\n\n/* 포스트 컨테이너 스타일링 */\n.post-container {\n    border: 1px solid #ccc;\n    margin: 20px auto;\n    max-width: 600px;\n    background-color: #ffffff;\n}\n\n.post-header {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 5px; /* 적절한 여백 조정 */\n}\n\n.post-owner-info {\n    display: flex;\n    align-items: center;\n}\n\n.post-owner-image {\n    width: 50px; /* 적절한 크기로 조절 */\n    height: 50px; /* 적절한 크기로 조절 */\n    border-radius: 50%; /* 이미지를 원형으로 만들기 위한 속성 */\n    object-fit: cover; /* 이미지가 정사각형 영역을 가득 채우도록 함 */\n    margin-top: 30%;\n    margin-left: 30%;\n}\n\n.post-owner-username {\nmargin-left: 10px; /* 필요에 따라 조절 */\n}\n\n.post-container {\n    border: 1px solid #ccc;\n    margin: 20px auto;\n    max-width: 600px;\n    background-color: #ffffff;\n}\n\n/* 포스트 이미지 스타일링 */\n.post-image {\nwidth: 600px;\nheight: auto;\nobject-fit: cover;\n}\n\n/* 포스트 하단 스타일링 */\n.post-footer {\npadding: 10px;\n}\n\n.likes {\nfont-weight: bold;\n}\n\n.comment {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 10px; /* 적절한 여백 조정 */\n}\n\n.comment-content {\nflex-grow: 1; /* 나머지 공간을 채우도록 설정 */\n}\n\n.comment-actions {\nmargin-left: 10px; /* 필요에 따라 조절 */\n}\n\n/* 버튼 스타일링 */\nbutton {\n    cursor: pointer;\n    background-color: #3897f0;\n    color: #ffffff;\n    border: none;\n    padding: 4px 8px;\n    border-radius: 5px;\n    margin-right: 10px;\n}\n\n/* 모달 스타일링 (예시) */\n.modal {\ndisplay: none;\nposition: fixed;\ntop: 0;\nleft: 0;\nwidth: 100%;\nheight: 100%;\nbackground-color: rgba(0, 0, 0, 0.5);\njustify-content: center;\nalign-items: center;\n}\n\n.modal-content {\nbackground-color: #ffffff;\npadding: 20px;\nborder-radius: 5px;\n}\n\n.post-owner-image {\n    width: 50px; /* 적절한 크기로 조절 */\n    height: 50px; /* 적절한 크기로 조절 */\n    border-radius: 50%; /* 이미지를 원형으로 만들기 위한 속성 */\n    object-fit: cover; /* 이미지가 정사각형 영역을 가득 채우도록 함 */\n    margin-top: 30%;\n    margin-left: 30%;\n}\n\n.user_contents{\n    width: 100%;\n    max-width: 768px;\n    margin: 0 auto;\n    display: flex;\n    flex-direction: column;\n}\n\n.user_header {\n    display: flex;\n    align-items: center;\n}\n\n.user_img {\n    width: 200px;\n    height: 200px;\n    border-radius: 50%;\n    overflow: hidden;\n    margin-left: 30px;\n}\n\n.user_info {\n    padding-left: 100px;\n}\n\n.user_id {\n    height: 30px;\n    display: flex;\n    align-items: center;\n    font-size: 32px;\n    margin-top: -50px;\n}\n\n.user_stats {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    font-size: 28px;\n}\n\n.full_name {\n    margin-top: 10px; /* 원하는 여백 값으로 조절 */\n    font-size: 24px;\n}\n\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
