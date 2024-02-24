@@ -4,7 +4,7 @@ import Post from "./post";
 import '../static/css/style.css'; 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PostDetail from "./post_detail";
-
+import UserPage from "./userPage";
 
 // Create a root
 const root = createRoot(document.getElementById("reactEntry"));
@@ -16,13 +16,19 @@ root.render(
       <Routes>
         <Route 
           path="/"
-          element={<Post url="/api/v1/posts/" />}
+          element={<Post url="/api/v1/posts/"/>}
         />
 
         <Route
-          path="/posts/:id"
+          path="/posts/:id/"
           element={<PostDetail />}
         />
+
+        <Route 
+          path="/users/:username/" 
+          element={<UserPage />}
+        />
+
       </Routes>
     </div>
   </Router>

@@ -5017,10 +5017,6 @@ function PostInfo(_ref) {
     _useState14 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState13, 2),
     postId = _useState14[0],
     setPostId = _useState14[1];
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
-    _useState16 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState15, 2),
-    postUrl = _useState16[0],
-    setPostUrl = _useState16[1];
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     // Declare a boolean flag that we can use to cancel the API request.
     var ignoreStaleRequest = false;
@@ -5041,7 +5037,6 @@ function PostInfo(_ref) {
         setOwner(data.owner);
         setOwnerImgUrl(data.ownerImgUrl);
         setPostId(data.postid.toString());
-        setPostUrl(data.url);
         console.log(222);
         console.log(data);
       }
@@ -5075,12 +5070,6 @@ function PostInfo(_ref) {
       setComments: setComments
     }) : ""));
   });
-
-  // const handleTimeStampClick = (event) => {
-  //   console.log(333);
-  //   <PostDetail postUrl={postUrl}/>
-  // }
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
     className: "contents"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
@@ -5128,6 +5117,140 @@ function PostInfo(_ref) {
 PostInfo.propTypes = {
   resultUrl: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().string).isRequired
 };
+
+/***/ }),
+
+/***/ "./minista/js/userPage.jsx":
+/*!*********************************!*\
+  !*** ./minista/js/userPage.jsx ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ UserPage)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/objectDestructuringEmpty */ "./node_modules/@babel/runtime/helpers/esm/objectDestructuringEmpty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! dayjs */ "./node_modules/dayjs/dayjs.min.js");
+/* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(dayjs__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var dayjs_plugin_relativeTime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! dayjs/plugin/relativeTime */ "./node_modules/dayjs/plugin/relativeTime.js");
+/* harmony import */ var dayjs_plugin_relativeTime__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(dayjs_plugin_relativeTime__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var dayjs_plugin_utc__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! dayjs/plugin/utc */ "./node_modules/dayjs/plugin/utc.js");
+/* harmony import */ var dayjs_plugin_utc__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(dayjs_plugin_utc__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Button */ "./minista/js/Button.jsx");
+/* harmony import */ var _CommentCreate__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CommentCreate */ "./minista/js/CommentCreate.jsx");
+/* harmony import */ var _deleteComment__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./deleteComment */ "./minista/js/deleteComment.jsx");
+/* harmony import */ var _doubleClick__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./doubleClick */ "./minista/js/doubleClick.jsx");
+/* harmony import */ var _deletePost__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./deletePost */ "./minista/js/deletePost.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+
+
+
+
+
+
+
+
+
+
+
+
+dayjs__WEBPACK_IMPORTED_MODULE_3___default().extend((dayjs_plugin_relativeTime__WEBPACK_IMPORTED_MODULE_4___default()));
+dayjs__WEBPACK_IMPORTED_MODULE_3___default().extend((dayjs_plugin_utc__WEBPACK_IMPORTED_MODULE_5___default()));
+function UserPage(_ref) {
+  (0,_babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref);
+  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_11__.useParams)(),
+    username = _useParams.username;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+    _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState, 2),
+    logname = _useState2[0],
+    setLogname = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+    _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState3, 2),
+    full_name = _useState4[0],
+    setFull_name = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+    _useState6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState5, 2),
+    filename = _useState6[0],
+    setFilename = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
+    _useState8 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState7, 2),
+    logname_follows_username = _useState8[0],
+    setLogname_follows_username = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+    _useState10 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState9, 2),
+    following = _useState10[0],
+    setFollowing = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+    _useState12 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState11, 2),
+    followers = _useState12[0],
+    setFollowers = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+    _useState14 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState13, 2),
+    total_posts = _useState14[0],
+    setTotal_posts = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+    _useState16 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState15, 2),
+    posts = _useState16[0],
+    setPosts = _useState16[1];
+  var userUrl = "/api/v1/users/".concat(username, "/");
+  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    // Declare a boolean flag that we can use to cancel the API request.
+    var ignoreStaleRequest = false;
+    // Call REST API to get the post's information
+    fetch(userUrl, {
+      credentials: "same-origin"
+    }).then(function (response) {
+      if (!response.ok) throw Error(response.statusText);
+      return response.json();
+    }).then(function (data) {
+      // If ignoreStaleRequest was set to true, we want to ignore the results of the
+      // the request. Otherwise, update the state to trigger a new render.
+      if (!ignoreStaleRequest) {
+        setLogname(data.logname);
+        setFull_name(data.full_name);
+        setFilename(data.filename);
+        setLogname_follows_username(data.logname_follows_username);
+        setFollowing(data.following);
+        setFollowers(data.followers);
+        setTotal_posts(data.total_posts);
+        setPosts(data.posts);
+        console.log(777);
+        console.log(data);
+      }
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+    return function () {
+      // This is a cleanup function that runs whenever the Post component
+      // unmounts or re-renders. If a Post is about to unmount or re-render, we
+      // should avoid updating state.
+      ignoreStaleRequest = true;
+    };
+  }, [userUrl]);
+  if (full_name === "") {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Loading~");
+  }
+  var renderedPosts = posts.map(function (post) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("img", {
+      src: post.filename,
+      key: post.postid
+    });
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+    className: "contents"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("img", {
+    src: filename,
+    alt: "user_image",
+    className: "user_img"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+    className: "user_id"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "edit profile")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, total_posts), "followers following"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, full_name))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, renderedPosts));
+}
 
 /***/ }),
 
@@ -5371,7 +5494,24 @@ border-radius: 5px;
     margin-top: 30%;
     margin-left: 30%;
 }
-`, "",{"version":3,"sources":["webpack://./minista/static/css/style.css"],"names":[],"mappings":"AAAA;IACI,kBAAkB;IAClB,MAAM;IACN,QAAQ;IACR,cAAc;IACd,gBAAgB;AACpB;;AAEA;IACI,WAAW;IACX,gBAAgB;IAChB,cAAc;IACd,aAAa;IACb,sBAAsB;AAC1B;;AAEA;IACI,sBAAsB;IACtB,aAAa;IACb,sBAAsB;IACtB,OAAO;IACP,SAAS;AACb;;AAEA;IACI,+BAA+B;IAC/B,kBAAkB;;IAElB,WAAW;IACX,aAAa;IACb,sBAAsB;IACtB,gBAAgB;AACpB;;AAEA;IACI,gCAAgC;IAChC,sCAAsC;IACtC,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;IACnB,aAAa;IACb,YAAY;AAChB;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,eAAe;IACf,gBAAgB;IAChB,gBAAgB;IAChB,kBAAkB;IAClB,sBAAsB;IACtB,WAAW;AACf;;AAEA;IACI,iBAAiB;IACjB,eAAe;AACnB;;AAEA;IACI,iBAAiB;IACjB,6BAA6B;IAC7B,YAAY;IACZ,eAAe;AACnB;;;AAGA;IACI,2BAA2B;IAC3B,gCAAgC;IAChC,aAAa;IACb,sBAAsB;IACtB,QAAQ;AACZ;;AAEA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;IACnB,YAAY;AAChB;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,SAAS;AACb;;;;;AAKA,kBAAkB;AAClB;IACI,sBAAsB;IACtB,iBAAiB;IACjB,gBAAgB;IAChB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;IACnB,kBAAkB,EAAE,cAAc;AACtC;;AAEA;IACI,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,WAAW,EAAE,eAAe;IAC5B,YAAY,EAAE,eAAe;IAC7B,kBAAkB,EAAE,wBAAwB;IAC5C,iBAAiB,EAAE,4BAA4B;IAC/C,eAAe;IACf,gBAAgB;AACpB;;AAEA;AACA,iBAAiB,EAAE,cAAc;AACjC;;AAEA;IACI,sBAAsB;IACtB,iBAAiB;IACjB,gBAAgB;IAChB,yBAAyB;AAC7B;;AAEA,iBAAiB;AACjB;AACA,YAAY;AACZ,YAAY;AACZ,iBAAiB;AACjB;;AAEA,gBAAgB;AAChB;AACA,aAAa;AACb;;AAEA;AACA,iBAAiB;AACjB;;AAEA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;IACnB,mBAAmB,EAAE,cAAc;AACvC;;AAEA;AACA,YAAY,EAAE,oBAAoB;AAClC;;AAEA;AACA,iBAAiB,EAAE,cAAc;AACjC;;AAEA,YAAY;AACZ;IACI,eAAe;IACf,yBAAyB;IACzB,cAAc;IACd,YAAY;IACZ,gBAAgB;IAChB,kBAAkB;IAClB,kBAAkB;AACtB;;AAEA,iBAAiB;AACjB;AACA,aAAa;AACb,eAAe;AACf,MAAM;AACN,OAAO;AACP,WAAW;AACX,YAAY;AACZ,oCAAoC;AACpC,uBAAuB;AACvB,mBAAmB;AACnB;;AAEA;AACA,yBAAyB;AACzB,aAAa;AACb,kBAAkB;AAClB;;AAEA;IACI,WAAW,EAAE,eAAe;IAC5B,YAAY,EAAE,eAAe;IAC7B,kBAAkB,EAAE,wBAAwB;IAC5C,iBAAiB,EAAE,4BAA4B;IAC/C,eAAe;IACf,gBAAgB;AACpB","sourcesContent":[".top_right {\n    position: absolute;\n    top: 0;\n    right: 0;\n    margin-top: 1%;\n    margin-right: 1%;\n}\n\n.contents{\n    width: 100%;\n    max-width: 614px;\n    margin: 0 auto;\n    display: flex;\n    flex-direction: column;\n}\n\n.posts {\n    border: 1px solid #ccc;\n    display: flex;\n    flex-direction: column;\n    flex: 1;\n    gap: 24px;\n}\n\n.post{\n    border: 1px solid var(--border);\n    border-radius: 4px;\n\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n    overflow: hidden;\n}\n\n.post_header{\n    background-color: var(--primary);\n    border-bottom: 1px solid var(--border);\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    padding: 16px;\n    height: 40px;\n}\n\n.post_profile{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n.post_user_profile{\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    margin-top: 10%;\n    margin-left: 10%;\n    overflow: hidden;\n    position: relative;\n    vertical-align: middle;\n    float: left;\n}\n\n.post_user_name{\n    margin-left: 120%;\n    margin-top: 35%;\n}\n\n.post_timestamp{\n    margin-left: auto;\n    background-color: transparent;\n    border: none;\n    cursor: pointer;\n}\n\n\n.post_footer{\n    /* padding: 4px 8px 12px; */\n    background-color: var(--primary);\n    display: flex;\n    flex-direction: column;\n    gap: 4px;\n}\n\n.post_likes{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    height: 25px;\n}\n\n.post_description{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n.comment{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n.user_info{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n\n\n\n/* 포스트 컨테이너 스타일링 */\n.post-container {\n    border: 1px solid #ccc;\n    margin: 20px auto;\n    max-width: 600px;\n    background-color: #ffffff;\n}\n\n.post-header {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 5px; /* 적절한 여백 조정 */\n}\n\n.post-owner-info {\n    display: flex;\n    align-items: center;\n}\n\n.post-owner-image {\n    width: 50px; /* 적절한 크기로 조절 */\n    height: 50px; /* 적절한 크기로 조절 */\n    border-radius: 50%; /* 이미지를 원형으로 만들기 위한 속성 */\n    object-fit: cover; /* 이미지가 정사각형 영역을 가득 채우도록 함 */\n    margin-top: 30%;\n    margin-left: 30%;\n}\n\n.post-owner-username {\nmargin-left: 10px; /* 필요에 따라 조절 */\n}\n\n.post-container {\n    border: 1px solid #ccc;\n    margin: 20px auto;\n    max-width: 600px;\n    background-color: #ffffff;\n}\n\n/* 포스트 이미지 스타일링 */\n.post-image {\nwidth: 600px;\nheight: auto;\nobject-fit: cover;\n}\n\n/* 포스트 하단 스타일링 */\n.post-footer {\npadding: 10px;\n}\n\n.likes {\nfont-weight: bold;\n}\n\n.comment {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 10px; /* 적절한 여백 조정 */\n}\n\n.comment-content {\nflex-grow: 1; /* 나머지 공간을 채우도록 설정 */\n}\n\n.comment-actions {\nmargin-left: 10px; /* 필요에 따라 조절 */\n}\n\n/* 버튼 스타일링 */\nbutton {\n    cursor: pointer;\n    background-color: #3897f0;\n    color: #ffffff;\n    border: none;\n    padding: 4px 8px;\n    border-radius: 5px;\n    margin-right: 10px;\n}\n\n/* 모달 스타일링 (예시) */\n.modal {\ndisplay: none;\nposition: fixed;\ntop: 0;\nleft: 0;\nwidth: 100%;\nheight: 100%;\nbackground-color: rgba(0, 0, 0, 0.5);\njustify-content: center;\nalign-items: center;\n}\n\n.modal-content {\nbackground-color: #ffffff;\npadding: 20px;\nborder-radius: 5px;\n}\n\n.post-owner-image {\n    width: 50px; /* 적절한 크기로 조절 */\n    height: 50px; /* 적절한 크기로 조절 */\n    border-radius: 50%; /* 이미지를 원형으로 만들기 위한 속성 */\n    object-fit: cover; /* 이미지가 정사각형 영역을 가득 채우도록 함 */\n    margin-top: 30%;\n    margin-left: 30%;\n}\n"],"sourceRoot":""}]);
+
+
+.user_img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+    float: left;
+    border: 10;
+}
+
+.user_id{
+    margin-left: 20%;
+    height: 30px;
+}
+`, "",{"version":3,"sources":["webpack://./minista/static/css/style.css"],"names":[],"mappings":"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","sourcesContent":[".top_right {\n    position: absolute;\n    top: 0;\n    right: 0;\n    margin-top: 1%;\n    margin-right: 1%;\n}\n\n.contents{\n    width: 100%;\n    max-width: 614px;\n    margin: 0 auto;\n    display: flex;\n    flex-direction: column;\n}\n\n.posts {\n    border: 1px solid #ccc;\n    display: flex;\n    flex-direction: column;\n    flex: 1;\n    gap: 24px;\n}\n\n.post{\n    border: 1px solid var(--border);\n    border-radius: 4px;\n\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n    overflow: hidden;\n}\n\n.post_header{\n    background-color: var(--primary);\n    border-bottom: 1px solid var(--border);\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    padding: 16px;\n    height: 40px;\n}\n\n.post_profile{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n.post_user_profile{\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    margin-top: 10%;\n    margin-left: 10%;\n    overflow: hidden;\n    position: relative;\n    vertical-align: middle;\n    float: left;\n}\n\n.post_user_name{\n    margin-left: 120%;\n    margin-top: 35%;\n}\n\n.post_timestamp{\n    margin-left: auto;\n    background-color: transparent;\n    border: none;\n    cursor: pointer;\n}\n\n\n.post_footer{\n    /* padding: 4px 8px 12px; */\n    background-color: var(--primary);\n    display: flex;\n    flex-direction: column;\n    gap: 4px;\n}\n\n.post_likes{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    height: 25px;\n}\n\n.post_description{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n.comment{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n.user_info{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n\n\n\n/* 포스트 컨테이너 스타일링 */\n.post-container {\n    border: 1px solid #ccc;\n    margin: 20px auto;\n    max-width: 600px;\n    background-color: #ffffff;\n}\n\n.post-header {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 5px; /* 적절한 여백 조정 */\n}\n\n.post-owner-info {\n    display: flex;\n    align-items: center;\n}\n\n.post-owner-image {\n    width: 50px; /* 적절한 크기로 조절 */\n    height: 50px; /* 적절한 크기로 조절 */\n    border-radius: 50%; /* 이미지를 원형으로 만들기 위한 속성 */\n    object-fit: cover; /* 이미지가 정사각형 영역을 가득 채우도록 함 */\n    margin-top: 30%;\n    margin-left: 30%;\n}\n\n.post-owner-username {\nmargin-left: 10px; /* 필요에 따라 조절 */\n}\n\n.post-container {\n    border: 1px solid #ccc;\n    margin: 20px auto;\n    max-width: 600px;\n    background-color: #ffffff;\n}\n\n/* 포스트 이미지 스타일링 */\n.post-image {\nwidth: 600px;\nheight: auto;\nobject-fit: cover;\n}\n\n/* 포스트 하단 스타일링 */\n.post-footer {\npadding: 10px;\n}\n\n.likes {\nfont-weight: bold;\n}\n\n.comment {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 10px; /* 적절한 여백 조정 */\n}\n\n.comment-content {\nflex-grow: 1; /* 나머지 공간을 채우도록 설정 */\n}\n\n.comment-actions {\nmargin-left: 10px; /* 필요에 따라 조절 */\n}\n\n/* 버튼 스타일링 */\nbutton {\n    cursor: pointer;\n    background-color: #3897f0;\n    color: #ffffff;\n    border: none;\n    padding: 4px 8px;\n    border-radius: 5px;\n    margin-right: 10px;\n}\n\n/* 모달 스타일링 (예시) */\n.modal {\ndisplay: none;\nposition: fixed;\ntop: 0;\nleft: 0;\nwidth: 100%;\nheight: 100%;\nbackground-color: rgba(0, 0, 0, 0.5);\njustify-content: center;\nalign-items: center;\n}\n\n.modal-content {\nbackground-color: #ffffff;\npadding: 20px;\nborder-radius: 5px;\n}\n\n.post-owner-image {\n    width: 50px; /* 적절한 크기로 조절 */\n    height: 50px; /* 적절한 크기로 조절 */\n    border-radius: 50%; /* 이미지를 원형으로 만들기 위한 속성 */\n    object-fit: cover; /* 이미지가 정사각형 영역을 가득 채우도록 함 */\n    margin-top: 30%;\n    margin-left: 30%;\n}\n\n\n.user_img{\n    width: 100px;\n    height: 100px;\n    border-radius: 50%;\n    overflow: hidden;\n    position: relative;\n    vertical-align: middle;\n    float: left;\n    border: 10;\n}\n\n.user_id{\n    margin-left: 20%;\n    height: 30px;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -44230,9 +44370,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var _post__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./post */ "./minista/js/post.jsx");
 /* harmony import */ var _static_css_style_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../static/css/style.css */ "./minista/static/css/style.css");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _post_detail__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./post_detail */ "./minista/js/post_detail.jsx");
+/* harmony import */ var _userPage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./userPage */ "./minista/js/userPage.jsx");
+
 
 
 
@@ -44242,14 +44384,17 @@ __webpack_require__.r(__webpack_exports__);
 
 // Create a root
 var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(document.getElementById("reactEntry"));
-root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
   path: "/",
   element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post__WEBPACK_IMPORTED_MODULE_2__["default"], {
     url: "/api/v1/posts/"
   })
-}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
-  path: "/posts/:id",
+}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+  path: "/posts/:id/",
   element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post_detail__WEBPACK_IMPORTED_MODULE_4__["default"], null)
+}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+  path: "/users/:username/",
+  element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_userPage__WEBPACK_IMPORTED_MODULE_5__["default"], null)
 })))));
 })();
 

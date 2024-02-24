@@ -16,7 +16,7 @@ import minista
 app = flask.Flask(__name__)
 
 
-# @minista.app.route('/')
+@minista.app.route('/')
 def show_index():
     """Display / route."""
     connection = minista.model.get_db()
@@ -180,7 +180,7 @@ def show_user_page(user_url_slug):
                 ]
         context["posts"] = post_data
 
-        return flask.render_template("user.html", **context)
+        return flask.render_template("index.html", **context)
     target_url = "/accounts/login/"
     return flask.redirect(target_url)
 
@@ -469,7 +469,7 @@ def show_post_page(postid_url_slug):
         results = cur9.fetchall()
         context["comments"] = results
         # owner, post_id, owner_img_url, likes, img_url, comments
-        return flask.render_template("post.html", **context)
+        return flask.render_template("index.html", **context)
     target_url = "/accounts/login/"
     return flask.redirect(target_url)
 
