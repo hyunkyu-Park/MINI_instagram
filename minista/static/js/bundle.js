@@ -4584,8 +4584,11 @@ function DeletePost(_ref) {
       method: "DELETE",
       credentials: "same-origin"
     }).then(function (response) {
-      if (!response.ok) throw Error(response.statusText);
-      console.log(333);
+      if (!response.ok) {
+        console.log(333);
+        console.log(postUrl);
+        throw Error(response.statusText);
+      }
     })["catch"](function (error) {
       return console.log(error);
     });

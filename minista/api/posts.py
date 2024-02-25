@@ -160,6 +160,7 @@ def get_post(postid_url_slug):
         "SELECT COUNT(*) FROM posts WHERE postid = ?",
         (postid_url_slug,)
     )
+    
     if cur_post_check.fetchone()["COUNT(*)"] == 0:
         return flask.jsonify({'error': 'Post not found'}), 404
 
@@ -184,6 +185,8 @@ def get_post(postid_url_slug):
         (postid_url_slug,)
     )
     post_info = cur_post.fetchone()
+    # print("post id: ", postid_url_slug)
+    # print("post_info:", post_info)
 
     cur_likes = connection.execute(
         "SELECT COUNT(*) AS num_likes, "
@@ -369,7 +372,7 @@ def get_user_page(user_url_slug):
     if logname is None:
         return flask.jsonify({"error": "Invalid Auth"}), 403
     
-    print("user_url_slug: ", user_url_slug)
+    # print("user_url_slug: ", user_url_slug)
 
     connection = minista.model.get_db()
     context = {
@@ -452,4 +455,3 @@ def get_user_page(user_url_slug):
     context["posts"] = post_data
 
     return flask.jsonify(**context)
-
