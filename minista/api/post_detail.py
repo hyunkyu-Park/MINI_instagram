@@ -2,7 +2,7 @@
 import arrow
 import flask
 import minista
-from posts import check_auth
+from minista.api.posts import check_auth
 
 @minista.app.route('/api/v1/posts/<int:postid_url_slug>/')
 def get_post_detail(postid_url_slug):
@@ -80,8 +80,10 @@ def get_post_detail(postid_url_slug):
     return flask.jsonify(**context)
 
 @minista.app.route('/api/v1/posts/<int:postid_url_slug>/', methods=['DELETE'])
-def delete_comment(postid):
+def delete_post(postid):
     """Delete post."""
+    print("this is called!!")
+    # print()
     logname = check_auth()
     if logname is None:
         return flask.jsonify({"error": "Invalid Auth"}), 403
