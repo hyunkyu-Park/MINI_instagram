@@ -9,23 +9,28 @@ import Comment from "./CommentCreate";
 import CommentDelete from "./deleteComment";
 import Double from "./doubleClick";
 import DeletePost from "./deletePost";
-import { useParams } from "react-router-dom";
+import { useAsyncError, useParams } from "react-router-dom";
 
 dayjs.extend(relativeTime);
 dayjs.extend(utc);
 
 export default function PostDetail({  }) {
     const { id } = useParams();
-    const [lognameOwnsPost, setLognameOwnsPost] = useState(false);
+
+
     const [comments, setComments] = useState([]);
+    const [comments_url, setComments_url] = useState("")
     const [created, setCreated] = useState("");
     const [imgUrl, setImgUrl] = useState("");
     const [likes, setLikes] = useState([]);
+    const [lognameOwnsPost, setLognameOwnsPost] = useState(false);
     const [owner, setOwner] = useState("");
     const [ownerImgUrl, setOwnerImgUrl] = useState("");
+    const [ownerShowUrl, setOwnerShowUrl] = useState("")
+    const [postShowUrl, setPostShowUrl] = useState("")
     const [postId, setPostId] = useState("");
-    const postUrl = `/api/v1/posts/${id}/`
 
+    const postUrl = `/api/v1/posts/${id}/`
 
     useEffect(() => {
         // Declare a boolean flag that we can use to cancel the API request.
@@ -40,13 +45,16 @@ export default function PostDetail({  }) {
             // If ignoreStaleRequest was set to true, we want to ignore the results of the
             // the request. Otherwise, update the state to trigger a new render.
             if (!ignoreStaleRequest) {
-            setLognameOwnsPost(data.lognameOwnsPost);
             setComments(data.comments);
+            setComments_url(data.setComments_url)
             setCreated(dayjs(data.created).fromNow());
             setImgUrl(data.imgUrl);
             setLikes(data.likes);
+            setLognameOwnsPost(data.lognameOwnsPost);
             setOwner(data.owner);
             setOwnerImgUrl(data.ownerImgUrl);
+            setOwnerShowUrl(data.ownerShowUrl);
+            setPostShowUrl(data.postShowUrl);
             setPostId(data.postid.toString());
             console.log(222)
             console.log(data)

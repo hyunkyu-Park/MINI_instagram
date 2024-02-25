@@ -4585,8 +4585,6 @@ function DeletePost(_ref) {
       credentials: "same-origin"
     }).then(function (response) {
       if (!response.ok) {
-        console.log(333);
-        console.log(postUrl);
         throw Error(response.statusText);
       }
     })["catch"](function (error) {
@@ -4812,14 +4810,14 @@ function PostDetail(_ref) {
   (0,_babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref);
   var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_11__.useParams)(),
     id = _useParams.id;
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
     _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState, 2),
-    lognameOwnsPost = _useState2[0],
-    setLognameOwnsPost = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+    comments = _useState2[0],
+    setComments = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
     _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState3, 2),
-    comments = _useState4[0],
-    setComments = _useState4[1];
+    comments_url = _useState4[0],
+    setComments_url = _useState4[1];
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
     _useState6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState5, 2),
     created = _useState6[0],
@@ -4832,18 +4830,30 @@ function PostDetail(_ref) {
     _useState10 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState9, 2),
     likes = _useState10[0],
     setLikes = _useState10[1];
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
     _useState12 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState11, 2),
-    owner = _useState12[0],
-    setOwner = _useState12[1];
+    lognameOwnsPost = _useState12[0],
+    setLognameOwnsPost = _useState12[1];
   var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
     _useState14 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState13, 2),
-    ownerImgUrl = _useState14[0],
-    setOwnerImgUrl = _useState14[1];
+    owner = _useState14[0],
+    setOwner = _useState14[1];
   var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
     _useState16 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState15, 2),
-    postId = _useState16[0],
-    setPostId = _useState16[1];
+    ownerImgUrl = _useState16[0],
+    setOwnerImgUrl = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+    _useState18 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState17, 2),
+    ownerShowUrl = _useState18[0],
+    setOwnerShowUrl = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+    _useState20 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState19, 2),
+    postShowUrl = _useState20[0],
+    setPostShowUrl = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+    _useState22 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState21, 2),
+    postId = _useState22[0],
+    setPostId = _useState22[1];
   var postUrl = "/api/v1/posts/".concat(id, "/");
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
     // Declare a boolean flag that we can use to cancel the API request.
@@ -4858,13 +4868,16 @@ function PostDetail(_ref) {
       // If ignoreStaleRequest was set to true, we want to ignore the results of the
       // the request. Otherwise, update the state to trigger a new render.
       if (!ignoreStaleRequest) {
-        setLognameOwnsPost(data.lognameOwnsPost);
         setComments(data.comments);
+        setComments_url(data.setComments_url);
         setCreated(dayjs__WEBPACK_IMPORTED_MODULE_3___default()(data.created).fromNow());
         setImgUrl(data.imgUrl);
         setLikes(data.likes);
+        setLognameOwnsPost(data.lognameOwnsPost);
         setOwner(data.owner);
         setOwnerImgUrl(data.ownerImgUrl);
+        setOwnerShowUrl(data.ownerShowUrl);
+        setPostShowUrl(data.postShowUrl);
         setPostId(data.postid.toString());
         console.log(222);
         console.log(data);

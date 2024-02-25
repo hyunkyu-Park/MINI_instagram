@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function DeletePost({postUrl}) {
+export default function DeletePost({ postUrl }) {
     const deletePost = () => {
         fetch(postUrl, {
             method: "DELETE",
@@ -9,22 +9,20 @@ export default function DeletePost({postUrl}) {
         })
         .then((response) => {
             if (!response.ok) {
-                console.log(333)
-                console.log(postUrl)
                 throw Error(response.statusText);
             }
-
         })
         .catch((error) => console.log(error));
     };
+
     return (
         <div>
-        <button
-            type="button"
-            onClick={deletePost}
-        >
-            Delete post
-        </button>
+            <button
+                type="button"
+                onClick={deletePost}
+            >
+                Delete post
+            </button>
         </div>
     );
 }
