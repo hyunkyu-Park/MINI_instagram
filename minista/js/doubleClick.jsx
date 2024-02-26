@@ -26,7 +26,7 @@ function Double({ imgUrl, postid, setLikes, lognameLikesThis, numLikes }) {
   };
 
   return (
-    <div className="post_img">
+    <div>
       <img src={imgUrl} alt="image_url" onDoubleClick={handleDoubleClick} style={{ width: '100%', height: 'auto' }}/>
     </div>
   );
