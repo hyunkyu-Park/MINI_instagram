@@ -146,9 +146,8 @@ margin-left: 10px; /* 필요에 따라 조절 */
 
 /* 포스트 이미지 스타일링 */
 .post-image {
-width: 600px;
-height: auto;
-object-fit: cover;
+    width: 300px;
+    height: auto;
 }
 
 /* 포스트 하단 스타일링 */
@@ -216,7 +215,7 @@ border-radius: 5px;
 
 .user_contents{
     width: 100%;
-    max-width: 768px;
+    max-width: 1024px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -257,5 +256,17 @@ border-radius: 5px;
 .full_name {
     margin-top: 10px; /* 원하는 여백 값으로 조절 */
     font-size: 24px;
+}
+
+.user_posts_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 10px; /* 원하는 간격으로 조절 */
+}
+
+.user_posts {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
 }
 

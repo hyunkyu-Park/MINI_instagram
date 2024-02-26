@@ -68,8 +68,10 @@ export default function UserPage({  }) {
 
 
     const renderedPosts = posts.map((post) => (
-        <img src={post.filename} key={post.postid} style={{ width: '250px' }} />
-    ));
+        <div key={post.postid} className="user_posts">
+          <img src={post.filename} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt={`Post ${post.postid}`} />
+        </div>
+      ));
 
     return (
         <div className="user_contents">
@@ -97,7 +99,7 @@ export default function UserPage({  }) {
             </div>
 
             {/* Posts */}
-            <div>
+            <div className="user_posts_grid">
                 {renderedPosts}
             </div>
 
