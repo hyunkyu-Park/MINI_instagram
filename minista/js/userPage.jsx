@@ -1,17 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
-import utc from "dayjs/plugin/utc";
-import Button from "./Button";
-import Comment from "./CommentCreate";
-import CommentDelete from "./deleteComment";
-import Double from "./doubleClick";
-import DeletePost from "./deletePost";
 import { useParams } from "react-router-dom";
-
-dayjs.extend(relativeTime);
-dayjs.extend(utc);
 
 export default function UserPage({  }) {
     const { username } = useParams();
@@ -86,7 +75,7 @@ export default function UserPage({  }) {
                     <div className="user_id">
                         <p style={{ marginRight: '40px' }}>{username}</p>
                         {lognameIsUsername ? (
-                            <a href='/api/v1/accounts/edit/'>edit profile</a>
+                            <a href='/accounts/edit/'>edit profile</a>
                         ) : ( "" 
                         )}
                     </div>
