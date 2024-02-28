@@ -29,10 +29,10 @@ root.render(
           element={<UserPage />}
         />
 
-        <Route
+        {/* <Route
           path="/api/v1/accounts/edit/"
           element={</>}
-        />
+        /> */}
 
       </Routes>
     </div>

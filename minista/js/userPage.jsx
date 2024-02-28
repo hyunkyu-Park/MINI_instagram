@@ -27,6 +27,8 @@ export default function UserPage({  }) {
 
     const userUrl = `/api/v1/users/${username}/`
 
+    const lognameIsUsername = logname==username;
+
     useEffect(() => {
         // Declare a boolean flag that we can use to cancel the API request.
         let ignoreStaleRequest = false;
@@ -83,7 +85,10 @@ export default function UserPage({  }) {
                 <div className="user_info">
                     <div className="user_id">
                         <p style={{ marginRight: '40px' }}>{username}</p>
-                        <a href='/api/v1/accounts/edit/'>edit profile</a>
+                        {lognameIsUsername ? (
+                            <a href='/api/v1/accounts/edit/'>edit profile</a>
+                        ) : ( "" 
+                        )}
                     </div>
 
                     <div className="user_stats">
