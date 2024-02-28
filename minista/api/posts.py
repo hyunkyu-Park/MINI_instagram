@@ -453,3 +453,28 @@ def get_user_page(user_url_slug):
     context["posts"] = post_data
 
     return flask.jsonify(**context)
+
+
+@minista.app.route('/api/v1/accounts/edit/')
+def get_page():
+    """Display / route."""
+    logname = check_auth()
+    if logname is None:
+        return flask.jsonify({"error": "Invalid Auth"}), 403
+    connection = minista.model.get_db()
+
+    context = {}
+    connection = minista.model.get_db()
+    cur = connection.execute(
+        "SELECT username, fullname, email, filename "
+        "FROM users "
+        "WHERE username = ? ",
+        (logname, )
+    )
+    user_info = cur.fetchone()
+    context["username"] = user_info["username"]
+    context["full_name"] = user_info["fullname"]
+    context["email"] = user_info["email"]
+    context["user_photo_url"] = user_info["filename"]
+
+    return flask.jsonify(**context)

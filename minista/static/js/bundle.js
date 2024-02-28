@@ -5212,6 +5212,7 @@ function UserPage(_ref) {
     posts = _useState16[0],
     setPosts = _useState16[1];
   var userUrl = "/api/v1/users/".concat(username, "/");
+  var lognameIsUsername = logname == username;
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
     // Declare a boolean flag that we can use to cancel the API request.
     var ignoreStaleRequest = false;
@@ -5279,7 +5280,9 @@ function UserPage(_ref) {
     style: {
       marginRight: '40px'
     }
-  }, username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "edit profile")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+  }, username), lognameIsUsername ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("a", {
+    href: "/api/v1/accounts/edit/"
+  }, "edit profile") : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     className: "user_stats"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
     style: {

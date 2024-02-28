@@ -27,6 +27,8 @@ export default function UserPage({  }) {
 
     const userUrl = `/api/v1/users/${username}/`
 
+    const lognameIsUsername = logname==username;
+
     useEffect(() => {
         // Declare a boolean flag that we can use to cancel the API request.
         let ignoreStaleRequest = false;
@@ -69,9 +71,9 @@ export default function UserPage({  }) {
 
     const renderedPosts = posts.map((post) => (
         <div key={post.postid} className="user_posts">
-          <img src={post.filename} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt={`Post ${post.postid}`} />
+            <img src={post.filename} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt={`Post ${post.postid}`} />
         </div>
-      ));
+    ));
 
     return (
         <div className="user_contents">
@@ -83,7 +85,10 @@ export default function UserPage({  }) {
                 <div className="user_info">
                     <div className="user_id">
                         <p style={{ marginRight: '40px' }}>{username}</p>
-                        <p >edit profile</p>
+                        {lognameIsUsername ? (
+                            <a href='/api/v1/accounts/edit/'>edit profile</a>
+                        ) : ( "" 
+                        )}
                     </div>
 
                     <div className="user_stats">
