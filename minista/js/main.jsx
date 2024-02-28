@@ -5,6 +5,7 @@ import '../static/css/style.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PostDetail from "./post_detail";
 import UserPage from "./userPage";
+import UserEditPage from "./userEditPage"
 
 // Create a root
 const root = createRoot(document.getElementById("reactEntry"));
@@ -29,10 +30,10 @@ root.render(
           element={<UserPage />}
         />
 
-        {/* <Route
-          path="/api/v1/accounts/edit/"
-          element={</>}
-        /> */}
+        <Route
+          path="/accounts/edit/"
+          element={<UserEditPage/>}
+        />
 
       </Routes>
     </div>

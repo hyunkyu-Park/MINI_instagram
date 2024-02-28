@@ -456,8 +456,9 @@ def get_user_page(user_url_slug):
 
 
 @minista.app.route('/api/v1/accounts/edit/')
-def get_page():
+def get_edit_page():
     """Display / route."""
+    print("get_edit_page is called!")
     logname = check_auth()
     if logname is None:
         return flask.jsonify({"error": "Invalid Auth"}), 403
