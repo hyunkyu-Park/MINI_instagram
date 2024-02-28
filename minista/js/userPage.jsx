@@ -69,9 +69,9 @@ export default function UserPage({  }) {
 
     const renderedPosts = posts.map((post) => (
         <div key={post.postid} className="user_posts">
-          <img src={post.filename} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt={`Post ${post.postid}`} />
+            <img src={post.filename} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt={`Post ${post.postid}`} />
         </div>
-      ));
+    ));
 
     return (
         <div className="user_contents">
@@ -83,7 +83,7 @@ export default function UserPage({  }) {
                 <div className="user_info">
                     <div className="user_id">
                         <p style={{ marginRight: '40px' }}>{username}</p>
-                        <p >edit profile</p>
+                        <a href='/api/v1/accounts/edit/'>edit profile</a>
                     </div>
 
                     <div className="user_stats">
