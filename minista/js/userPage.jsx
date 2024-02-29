@@ -75,7 +75,7 @@ export default function UserPage({  }) {
                     <div className="user_id">
                         <p style={{ marginRight: '40px' }}>{username}</p>
                         {lognameIsUsername ? (
-                            <a href='/accounts/edit/'>edit profile</a>
+                            <a href={`/accounts/edit/`}>edit profile</a>
                         ) : ( "" 
                         )}
                     </div>

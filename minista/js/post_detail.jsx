@@ -111,7 +111,7 @@ export default function PostDetail({  }) {
                         </a>
                         </div>
                         <div>
-                        <a href={`/posts/${postId}/`}>{created}</a>
+                            <a href={`/posts/${postId}/`}>{created}</a>
                         </div>
                     </div>
 

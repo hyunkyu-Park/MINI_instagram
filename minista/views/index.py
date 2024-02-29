@@ -966,7 +966,7 @@ def edit_page():
     context["full_name"] = user_info[0]["fullname"]
     context["email"] = user_info[0]["email"]
     context["user_photo_url"] = user_info[0]["filename"]
-    return flask.render_template("edit.html", **context)
+    return flask.render_template("index.html", **context)
 
 
 @minista.app.route('/accounts/delete/')

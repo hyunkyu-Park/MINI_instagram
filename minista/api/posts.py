@@ -3,6 +3,8 @@ import hashlib
 import flask
 from flask import session
 import minista
+import pathlib
+import uuid
 
 
 def check_auth():
@@ -473,9 +475,50 @@ def get_edit_page():
         (logname, )
     )
     user_info = cur.fetchone()
+    context["logname"] = logname
     context["username"] = user_info["username"]
     context["full_name"] = user_info["fullname"]
     context["email"] = user_info["email"]
-    context["user_photo_url"] = user_info["filename"]
+    context["user_photo_url"] = f"/uploads/{user_info['filename']}"
 
     return flask.jsonify(**context)
+
+@minista.app.route('/api/v1/accounts/edit_account', methods=['POST'])
+def edit_account():
+    """Display / route."""
+    logname = check_auth()
+    if logname is None:
+        return flask.jsonify({"error": "Invalid Auth"}), 403
+    connection = minista.model.get_db()
+
+    fullname = flask.request.form.get('fullname')
+    email = flask.request.form.get('email')
+    username = logname
+
+
+    revising~~~~~~~~~
+    if not fullname or not email:
+        return flask.jsonify({"error": "No fullname or No email"}), 403
+    if not flask.request.files["file"]:
+        connection.execute(
+            "UPDATE users "
+            "SET fullname = ?, email = ? "
+            "WHERE username = ? ",
+            (fullname, email, username, )
+        )
+    else:
+        fileobj = flask.request.files["file"]
+        filename = fileobj.filename
+        stem = uuid.uuid4().hex
+        suffix = pathlib.Path(filename).suffix.lower()
+        uuid_basename = f"{stem}{suffix}"
+        path = minista.app.config["UPLOAD_FOLDER"]/uuid_basename
+        fileobj.save(path)
+        connection.execute(
+            "UPDATE users "
+            "SET fullname = ?, email = ?, filename = ? "
+            "WHERE username = ? ",
+            (fullname, email, uuid_basename, username, )
+        )
+
+    return flask.jsonify(updated_profile), 201

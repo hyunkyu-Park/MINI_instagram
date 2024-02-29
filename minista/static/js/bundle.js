@@ -5152,7 +5152,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 function UserEditPage(_ref) {
   (0,_babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref);
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
@@ -5189,6 +5188,8 @@ function UserEditPage(_ref) {
         setFullName(data.full_name);
         setUserPhotoUrl(data.user_photo_url);
         setUsername(data.username);
+        console.log(111);
+        console.log(data);
       }
     })["catch"](function (error) {
       return console.log(error);
@@ -5199,7 +5200,7 @@ function UserEditPage(_ref) {
       // should avoid updating state.
       ignoreStaleRequest = true;
     };
-  }, [apiUrl]);
+  }, []);
   if (username === "") {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Loading~");
   }

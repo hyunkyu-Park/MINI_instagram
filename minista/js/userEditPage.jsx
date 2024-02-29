@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 export default function UserEditPage({ }) {
     const [email, setEmail] = useState("");
@@ -26,6 +25,8 @@ export default function UserEditPage({ }) {
                     setFullName(data.full_name);
                     setUserPhotoUrl(data.user_photo_url);
                     setUsername(data.username);
+                    console.log(111)
+                    console.log(data)
                 }
             })
             .catch((error) => console.log(error));
@@ -36,7 +37,7 @@ export default function UserEditPage({ }) {
             // should avoid updating state.
             ignoreStaleRequest = true;
         };
-    }, [apiUrl]);
+    }, []);
 
     if (username === "") {
         return <div>Loading~</div>;
