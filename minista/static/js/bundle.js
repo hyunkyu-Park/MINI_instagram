@@ -4578,15 +4578,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function DeletePost(_ref) {
-  var postUrl = _ref.postUrl;
+  var postUrl = _ref.postUrl,
+    ownerShowUrl = _ref.ownerShowUrl;
   var deletePost = function deletePost() {
     fetch(postUrl, {
       method: "DELETE",
       credentials: "same-origin"
     }).then(function (response) {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      }
+      if (!response.ok) throw Error(response.statusText);
+      // Reload/Refrash the page when it is updated
+      window.location.replace(ownerShowUrl);
     })["catch"](function (error) {
       return console.log(error);
     });
@@ -4597,7 +4598,8 @@ function DeletePost(_ref) {
   }, "Delete post"));
 }
 DeletePost.propTypes = {
-  postUrl: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string).isRequired
+  postUrl: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string).isRequired,
+  ownerShowUrl: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string).isRequired
 };
 
 /***/ }),
@@ -4954,7 +4956,8 @@ function PostDetail(_ref) {
     setComments: setComments,
     commentsList: comments
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, lognameOwnsPost ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_deletePost__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    postUrl: postUrl
+    postUrl: postUrl,
+    ownerShowUrl: ownerShowUrl
   }) : "")))));
 }
 PostDetail.propTypes = {};
@@ -5152,7 +5155,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 function UserEditPage(_ref) {
   (0,_babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref);
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
@@ -5189,6 +5191,8 @@ function UserEditPage(_ref) {
         setFullName(data.full_name);
         setUserPhotoUrl(data.user_photo_url);
         setUsername(data.username);
+        console.log(111);
+        console.log(data);
       }
     })["catch"](function (error) {
       return console.log(error);
@@ -5199,7 +5203,32 @@ function UserEditPage(_ref) {
       // should avoid updating state.
       ignoreStaleRequest = true;
     };
-  }, [apiUrl]);
+  }, []);
+  var handleFullNameChange = function handleFullNameChange(event) {
+    setFullName(event.target.value);
+  };
+  var handleEmailChange = function handleEmailChange(event) {
+    setEmail(event.target.value);
+  };
+  var handleSubmit = function handleSubmit(event) {
+    event.preventDefault();
+
+    // Create FormData object using Form data
+    var formData = new FormData(event.target);
+
+    // Sending data to server
+    fetch("/api/v1/accounts/edit_account", {
+      method: "POST",
+      credentials: "same-origin",
+      body: formData
+    }).then(function (response) {
+      if (!response.ok) throw Error(response.statusText);
+      // Reload/Refrash the page when it is updated
+      window.location.reload();
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+  };
   if (username === "") {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Loading~");
   }
@@ -5208,8 +5237,7 @@ function UserEditPage(_ref) {
     alt: "owner_image",
     className: "post_user_profile"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, username)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("form", {
-    action: "/accounts/?target=/accounts/edit/",
-    method: "post",
+    onSubmit: handleSubmit,
     encType: "multipart/form-data"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("label", {
     htmlFor: "file"
@@ -5225,6 +5253,7 @@ function UserEditPage(_ref) {
     name: "fullname",
     id: "fullname",
     value: fullName,
+    onChange: handleFullNameChange,
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("label", {
     htmlFor: "email"
@@ -5233,6 +5262,7 @@ function UserEditPage(_ref) {
     name: "email",
     id: "email",
     value: email,
+    onChange: handleEmailChange,
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("input", {
     type: "submit",
