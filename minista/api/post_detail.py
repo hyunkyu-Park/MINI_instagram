@@ -34,7 +34,3 @@ def delete_post(postid_url_slug):
     connection.commit()
 
     return flask.jsonify({}), 204
-    # return flask.redirect(target_url)
-
-    # print("check point:", target_url )
-    # return flask.jsonify({"message": "Post deleted successfully", "redirect": target_url}), 204

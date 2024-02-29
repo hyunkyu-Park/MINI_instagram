@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function DeletePost({ postUrl }) {
+export default function DeletePost({ postUrl, ownerShowUrl }) {
     const deletePost = () => {
         fetch(postUrl, {
             method: "DELETE",
             credentials: "same-origin",
         })
         .then((response) => {
-            if (!response.ok) {
-                throw Error(response.statusText);
-            }
+            if (!response.ok) throw Error(response.statusText);
+            // Reload/Refrash the page when it is updated
+            window.location.replace(ownerShowUrl);
         })
         .catch((error) => console.log(error));
     };
@@ -29,4 +29,5 @@ export default function DeletePost({ postUrl }) {
 
 DeletePost.propTypes = {
     postUrl: PropTypes.string.isRequired,
+    ownerShowUrl: PropTypes.string.isRequired,
 };

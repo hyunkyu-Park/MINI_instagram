@@ -151,6 +151,7 @@ export default function PostDetail({  }) {
                             {lognameOwnsPost ? (
                             <DeletePost
                                 postUrl = {postUrl}
+                                ownerShowUrl = {ownerShowUrl}
                             />
                             ) : (
                             ""

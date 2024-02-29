@@ -715,8 +715,8 @@ def accounts_operations():
         create()
     elif operation == "delete":
         delete()
-    elif operation == "edit_account":
-        edit_account()
+    # elif operation == "edit_account":
+    #     edit_account()
     elif operation == "update_password":
         update_password()
     return flask.redirect(target_url)
@@ -843,40 +843,40 @@ def delete():
     return flask.redirect(target_url)
 
 
-@minista.app.route('/accounts/edit_account', methods=['POST'])
-def edit_account():
-    """Display / route."""
-    connection = minista.model.get_db()
-    if "logged_in_user" not in session:
-        abort(403)
-    fullname = flask.request.form.get('fullname')
-    email = flask.request.form.get('email')
-    username = session["logged_in_user"]
-    if not fullname or not email:
-        abort(400)
-    if not flask.request.files["file"]:
-        connection.execute(
-            "UPDATE users "
-            "SET fullname = ?, email = ? "
-            "WHERE username = ? ",
-            (fullname, email, username, )
-        )
-    else:
-        fileobj = flask.request.files["file"]
-        filename = fileobj.filename
-        stem = uuid.uuid4().hex
-        suffix = pathlib.Path(filename).suffix.lower()
-        uuid_basename = f"{stem}{suffix}"
-        path = minista.app.config["UPLOAD_FOLDER"]/uuid_basename
-        fileobj.save(path)
-        connection.execute(
-            "UPDATE users "
-            "SET fullname = ?, email = ?, filename = ? "
-            "WHERE username = ? ",
-            (fullname, email, uuid_basename, username, )
-        )
-    target_url = flask.request.args.get("target", "/")
-    return flask.redirect(target_url)
+# @minista.app.route('/accounts/edit_account', methods=['POST'])
+# def edit_account():
+#     """Display / route."""
+#     connection = minista.model.get_db()
+#     if "logged_in_user" not in session:
+#         abort(403)
+#     fullname = flask.request.form.get('fullname')
+#     email = flask.request.form.get('email')
+#     username = session["logged_in_user"]
+#     if not fullname or not email:
+#         abort(400)
+#     if not flask.request.files["file"]:
+#         connection.execute(
+#             "UPDATE users "
+#             "SET fullname = ?, email = ? "
+#             "WHERE username = ? ",
+#             (fullname, email, username, )
+#         )
+#     else:
+#         fileobj = flask.request.files["file"]
+#         filename = fileobj.filename
+#         stem = uuid.uuid4().hex
+#         suffix = pathlib.Path(filename).suffix.lower()
+#         uuid_basename = f"{stem}{suffix}"
+#         path = minista.app.config["UPLOAD_FOLDER"]/uuid_basename
+#         fileobj.save(path)
+#         connection.execute(
+#             "UPDATE users "
+#             "SET fullname = ?, email = ?, filename = ? "
+#             "WHERE username = ? ",
+#             (fullname, email, uuid_basename, username, )
+#         )
+#     target_url = flask.request.args.get("target", "/")
+#     return flask.redirect(target_url)
 
 
 @minista.app.route('/accounts/password/', methods=['POST'])

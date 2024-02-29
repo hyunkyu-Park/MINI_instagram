@@ -39,6 +39,35 @@ export default function UserEditPage({ }) {
         };
     }, []);
 
+    const handleFullNameChange = (event) => {
+        setFullName(event.target.value);
+    };
+
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        
+        // Create FormData object using Form data
+        const formData = new FormData(event.target);
+        
+        // Sending data to server
+        fetch("/api/v1/accounts/edit_account", {
+            method: "POST",
+            credentials: "same-origin",
+            body: formData,
+        })
+            .then((response) => {
+                if (!response.ok) throw Error(response.statusText);
+                // Reload/Refrash the page when it is updated
+                window.location.reload();
+            })
+            .catch((error) => console.log(error));
+    };
+
+
     if (username === "") {
         return <div>Loading~</div>;
     }
@@ -55,13 +84,27 @@ export default function UserEditPage({ }) {
                 <p>{username}</p>
             </div>
 
-            <form action="/accounts/?target=/accounts/edit/" method="post" encType="multipart/form-data">
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
                 <label htmlFor="file">Photo:</label>
                 <input type="file" name="file" id="file" accept="image/*" />
                 <label htmlFor="fullname">Name:</label>
-                <input type="text" name="fullname" id="fullname" value={fullName} required />
+                <input
+                    type="text"
+                    name="fullname"
+                    id="fullname"
+                    value={fullName}
+                    onChange={handleFullNameChange}
+                    required
+                />
                 <label htmlFor="email">Email:</label>
-                <input type="text" name="email" id="email" value={email} required />
+                <input
+                    type="text"
+                    name="email"
+                    id="email"
+                    value={email}
+                    onChange={handleEmailChange}
+                    required
+                />
                 <input type="submit" name="update" value="Submit" />
                 <input type="hidden" name="operation" value="edit_account" />
             </form>

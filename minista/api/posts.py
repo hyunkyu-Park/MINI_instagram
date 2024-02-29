@@ -495,8 +495,6 @@ def edit_account():
     email = flask.request.form.get('email')
     username = logname
 
-
-    revising~~~~~~~~~
     if not fullname or not email:
         return flask.jsonify({"error": "No fullname or No email"}), 403
     if not flask.request.files["file"]:
@@ -520,5 +518,8 @@ def edit_account():
             "WHERE username = ? ",
             (fullname, email, uuid_basename, username, )
         )
+    
+    connection.commit()
 
-    return flask.jsonify(updated_profile), 201
+    return flask.jsonify({}), 204
+
