@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PostDetail from "./post_detail";
 import UserPage from "./userPage";
 import UserEditPage from "./userEditPage"
+import ChangePassword from "./changePasswordPage"
 
 // Create a root
 const root = createRoot(document.getElementById("reactEntry"));
@@ -33,6 +34,11 @@ root.render(
         <Route
           path="/accounts/edit/"
           element={<UserEditPage/>}
+        />
+
+        <Route
+          path="/accounts/password/"
+          element={<ChangePassword/>}
         />
 
       </Routes>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 export default function UserEditPage({ }) {
+    const [logname, setLogname] = useState("");
     const [email, setEmail] = useState("");
     const [fullName, setFullName] = useState("");
     const [userPhotoUrl, setUserPhotoUrl] = useState("");
@@ -21,6 +22,7 @@ export default function UserEditPage({ }) {
                 // If ignoreStaleRequest was set to true, we want to ignore the results of the
                 // the request. Otherwise, update the state to trigger a new render.
                 if (!ignoreStaleRequest) {
+                    setLogname(data.logname);
                     setEmail(data.email);
                     setFullName(data.full_name);
                     setUserPhotoUrl(data.user_photo_url);
