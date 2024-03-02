@@ -485,7 +485,6 @@ def get_edit_page():
 
 @minista.app.route('/api/v1/accounts/edit_account', methods=['POST'])
 def edit_account():
-    """Display / route."""
     logname = check_auth()
     if logname is None:
         return flask.jsonify({"error": "Invalid Auth"}), 403
@@ -523,3 +522,63 @@ def edit_account():
 
     return flask.jsonify({}), 204
 
+@minista.app.route('/api/v1/accounts/password/', methods=['GET'])
+def get_password_page():
+    """API endpoint to get password page data."""
+    logname = check_auth()
+    if logname is None:
+        return flask.jsonify({"error": "Invalid Auth"}), 403
+
+    context = {}
+    context["logname"] = logname
+    return flask.jsonify(**context)
+
+@minista.app.route('/api/v1/accounts/password/', methods=['POST'])
+def update_password():
+    logname = check_auth()
+    if logname is None:
+        return flask.jsonify({"error": "Invalid Auth"}), 403
+    connection = minista.model.get_db()
+    
+    password = flask.request.form.get('password')
+    new_password1 = flask.request.form.get('new_password1')
+    new_password2 = flask.request.form.get('new_password2')
+
+    if not password or not new_password1 or not new_password2:
+        return flask.jsonify({}), 400
+    cur = connection.execute(
+            "SELECT password "
+            "FROM users "
+            "WHERE username = ? ",
+            (logname, )
+        )
+    password_query = cur.fetchone()
+
+    currentpassword = password_query["password"]
+    _, salt, current_password_hash = currentpassword.split("$")
+    algorithm = 'sha512'
+    hash_obj = hashlib.new(algorithm)
+    password_salted = salt + password
+    hash_obj.update(password_salted.encode('utf-8'))
+    password_hash = hash_obj.hexdigest()
+    if password_hash != current_password_hash:
+        return flask.jsonify({}), 403
+    if new_password1 != new_password2:
+        return flask.jsonify({}), 401
+    # DONT FORGET TO HASH THE PASSWORD BEFORE STORE
+    hash_obj = hashlib.new(algorithm)
+    password_salted = salt + new_password1
+    hash_obj.update(password_salted.encode('utf-8'))
+    password_hash = hash_obj.hexdigest()
+    password_db_string = "$".join([algorithm, salt, password_hash])
+
+    cur = connection.execute(
+            "UPDATE users "
+            "SET password = ? "
+            "WHERE username = ? ",
+            (password_db_string, logname, )
+    )
+
+    connection.commit()
+
+    return flask.jsonify({}), 204

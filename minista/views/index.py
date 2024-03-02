@@ -717,8 +717,8 @@ def accounts_operations():
         delete()
     # elif operation == "edit_account":
     #     edit_account()
-    elif operation == "update_password":
-        update_password()
+    # elif operation == "update_password":
+    #     update_password()
     return flask.redirect(target_url)
 
 
@@ -879,52 +879,52 @@ def delete():
 #     return flask.redirect(target_url)
 
 
-@minista.app.route('/accounts/password/', methods=['POST'])
-def update_password():
-    """Display / route."""
-    connection = minista.model.get_db()
-    if "logged_in_user" not in session:
-        abort(403)
-    print("not first abort")
-    password = flask.request.form.get('password')
-    new_password1 = flask.request.form.get('new_password1')
-    new_password2 = flask.request.form.get('new_password2')
+# @minista.app.route('/accounts/password/', methods=['POST'])
+# def update_password():
+#     """Display / route."""
+#     connection = minista.model.get_db()
+#     if "logged_in_user" not in session:
+#         abort(403)
+#     print("not first abort")
+#     password = flask.request.form.get('password')
+#     new_password1 = flask.request.form.get('new_password1')
+#     new_password2 = flask.request.form.get('new_password2')
 
-    if not password or not new_password1 or not new_password2:
-        abort(400)
-    cur = connection.execute(
-            "SELECT password "
-            "FROM users "
-            "WHERE username = ? ",
-            (session["logged_in_user"], )
-        )
-    password_query = cur.fetchone()
+#     if not password or not new_password1 or not new_password2:
+#         abort(400)
+#     cur = connection.execute(
+#             "SELECT password "
+#             "FROM users "
+#             "WHERE username = ? ",
+#             (session["logged_in_user"], )
+#         )
+#     password_query = cur.fetchone()
 
-    currentpassword = password_query["password"]
-    _, salt, current_password_hash = currentpassword.split("$")
-    algorithm = 'sha512'
-    hash_obj = hashlib.new(algorithm)
-    password_salted = salt + password
-    hash_obj.update(password_salted.encode('utf-8'))
-    password_hash = hash_obj.hexdigest()
-    if password_hash != current_password_hash:
-        abort(403)
-    if new_password1 != new_password2:
-        abort(401)
-    # DONT FORGET TO HASH THE PASSWORD BEFORE STORE
-    hash_obj = hashlib.new(algorithm)
-    password_salted = salt + new_password1
-    hash_obj.update(password_salted.encode('utf-8'))
-    password_hash = hash_obj.hexdigest()
-    password_db_string = "$".join([algorithm, salt, password_hash])
+#     currentpassword = password_query["password"]
+#     _, salt, current_password_hash = currentpassword.split("$")
+#     algorithm = 'sha512'
+#     hash_obj = hashlib.new(algorithm)
+#     password_salted = salt + password
+#     hash_obj.update(password_salted.encode('utf-8'))
+#     password_hash = hash_obj.hexdigest()
+#     if password_hash != current_password_hash:
+#         abort(403)
+#     if new_password1 != new_password2:
+#         abort(401)
+#     # DONT FORGET TO HASH THE PASSWORD BEFORE STORE
+#     hash_obj = hashlib.new(algorithm)
+#     password_salted = salt + new_password1
+#     hash_obj.update(password_salted.encode('utf-8'))
+#     password_hash = hash_obj.hexdigest()
+#     password_db_string = "$".join([algorithm, salt, password_hash])
 
-    cur = connection.execute(
-            "UPDATE users "
-            "SET password = ? "
-            "WHERE username = ? ",
-            (password_db_string, session["logged_in_user"], )
-    )
-    return flask.redirect(flask.request.args.get("target", "/"))
+#     cur = connection.execute(
+#             "UPDATE users "
+#             "SET password = ? "
+#             "WHERE username = ? ",
+#             (password_db_string, session["logged_in_user"], )
+#     )
+#     return flask.redirect(flask.request.args.get("target", "/"))
 
 
 @minista.app.route('/accounts/login/')
@@ -953,6 +953,7 @@ def create_page():
 @minista.app.route('/accounts/edit/')
 def edit_page():
     """Display / route."""
+    print("you should not see this message")
     context = {}
     connection = minista.model.get_db()
     cur = connection.execute(
@@ -982,4 +983,4 @@ def password_page():
     """Display / route."""
     context = {}
     context["logname"] = session["logged_in_user"]
-    return flask.render_template("password.html", **context)
+    return flask.render_template("index.html", **context)
