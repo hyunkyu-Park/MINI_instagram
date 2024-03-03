@@ -5,6 +5,7 @@ from flask import session
 import minista
 import pathlib
 import uuid
+import os
 
 
 def check_auth():
@@ -581,4 +582,58 @@ def update_password():
 
     connection.commit()
 
+    return flask.jsonify({}), 204
+
+@minista.app.route('/api/v1/accounts/delete/', methods=['GET'])
+def get_delete_page():
+    """API endpoint to get delete page data."""
+    logname = check_auth()
+    if logname is None:
+        return flask.jsonify({"error": "Invalid Auth"}), 403
+
+    context = {}
+    context["logname"] = logname
+    return flask.jsonify(**context)
+
+@minista.app.route('/api/v1/accounts/delete/', methods=['POST'])
+def delete_account():
+    """Display / route."""
+    logname = check_auth()
+    if logname is None:
+        return flask.jsonify({"error": "Invalid Auth"}), 403
+    connection = minista.model.get_db()
+
+    username = logname
+
+    cur = connection.execute(
+        "SELECT filename FROM posts WHERE owner = ?",
+        (username, )
+    )
+    filenames = [result["filename"] for result in cur.fetchall()]
+    directory = os.path.join(os.getcwd(), 'var', 'uploads')
+    for filename in filenames:
+        image_path = os.path.join(directory, filename)
+        try:
+            os.remove(image_path)
+        except OSError as e:
+            print(f"Error deleting image {filename}: {e}")
+
+    cur1 = connection.execute(
+        "SELECT filename FROM users WHERE username = ?",
+        (username, )
+    )
+    filenames2 = [result["filename"] for result in cur1.fetchall()]
+    directory = os.path.join(os.getcwd(), 'var', 'uploads')
+    for filename in filenames2:
+        image_path = os.path.join(directory, filename)
+        try:
+            os.remove(image_path)
+        except OSError as e:
+            print(f"Error deleting image {filename}: {e}")
+
+    cur = connection.execute(
+        "DELETE FROM users WHERE username = ?",
+        (username, )
+    )
+    session.clear()
     return flask.jsonify({}), 204

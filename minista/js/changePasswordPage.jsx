@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function ChangePassword({ }) {
+    const [logname, setLogname] = useState("");
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword1, setNewPassword1] = useState("");
     const [newPassword2, setNewPassword2] = useState("");
@@ -8,6 +9,27 @@ export default function ChangePassword({ }) {
     const [okMessage, setOkMessage] = useState("");
 
     const apiUrl = `/api/v1/accounts/password/`;
+
+    useEffect(() => {
+        let ignoreStaleRequest = false;
+    
+        fetch(apiUrl, { credentials: "same-origin" })
+            .then((response) => {
+                if (!response.ok) throw Error(response.statusText);
+                return response.json();
+            })
+            .then((data) => {
+                if (!ignoreStaleRequest) {
+                    setLogname(data.logname);
+                    console.log(222)
+                }
+            })
+            .catch((error) => console.log(error));
+    
+        return () => {
+            ignoreStaleRequest = true;
+        };
+    }, []);
 
     const handleSubmit = async (event) => {
         event.preventDefault();

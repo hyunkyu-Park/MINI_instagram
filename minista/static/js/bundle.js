@@ -4531,25 +4531,48 @@ function ChangePassword(_ref) {
   (0,_babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_2__["default"])(_ref);
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(""),
     _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useState, 2),
-    oldPassword = _useState2[0],
-    setOldPassword = _useState2[1];
+    logname = _useState2[0],
+    setLogname = _useState2[1];
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(""),
     _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useState3, 2),
-    newPassword1 = _useState4[0],
-    setNewPassword1 = _useState4[1];
+    oldPassword = _useState4[0],
+    setOldPassword = _useState4[1];
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(""),
     _useState6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useState5, 2),
-    newPassword2 = _useState6[0],
-    setNewPassword2 = _useState6[1];
+    newPassword1 = _useState6[0],
+    setNewPassword1 = _useState6[1];
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(""),
     _useState8 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useState7, 2),
-    errorMessage = _useState8[0],
-    setErrorMessage = _useState8[1];
+    newPassword2 = _useState8[0],
+    setNewPassword2 = _useState8[1];
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(""),
     _useState10 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useState9, 2),
-    okMessage = _useState10[0],
-    setOkMessage = _useState10[1];
+    errorMessage = _useState10[0],
+    setErrorMessage = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(""),
+    _useState12 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useState11, 2),
+    okMessage = _useState12[0],
+    setOkMessage = _useState12[1];
   var apiUrl = "/api/v1/accounts/password/";
+  (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(function () {
+    var ignoreStaleRequest = false;
+    fetch(apiUrl, {
+      credentials: "same-origin"
+    }).then(function (response) {
+      if (!response.ok) throw Error(response.statusText);
+      return response.json();
+    }).then(function (data) {
+      if (!ignoreStaleRequest) {
+        setLogname(data.logname);
+        console.log(222);
+      }
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+    return function () {
+      ignoreStaleRequest = true;
+    };
+  }, []);
   var handleSubmit = /*#__PURE__*/function () {
     var _ref2 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default().mark(function _callee(event) {
       var response;
@@ -4656,6 +4679,98 @@ function ChangePassword(_ref) {
   }, okMessage), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("a", {
     href: "/accounts/edit/"
   }, "Back to Account Edit")));
+}
+
+/***/ }),
+
+/***/ "./minista/js/deleteAccount.jsx":
+/*!**************************************!*\
+  !*** ./minista/js/deleteAccount.jsx ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ DeleteAccount)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/objectDestructuringEmpty */ "./node_modules/@babel/runtime/helpers/esm/objectDestructuringEmpty.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+function DeleteAccount(_ref) {
+  (0,_babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_2__["default"])(_ref);
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(""),
+    _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useState, 2),
+    logname = _useState2[0],
+    setLogname = _useState2[1];
+  var apiUrl = "/api/v1/accounts/delete/";
+  (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(function () {
+    var ignoreStaleRequest = false;
+    fetch(apiUrl, {
+      credentials: "same-origin"
+    }).then(function (response) {
+      if (!response.ok) throw Error(response.statusText);
+      return response.json();
+    }).then(function (data) {
+      if (!ignoreStaleRequest) {
+        setLogname(data.logname);
+      }
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+    return function () {
+      ignoreStaleRequest = true;
+    };
+  }, []);
+  var handleDelete = /*#__PURE__*/function () {
+    var _ref2 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default().mark(function _callee() {
+      var response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            _context.prev = 0;
+            _context.next = 3;
+            return fetch("/api/v1/accounts/delete/", {
+              method: "POST",
+              credentials: "same-origin"
+            });
+          case 3:
+            response = _context.sent;
+            if (response.ok) {
+              _context.next = 6;
+              break;
+            }
+            throw Error(response.statusText);
+          case 6:
+            window.location.replace('/');
+            _context.next = 12;
+            break;
+          case 9:
+            _context.prev = 9;
+            _context.t0 = _context["catch"](0);
+            console.error(_context.t0);
+          case 12:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee, null, [[0, 9]]);
+    }));
+    return function handleDelete() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("h1", null, logname), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("button", {
+    onClick: handleDelete
+  }, "confirm delete account"));
 }
 
 /***/ }),
@@ -45140,12 +45255,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var _post__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./post */ "./minista/js/post.jsx");
 /* harmony import */ var _static_css_style_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../static/css/style.css */ "./minista/static/css/style.css");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _post_detail__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./post_detail */ "./minista/js/post_detail.jsx");
 /* harmony import */ var _userPage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./userPage */ "./minista/js/userPage.jsx");
 /* harmony import */ var _userEditPage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./userEditPage */ "./minista/js/userEditPage.jsx");
 /* harmony import */ var _changePasswordPage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./changePasswordPage */ "./minista/js/changePasswordPage.jsx");
+/* harmony import */ var _deleteAccount__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./deleteAccount */ "./minista/js/deleteAccount.jsx");
+
 
 
 
@@ -45158,23 +45275,26 @@ __webpack_require__.r(__webpack_exports__);
 
 // Create a root
 var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(document.getElementById("reactEntry"));
-root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
   path: "/",
   element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post__WEBPACK_IMPORTED_MODULE_2__["default"], {
     url: "/api/v1/posts/"
   })
-}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
   path: "/posts/:id/",
   element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post_detail__WEBPACK_IMPORTED_MODULE_4__["default"], null)
-}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
   path: "/users/:username/",
   element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_userPage__WEBPACK_IMPORTED_MODULE_5__["default"], null)
-}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
   path: "/accounts/edit/",
   element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_userEditPage__WEBPACK_IMPORTED_MODULE_6__["default"], null)
-}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
   path: "/accounts/password/",
   element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_changePasswordPage__WEBPACK_IMPORTED_MODULE_7__["default"], null)
+}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  path: "/accounts/delete/",
+  element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_deleteAccount__WEBPACK_IMPORTED_MODULE_8__["default"], null)
 })))));
 })();
 

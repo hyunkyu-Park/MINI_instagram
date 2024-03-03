@@ -713,8 +713,8 @@ def accounts_operations():
         login()
     elif operation == "create":
         create()
-    elif operation == "delete":
-        delete()
+    # elif operation == "delete":
+    #     delete()
     # elif operation == "edit_account":
     #     edit_account()
     # elif operation == "update_password":
@@ -975,12 +975,13 @@ def delete_page():
     """Display / route."""
     context = {}
     context["username"] = session["logged_in_user"]
-    return flask.render_template("delete.html", **context)
+    return flask.render_template("index.html", **context)
 
 
 @minista.app.route('/accounts/password/')
 def password_page():
     """Display / route."""
+    print("Should not see this!")
     context = {}
     context["logname"] = session["logged_in_user"]
     return flask.render_template("index.html", **context)
