@@ -7,6 +7,7 @@ import PostDetail from "./post_detail";
 import UserPage from "./userPage";
 import UserEditPage from "./userEditPage"
 import ChangePassword from "./changePasswordPage"
+import DeleteAccount from "./deleteAccount"
 
 // Create a root
 const root = createRoot(document.getElementById("reactEntry"));
@@ -39,6 +40,11 @@ root.render(
         <Route
           path="/accounts/password/"
           element={<ChangePassword/>}
+        />
+
+        <Route
+          path="/accounts/delete/"
+          element={<DeleteAccount/>}
         />
 
       </Routes>
