@@ -81,9 +81,9 @@ export default function UserPage({  }) {
                     </div>
 
                     <div className="user_stats">
-                        <p style={{ marginRight: '30px' }}>Posts: {total_posts}</p>
-                        <p style={{ marginRight: '30px' }}>followers: {followers}</p>
-                        <p>following: {following}</p>
+                        <p style={{ marginRight: '30px' }}>{total_posts === 1 ? "Post: " : "Posts: "} {total_posts}</p>
+                        <p style={{ marginRight: '30px' }}>{followers === 1 ? "Follower: " : "Followers: "} {followers}</p>
+                        <p>Following: {following}</p>
                     </div>
                     
                     <div className="full_name">

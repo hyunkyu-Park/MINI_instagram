@@ -124,15 +124,6 @@
     align-items: center;
 }
 
-.post-owner-image {
-    width: 50px; /* 적절한 크기로 조절 */
-    height: 50px; /* 적절한 크기로 조절 */
-    border-radius: 50%; /* 이미지를 원형으로 만들기 위한 속성 */
-    object-fit: cover; /* 이미지가 정사각형 영역을 가득 채우도록 함 */
-    margin-top: 30%;
-    margin-left: 30%;
-}
-
 .post-owner-username {
 margin-left: 10px; /* 필요에 따라 조절 */
 }

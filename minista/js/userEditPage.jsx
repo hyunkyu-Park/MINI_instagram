@@ -79,7 +79,7 @@ export default function UserEditPage({ }) {
             <h2>Edit account</h2>
 
             <div>
-                <img src={userPhotoUrl} alt="owner_image" className="post_user_profile" />
+                <img src={userPhotoUrl} alt="owner_image" className="user_img" />
             </div>
 
             <div>

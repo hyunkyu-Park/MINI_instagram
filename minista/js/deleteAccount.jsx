@@ -28,7 +28,7 @@ export default function DeleteAccount({ }) {
     const handleDelete = async () => {
         try {
             const response = await fetch("/api/v1/accounts/delete/", {
-                method: "POST",
+                method: "DELETE",
                 credentials: "same-origin",
             });
 
