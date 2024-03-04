@@ -595,7 +595,7 @@ def get_delete_page():
     context["logname"] = logname
     return flask.jsonify(**context)
 
-@minista.app.route('/api/v1/accounts/delete/', methods=['POST'])
+@minista.app.route('/api/v1/accounts/delete/', methods=['DELETE'])
 def delete_account():
     """Display / route."""
     logname = check_auth()
