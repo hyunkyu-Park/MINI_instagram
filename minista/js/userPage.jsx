@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 export default function UserPage({  }) {
     const { username } = useParams();
@@ -75,14 +75,17 @@ export default function UserPage({  }) {
                     <div className="user_id">
                         <p style={{ marginRight: '40px' }}>{username}</p>
                         {lognameIsUsername ? (
-                            <a href={`/accounts/edit/`}>edit profile</a>
-                        ) : ( "" 
-                        )}
+                            <Link to={`/accounts/edit/`}>edit profile</Link>
+                            ) : (
+                                ""
+                            )}
                     </div>
 
                     <div className="user_stats">
                         <p style={{ marginRight: '30px' }}>{total_posts === 1 ? "Post: " : "Posts: "} {total_posts}</p>
-                        <p style={{ marginRight: '30px' }}>{followers === 1 ? "Follower: " : "Followers: "} {followers}</p>
+                        <Link to={`/users/${username}/followers/`} style={{ marginRight: '30px' }}>
+                            {followers === 1 ? "Follower: " : "Followers: "} {followers}
+                        </Link>
                         <p>Following: {following}</p>
                     </div>
                     

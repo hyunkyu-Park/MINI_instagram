@@ -352,7 +352,7 @@ def show_following_page(user_url_slug):
                 relationships
             )
         ]
-        return flask.render_template("following.html", **context)
+        return flask.render_template("index.html", **context)
     target_url = "/accounts/login/"
     return flask.redirect(target_url)
 
