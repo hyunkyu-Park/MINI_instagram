@@ -211,6 +211,7 @@ def get_auth():
 def show_followers_page(user_url_slug):
     """Display / route."""
     # Connect to database
+    print("serverside followers page")
     connection = minista.model.get_db()
     if "logged_in_user" in session:
         logname = session["logged_in_user"]
@@ -654,54 +655,54 @@ def post_posts():
     return flask.redirect("/accounts/login/")
 
 
-@minista.app.route('/following/', methods=['POST'])
-def post_following():
-    """Display / route."""
-    # Connect to database
-    connection = minista.model.get_db()
-    if "logged_in_user" in session:
-        # Get values from the POST request form
-        logname = session["logged_in_user"]
-        operation = flask.request.form.get('operation')
-        username = flask.request.form.get('username')
-        target_url = flask.request.args.get("target", "/")
+# @minista.app.route('/following/', methods=['POST'])
+# def post_following():
+#     """Display / route."""
+#     # Connect to database
+#     connection = minista.model.get_db()
+#     if "logged_in_user" in session:
+#         # Get values from the POST request form
+#         logname = session["logged_in_user"]
+#         operation = flask.request.form.get('operation')
+#         username = flask.request.form.get('username')
+#         target_url = flask.request.args.get("target", "/")
 
-        if operation == "follow":
-            cur = connection.execute(
-                "SELECT username1, username2 "
-                "FROM following "
-                "WHERE username1 = ? AND username2 = ? ",
-                (logname, username, )
-            )
-            result = cur.fetchone()
-            if result:
-                abort(409)
-            else:
-                cur = connection.execute(
-                    "INSERT INTO following (username1, username2) \
-                    VALUES (?, ?)",
-                    (logname, username, )
-                )
-        if operation == "unfollow":
-            cur = connection.execute(
-                "SELECT username1, username2 "
-                "FROM following "
-                "WHERE username1 = ? AND username2 = ? ",
-                (logname, username, )
-            )
-            result = cur.fetchone()
-            if result:
-                cur = connection.execute(
-                    "DELETE "
-                    "FROM following "
-                    "WHERE username1 = ? AND username2 = ? ",
-                    (logname, username, )
-                )
-            else:
-                abort(409)
-        return flask.redirect(target_url)
-    target_url = "/accounts/login/"
-    return flask.redirect(target_url)
+#         if operation == "follow":
+#             cur = connection.execute(
+#                 "SELECT username1, username2 "
+#                 "FROM following "
+#                 "WHERE username1 = ? AND username2 = ? ",
+#                 (logname, username, )
+#             )
+#             result = cur.fetchone()
+#             if result:
+#                 abort(409)
+#             else:
+#                 cur = connection.execute(
+#                     "INSERT INTO following (username1, username2) \
+#                     VALUES (?, ?)",
+#                     (logname, username, )
+#                 )
+#         if operation == "unfollow":
+#             cur = connection.execute(
+#                 "SELECT username1, username2 "
+#                 "FROM following "
+#                 "WHERE username1 = ? AND username2 = ? ",
+#                 (logname, username, )
+#             )
+#             result = cur.fetchone()
+#             if result:
+#                 cur = connection.execute(
+#                     "DELETE "
+#                     "FROM following "
+#                     "WHERE username1 = ? AND username2 = ? ",
+#                     (logname, username, )
+#                 )
+#             else:
+#                 abort(409)
+#         return flask.redirect(target_url)
+#     target_url = "/accounts/login/"
+#     return flask.redirect(target_url)
 
 
 @minista.app.route('/accounts/', methods=['POST'])

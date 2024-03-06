@@ -4591,11 +4591,35 @@ function Followers(_ref) {
       }
     }, "follow")));
   });
-  var handleFollow = function handleFollow(username) {
-    console.log("follow: ".concat(username));
+  var handleFollow = function handleFollow(followerUsername) {
+    var formData = new FormData();
+    formData.append('operation', 'follow');
+    formData.append('username', followerUsername);
+    fetch('/api/v1/following/', {
+      method: 'POST',
+      body: formData,
+      credentials: 'same-origin'
+    }).then(function (response) {
+      if (!response.ok) throw Error(response.statusText);
+      window.location.reload();
+    })["catch"](function (error) {
+      return console.log('Follow error:', error);
+    });
   };
-  var handleUnfollow = function handleUnfollow(username) {
-    console.log("unfollow: ".concat(username));
+  var handleUnfollow = function handleUnfollow(followerUsername) {
+    var formData = new FormData();
+    formData.append('operation', 'unfollow');
+    formData.append('username', followerUsername);
+    fetch('/api/v1/following/', {
+      method: 'POST',
+      body: formData,
+      credentials: 'same-origin'
+    }).then(function (response) {
+      if (!response.ok) throw Error(response.statusText);
+      window.location.reload();
+    })["catch"](function (error) {
+      return console.log('Unfollow error:', error);
+    });
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("h2", null, "Followers")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     className: "followers-container"
