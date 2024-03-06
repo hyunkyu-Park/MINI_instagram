@@ -712,3 +712,53 @@ def get_followers_page(user_url_slug):
 
     return flask.jsonify(**context)
 
+@minista.app.route('/api/v1/following/', methods=['POST'])
+def post_following():
+    """Follow or unfollow a user."""
+    # Connect to database
+    connection = minista.model.get_db()
+
+    # Check if the user is logged in
+    logname = check_auth()
+    if logname is None:
+        return flask.jsonify({"error": "Invalid Auth"}), 403
+
+    # Get values from the POST request form
+    operation = flask.request.form.get('operation')
+    username = flask.request.form.get('username')
+
+    # Follow operation
+    if operation == "follow":
+        cur = connection.execute(
+            "SELECT username1, username2 "
+            "FROM following "
+            "WHERE username1 = ? AND username2 = ? ",
+            (logname, username, )
+        )
+        result = cur.fetchone()
+        if result:
+            return flask.jsonify({'error': 'Already following'}), 404
+        else:
+            cur = connection.execute(
+                "INSERT INTO following (username1, username2) VALUES (?, ?)",
+                (logname, username, )
+            )
+
+    # Unfollow operation
+    elif operation == "unfollow":
+        cur = connection.execute(
+            "SELECT username1, username2 "
+            "FROM following "
+            "WHERE username1 = ? AND username2 = ? ",
+            (logname, username, )
+        )
+        result = cur.fetchone()
+        if result:
+            cur = connection.execute(
+                "DELETE FROM following WHERE username1 = ? AND username2 = ? ",
+                (logname, username, )
+            )
+        else:
+            return flask.jsonify({'error': 'Not following'}), 404
+
+    return flask.jsonify({}), 200

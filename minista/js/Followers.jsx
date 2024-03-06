@@ -64,12 +64,38 @@ export default function Followers({  }) {
         </div>
     ));
 
-    const handleFollow = (username) => {
-        console.log(`follow: ${username}`);
+    const handleFollow = (followerUsername) => {
+        const formData = new FormData();
+        formData.append('operation', 'follow');
+        formData.append('username', followerUsername);
+    
+        fetch('/api/v1/following/', {
+            method: 'POST',
+            body: formData,
+            credentials: 'same-origin',
+        })
+        .then((response) => {
+            if (!response.ok) throw Error(response.statusText);
+            window.location.reload();
+        })
+        .catch((error) => console.log('Follow error:', error));
     };
     
-    const handleUnfollow = (username) => {
-        console.log(`unfollow: ${username}`);
+    const handleUnfollow = (followerUsername) => {
+        const formData = new FormData();
+        formData.append('operation', 'unfollow');
+        formData.append('username', followerUsername);
+    
+        fetch('/api/v1/following/', {
+            method: 'POST',
+            body: formData,
+            credentials: 'same-origin',
+        })
+        .then((response) => {
+            if (!response.ok) throw Error(response.statusText);
+            window.location.reload();
+        })
+        .catch((error) => console.log('Unfollow error:', error));
     };
     
     return (
