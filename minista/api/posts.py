@@ -762,3 +762,77 @@ def post_following():
             return flask.jsonify({'error': 'Not following'}), 404
 
     return flask.jsonify({}), 200
+
+@minista.app.route('/api/v1/users/<user_url_slug>/following/', methods=['GET'])
+def get_following_page(user_url_slug):
+    """Display / route."""
+    # Connect to database
+    connection = minista.model.get_db()
+
+    logname = check_auth()
+    if logname is None:
+        return flask.jsonify({"error": "Invalid Auth"}), 403
+    
+    context = {
+        "logname": logname,
+        "following": []
+    }
+
+    owner = user_url_slug
+    context['owner'] = owner
+    cur = connection.execute(
+        "SELECT username "
+        "FROM users "
+        "WHERE username = ? ",
+        (user_url_slug, )
+    )
+    result = cur.fetchone()
+    if not result:
+        return flask.jsonify({'error': 'Post not found'}), 404
+    followingnames = []
+    cur = connection.execute(
+        "SELECT username2 "
+        "FROM following "
+        "WHERE username1 = ? ",
+        (result["username"],)
+    )
+    results = cur.fetchall()
+    for result in results:
+        followingnames.append(result["username2"])
+
+    filenames = []
+    for following in followingnames:
+        cur = connection.execute(
+            "SELECT filename "
+            "FROM users "
+            "WHERE username = ? ",
+            (following,)
+        )
+        filenames.append(cur.fetchone()["filename"])
+
+    relationships = []
+    for following in followingnames:
+        cur = connection.execute(
+            "SELECT COUNT(*) as is_following "
+            "FROM following "
+            "WHERE username1 = ? AND username2 = ? ",
+            (logname, following)
+        )
+        is_following = cur.fetchone()["is_following"]
+        logname_follows_username = bool(is_following)
+        relationships.append(logname_follows_username)
+
+    context["following"] = [
+        {
+            "username": following,
+            "user_img_url": f"/uploads/{filename}",
+            "logname_follows_username": isfollowing
+        }
+        for following, filename, isfollowing in zip(
+            followingnames,
+            filenames,
+            relationships
+        )
+    ]
+
+    return flask.jsonify(**context)
