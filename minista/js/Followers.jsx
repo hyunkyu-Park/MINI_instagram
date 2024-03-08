@@ -46,21 +46,26 @@ export default function Followers({  }) {
 
 
     const renderedFollowers = followers.map((follower) => (
-        <div key={follower.username} className="follower">
+        <div key={follower.username} className="user_header" style={{ marginBottom: '10px' }}>
             <Link to={`/users/${follower.username}`}>
-                <img src={follower.user_img_url} alt={`Follower ${follower.username}`} style={{ width: '600px' }} />
-                <span>{follower.username}</span>
+                <img src={follower.user_img_url} alt={`Follower ${follower.username}`} className="user_img" />
             </Link>
-            <span>Status: {follower.logname_follows_username ? "following" : "not following"}</span>
-            {logname !== follower.username && (
-                <div>
-                    {follower.logname_follows_username ? (
-                        <button onClick={() => handleUnfollow(follower.username)}>unfollow</button>
-                    ) : (
-                        <button onClick={() => handleFollow(follower.username)}>follow</button>
-                    )}
-                </div>
-            )}
+            <div className="user_info">
+                <Link to={`/users/${follower.username}`}>
+                    <span className="user_id">{follower.username}</span>
+                </Link>
+                <span className="user_stats">Status: {follower.logname_follows_username ? "following" : "not following"}</span>
+                {logname !== follower.username && (
+                    <div>
+                        {follower.logname_follows_username ? (
+                            <button onClick={() => handleUnfollow(follower.username)}>unfollow</button>
+                        ) : (
+                            <button onClick={() => handleFollow(follower.username)}>follow</button>
+                        )}
+                    </div>
+                )}
+            </div>
+            
         </div>
     ));
 
@@ -104,7 +109,7 @@ export default function Followers({  }) {
                 <h2>Followers</h2>
             </div>
             
-            <div className="followers-container">
+            <div>
                 {renderedFollowers}
             </div>
         </div>

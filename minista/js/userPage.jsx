@@ -57,6 +57,18 @@ export default function UserPage({  }) {
         return <div>Loading~</div>;
     }
 
+    const logout = () => {
+        fetch(`/api/v1/accounts/logout/`, {
+            method: "POST",
+            credentials: "same-origin",
+        })
+            .then((response) => {
+                if (!response.ok) throw Error(response.statusText);
+                window.location.replace(`/accounts/login/`);
+            })
+            .catch((error) => console.log(error));
+    };
+
 
     const renderedPosts = posts.map((post) => (
         <div key={post.postid} className="user_posts">
@@ -75,10 +87,13 @@ export default function UserPage({  }) {
                     <div className="user_id">
                         <p style={{ marginRight: '40px' }}>{username}</p>
                         {lognameIsUsername ? (
-                            <Link to={`/accounts/edit/`}>edit profile</Link>
-                            ) : (
-                                ""
-                            )}
+                            <>
+                                <Link to={`/accounts/edit/`}>edit profile</Link>
+                                <input type="submit" value="logout" onClick={logout} style={{ marginLeft: '30px',fontSize: '22px' }} />
+                            </>
+                        ) : (
+                            ""
+                        )}  
                     </div>
 
                     <div className="user_stats">

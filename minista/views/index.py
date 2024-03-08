@@ -935,11 +935,11 @@ def login_page():
     return flask.render_template("login.html", **context)
 
 
-@minista.app.route('/accounts/logout/', methods=['POST'])
-def logout():
-    """Display / route."""
-    session.clear()
-    return flask.redirect("/accounts/login/")
+# @minista.app.route('/accounts/logout/', methods=['POST'])
+# def logout():
+#     """Display / route."""
+#     session.clear()
+#     return flask.redirect("/accounts/login/")
 
 
 @minista.app.route('/accounts/create/')

@@ -836,3 +836,8 @@ def get_following_page(user_url_slug):
     ]
 
     return flask.jsonify(**context)
+
+@minista.app.route('/api/v1/accounts/logout/', methods=['POST'])
+def logout():
+    session.clear()
+    return flask.jsonify({}), 204
