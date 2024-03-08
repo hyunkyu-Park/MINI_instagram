@@ -277,7 +277,7 @@ def show_followers_page(user_url_slug):
             )
         ]
 
-        return flask.render_template("followers.html", **context)
+        return flask.render_template("index.html", **context)
     target_url = "/accounts/login/"
     return flask.redirect(target_url)
 

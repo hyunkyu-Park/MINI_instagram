@@ -8,7 +8,8 @@ import UserPage from "./userPage";
 import UserEditPage from "./userEditPage"
 import ChangePassword from "./changePasswordPage"
 import DeleteAccount from "./deleteAccount"
-import Followers from "./Followers";
+import Followers from "./Followers"
+import Following from "./Following"
 
 // Create a root
 const root = createRoot(document.getElementById("reactEntry"));
@@ -51,6 +52,11 @@ root.render(
         <Route 
           path="/users/:username/followers" 
           element={<Followers />}
+        />
+
+        <Route 
+          path="/users/:username/following" 
+          element={<Following />}
         />
 
       </Routes>

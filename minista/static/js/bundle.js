@@ -4628,6 +4628,130 @@ function Followers(_ref) {
 
 /***/ }),
 
+/***/ "./minista/js/Following.jsx":
+/*!**********************************!*\
+  !*** ./minista/js/Following.jsx ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Following)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/objectDestructuringEmpty */ "./node_modules/@babel/runtime/helpers/esm/objectDestructuringEmpty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+
+
+
+
+function Following(_ref) {
+  (0,_babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref);
+  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useParams)(),
+    username = _useParams.username;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+    _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState, 2),
+    logname = _useState2[0],
+    setLogname = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+    _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState3, 2),
+    following = _useState4[0],
+    setFollowing = _useState4[1];
+  var followingUrl = "/api/v1/users/".concat(username, "/following/");
+  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    // Declare a boolean flag that we can use to cancel the API request.
+    var ignoreStaleRequest = false;
+    // Call REST API to get the post's information
+    fetch(followingUrl, {
+      credentials: "same-origin"
+    }).then(function (response) {
+      if (!response.ok) throw Error(response.statusText);
+      return response.json();
+    }).then(function (data) {
+      // If ignoreStaleRequest was set to true, we want to ignore the results of the
+      // the request. Otherwise, update the state to trigger a new render.
+      if (!ignoreStaleRequest) {
+        setLogname(data.logname);
+        setFollowing(data.following);
+        // console.log("called!")
+        // console.log(data)
+      }
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+    return function () {
+      // This is a cleanup function that runs whenever the Post component
+      // unmounts or re-renders. If a Post is about to unmount or re-render, we
+      // should avoid updating state.
+      ignoreStaleRequest = true;
+    };
+  }, [followingUrl]);
+  if (logname === "") {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Loading~");
+  }
+  var renderFollowing = following.map(function (f) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+      key: f.username,
+      className: "follower"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+      to: "/users/".concat(f.username)
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("img", {
+      src: f.user_img_url,
+      alt: "Following ".concat(f.username),
+      style: {
+        width: '600px'
+      }
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("span", null, f.username)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("span", null, "Status: ", f.logname_follows_username ? "following" : "not following"), logname !== f.username && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, f.logname_follows_username ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("button", {
+      onClick: function onClick() {
+        return handleUnfollow(f.username);
+      }
+    }, "unfollow") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("button", {
+      onClick: function onClick() {
+        return handleFollow(f.username);
+      }
+    }, "follow")));
+  });
+  var handleFollow = function handleFollow(followerUsername) {
+    var formData = new FormData();
+    formData.append('operation', 'follow');
+    formData.append('username', followerUsername);
+    fetch('/api/v1/following/', {
+      method: 'POST',
+      body: formData,
+      credentials: 'same-origin'
+    }).then(function (response) {
+      if (!response.ok) throw Error(response.statusText);
+      window.location.reload();
+    })["catch"](function (error) {
+      return console.log('Follow error:', error);
+    });
+  };
+  var handleUnfollow = function handleUnfollow(followerUsername) {
+    var formData = new FormData();
+    formData.append('operation', 'unfollow');
+    formData.append('username', followerUsername);
+    fetch('/api/v1/following/', {
+      method: 'POST',
+      body: formData,
+      credentials: 'same-origin'
+    }).then(function (response) {
+      if (!response.ok) throw Error(response.statusText);
+      window.location.reload();
+    })["catch"](function (error) {
+      return console.log('Unfollow error:', error);
+    });
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("h2", null, "Following")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+    className: "followers-container"
+  }, renderFollowing));
+}
+
+/***/ }),
+
 /***/ "./minista/js/changePasswordPage.jsx":
 /*!*******************************************!*\
   !*** ./minista/js/changePasswordPage.jsx ***!
@@ -5109,8 +5233,6 @@ function Post(_ref) {
       if (!ignoreStaleRequest) {
         setResults(data.results);
         setNext(data.next);
-        console.log(111);
-        console.log(data);
       }
     })["catch"](function (error) {
       return console.log(error);
@@ -5820,7 +5942,12 @@ function UserPage(_ref) {
     style: {
       marginRight: '30px'
     }
-  }, followers === 1 ? "Follower: " : "Followers: ", " ", followers), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "Following: ", following)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+  }, followers === 1 ? "Follower: " : "Followers: ", " ", followers), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+    to: "/users/".concat(username, "/following/"),
+    style: {
+      marginRight: '30px'
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "Following: ", following))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     className: "full_name"
   }, full_name))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     className: "user_posts_grid"
@@ -45372,14 +45499,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var _post__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./post */ "./minista/js/post.jsx");
 /* harmony import */ var _static_css_style_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../static/css/style.css */ "./minista/static/css/style.css");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _post_detail__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./post_detail */ "./minista/js/post_detail.jsx");
 /* harmony import */ var _userPage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./userPage */ "./minista/js/userPage.jsx");
 /* harmony import */ var _userEditPage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./userEditPage */ "./minista/js/userEditPage.jsx");
 /* harmony import */ var _changePasswordPage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./changePasswordPage */ "./minista/js/changePasswordPage.jsx");
 /* harmony import */ var _deleteAccount__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./deleteAccount */ "./minista/js/deleteAccount.jsx");
 /* harmony import */ var _Followers__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Followers */ "./minista/js/Followers.jsx");
+/* harmony import */ var _Following__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Following */ "./minista/js/Following.jsx");
+
 
 
 
@@ -45394,29 +45523,32 @@ __webpack_require__.r(__webpack_exports__);
 
 // Create a root
 var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(document.getElementById("reactEntry"));
-root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
   path: "/",
   element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post__WEBPACK_IMPORTED_MODULE_2__["default"], {
     url: "/api/v1/posts/"
   })
-}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
   path: "/posts/:id/",
   element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_post_detail__WEBPACK_IMPORTED_MODULE_4__["default"], null)
-}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
   path: "/users/:username/",
   element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_userPage__WEBPACK_IMPORTED_MODULE_5__["default"], null)
-}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
   path: "/accounts/edit/",
   element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_userEditPage__WEBPACK_IMPORTED_MODULE_6__["default"], null)
-}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
   path: "/accounts/password/",
   element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_changePasswordPage__WEBPACK_IMPORTED_MODULE_7__["default"], null)
-}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
   path: "/accounts/delete/",
   element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_deleteAccount__WEBPACK_IMPORTED_MODULE_8__["default"], null)
-}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
   path: "/users/:username/followers",
   element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Followers__WEBPACK_IMPORTED_MODULE_9__["default"], null)
+}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+  path: "/users/:username/following",
+  element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Following__WEBPACK_IMPORTED_MODULE_10__["default"], null)
 })))));
 })();
 

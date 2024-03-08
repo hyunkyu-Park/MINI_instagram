@@ -86,7 +86,10 @@ export default function UserPage({  }) {
                         <Link to={`/users/${username}/followers/`} style={{ marginRight: '30px' }}>
                             {followers === 1 ? "Follower: " : "Followers: "} {followers}
                         </Link>
-                        <p>Following: {following}</p>
+                        <Link to={`/users/${username}/following/`} style={{ marginRight: '30px' }}>
+                            <p>Following: {following}</p>
+                        </Link>
+                        
                     </div>
                     
                     <div className="full_name">
