@@ -46,21 +46,26 @@ export default function Following({  }) {
 
 
     const renderFollowing = following.map((f) => (
-        <div key={f.username} className="follower">
+        <div key={f.username} className="user_header" style={{ marginBottom: '10px' }}>
             <Link to={`/users/${f.username}`}>
-                <img src={f.user_img_url} alt={`Following ${f.username}`} style={{ width: '600px' }} />
-                <span>{f.username}</span>
+                <img src={f.user_img_url} alt={`Following ${f.username}`} className="user_img" />
             </Link>
-            <span>Status: {f.logname_follows_username ? "following" : "not following"}</span>
-            {logname !== f.username && (
-                <div>
-                    {f.logname_follows_username ? (
-                        <button onClick={() => handleUnfollow(f.username)}>unfollow</button>
-                    ) : (
-                        <button onClick={() => handleFollow(f.username)}>follow</button>
-                    )}
-                </div>
-            )}
+            <div className="user_info">
+                <Link to={`/users/${f.username}`}>
+                    <span className="user_id">{f.username}</span>
+                </Link>
+                <span className="user_stats">Status: {f.logname_follows_username ? "following" : "not following"}</span>
+                {logname !== f.username && (
+                    <div>
+                        {f.logname_follows_username ? (
+                            <button onClick={() => handleUnfollow(f.username)}>unfollow</button>
+                        ) : (
+                            <button onClick={() => handleFollow(f.username)}>follow</button>
+                        )}
+                    </div>
+                )}
+            </div>
+            
         </div>
     ));
 
@@ -104,7 +109,7 @@ export default function Following({  }) {
                 <h2>Following</h2>
             </div>
             
-            <div className="followers-container">
+            <div>
                 {renderFollowing}
             </div>
         </div>

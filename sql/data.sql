@@ -30,6 +30,18 @@ VALUES (5, 'leah0.jpg', 'husky_leah');
 INSERT INTO posts(postid, filename, owner)
 VALUES (6, 'leah1.jpg', 'husky_leah');
 
+-- INSERT INTO posts(filename, owner)
+-- VALUES ('p1.jpeg', 'hyunkp');
+
+-- INSERT INTO posts(filename, owner)
+-- VALUES ('p2.jpeg', 'hyunkp');
+
+-- INSERT INTO posts(filename, owner)
+-- VALUES ('p3.jpeg', 'hyunkp');
+
+-- INSERT INTO posts(filename, owner)
+-- VALUES ('p4.jpg', 'hyunkp');
+
 INSERT INTO likes(likeid, owner, postid)
 VALUES (1, 'hyunkp', 1);
 

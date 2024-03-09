@@ -571,88 +571,88 @@ def post_comments():
     return flask.redirect(target_url)
 
 
-@minista.app.route('/posts/', methods=['POST'])
-def post_posts():
-    """Display / route."""
-    # Connect to database
-    connection = minista.model.get_db()
-    if "logged_in_user" in session:
-        # Get values from the POST request form
-        logname = session["logged_in_user"]
-        operation = flask.request.form.get('operation')
-        redirect = f"/users/{logname}/"
-        target_url = flask.request.args.get("target", redirect)
+# @minista.app.route('/posts/', methods=['POST'])
+# def post_posts():
+#     """Display / route."""
+#     # Connect to database
+#     connection = minista.model.get_db()
+#     if "logged_in_user" in session:
+#         # Get values from the POST request form
+#         logname = session["logged_in_user"]
+#         operation = flask.request.form.get('operation')
+#         redirect = f"/users/{logname}/"
+#         target_url = flask.request.args.get("target", redirect)
 
-        if operation == "create":
-            # Unpack flask object
-            fileobj = flask.request.files["file"]
-            filename = fileobj.filename
-            if not filename:
-                abort(400)
-            stem = uuid.uuid4().hex
-            suffix = pathlib.Path(filename).suffix.lower()
-            uuid_basename = f"{stem}{suffix}"
-            # Save to disk
-            fileobj.save(minista.app.config["UPLOAD_FOLDER"]/uuid_basename)
+#         if operation == "create":
+#             # Unpack flask object
+#             fileobj = flask.request.files["file"]
+#             filename = fileobj.filename
+#             if not filename:
+#                 abort(400)
+#             stem = uuid.uuid4().hex
+#             suffix = pathlib.Path(filename).suffix.lower()
+#             uuid_basename = f"{stem}{suffix}"
+#             # Save to disk
+#             fileobj.save(minista.app.config["UPLOAD_FOLDER"]/uuid_basename)
 
-            cur = connection.execute(
-                " INSERT INTO posts(filename, owner) "
-                "VALUES (?, ?) ",
-                (uuid_basename, logname)
-            )
-        elif operation == "delete":
+#             cur = connection.execute(
+#                 " INSERT INTO posts(filename, owner) "
+#                 "VALUES (?, ?) ",
+#                 (uuid_basename, logname)
+#             )
+#         elif operation == "delete":
 
-            cur = connection.execute(
-                "SELECT owner "
-                "FROM posts "
-                "WHERE postid = ? ",
-                (int(flask.request.form.get('postid')), )
-            )
+#             cur = connection.execute(
+#                 "SELECT owner "
+#                 "FROM posts "
+#                 "WHERE postid = ? ",
+#                 (int(flask.request.form.get('postid')), )
+#             )
 
-            if logname != cur.fetchone()["owner"]:
-                abort(403)
-            else:
-                cur = connection.execute(
-                    "SELECT filename "
-                    "FROM posts "
-                    "WHERE postid = ?",
-                    (int(flask.request.form.get('postid')), )
-                )
-                filenames = [result["filename"] for result in cur.fetchall()]
-                directory = os.path.join(os.getcwd(), 'var', 'uploads')
-                for filename in filenames:
-                    image_path = os.path.join(directory, filename)
-                    try:
-                        os.remove(image_path)
-                    except OSError as e:
-                        print(f"Error deleting image {filename}: {e}")
+#             if logname != cur.fetchone()["owner"]:
+#                 abort(403)
+#             else:
+#                 cur = connection.execute(
+#                     "SELECT filename "
+#                     "FROM posts "
+#                     "WHERE postid = ?",
+#                     (int(flask.request.form.get('postid')), )
+#                 )
+#                 filenames = [result["filename"] for result in cur.fetchall()]
+#                 directory = os.path.join(os.getcwd(), 'var', 'uploads')
+#                 for filename in filenames:
+#                     image_path = os.path.join(directory, filename)
+#                     try:
+#                         os.remove(image_path)
+#                     except OSError as e:
+#                         print(f"Error deleting image {filename}: {e}")
 
-                cur = connection.execute(
-                    "DELETE "
-                    "FROM posts "
-                    "WHERE postid = ? ",
-                    (int(flask.request.form.get('postid')), )
-                )
-                connection.commit()
+#                 cur = connection.execute(
+#                     "DELETE "
+#                     "FROM posts "
+#                     "WHERE postid = ? ",
+#                     (int(flask.request.form.get('postid')), )
+#                 )
+#                 connection.commit()
 
-                cur = connection.execute(
-                    "DELETE "
-                    "FROM comments "
-                    "WHERE postid = ? ",
-                    (int(flask.request.form.get('postid')), )
-                )
-                connection.commit()
+#                 cur = connection.execute(
+#                     "DELETE "
+#                     "FROM comments "
+#                     "WHERE postid = ? ",
+#                     (int(flask.request.form.get('postid')), )
+#                 )
+#                 connection.commit()
 
-                cur = connection.execute(
-                    "DELETE "
-                    "FROM likes "
-                    "WHERE postid = ? ",
-                    (int(flask.request.form.get('postid')), )
-                )
-                connection.commit()
+#                 cur = connection.execute(
+#                     "DELETE "
+#                     "FROM likes "
+#                     "WHERE postid = ? ",
+#                     (int(flask.request.form.get('postid')), )
+#                 )
+#                 connection.commit()
 
-        return flask.redirect(target_url)
-    return flask.redirect("/accounts/login/")
+#         return flask.redirect(target_url)
+#     return flask.redirect("/accounts/login/")
 
 
 # @minista.app.route('/following/', methods=['POST'])
@@ -935,11 +935,11 @@ def login_page():
     return flask.render_template("login.html", **context)
 
 
-@minista.app.route('/accounts/logout/', methods=['POST'])
-def logout():
-    """Display / route."""
-    session.clear()
-    return flask.redirect("/accounts/login/")
+# @minista.app.route('/accounts/logout/', methods=['POST'])
+# def logout():
+#     """Display / route."""
+#     session.clear()
+#     return flask.redirect("/accounts/login/")
 
 
 @minista.app.route('/accounts/create/')

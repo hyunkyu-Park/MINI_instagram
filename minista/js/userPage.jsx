@@ -53,9 +53,51 @@ export default function UserPage({  }) {
         };
     }, [userUrl]);
 
-    if (full_name === "") {
-        return <div>Loading~</div>;
-    }
+    const logout = () => {
+        fetch(`/api/v1/accounts/logout/`, {
+            method: "POST",
+            credentials: "same-origin",
+        })
+            .then((response) => {
+                if (!response.ok) throw Error(response.statusText);
+                window.location.replace(`/accounts/login/`);
+            })
+            .catch((error) => console.log(error));
+    };
+
+    const handleFollow = (followerUsername) => {
+        const formData = new FormData();
+        formData.append('operation', 'follow');
+        formData.append('username', followerUsername);
+    
+        fetch('/api/v1/following/', {
+            method: 'POST',
+            body: formData,
+            credentials: 'same-origin',
+        })
+        .then((response) => {
+            if (!response.ok) throw Error(response.statusText);
+            window.location.reload();
+        })
+        .catch((error) => console.log('Follow error:', error));
+    };
+    
+    const handleUnfollow = (followerUsername) => {
+        const formData = new FormData();
+        formData.append('operation', 'unfollow');
+        formData.append('username', followerUsername);
+    
+        fetch('/api/v1/following/', {
+            method: 'POST',
+            body: formData,
+            credentials: 'same-origin',
+        })
+        .then((response) => {
+            if (!response.ok) throw Error(response.statusText);
+            window.location.reload();
+        })
+        .catch((error) => console.log('Unfollow error:', error));
+    };
 
 
     const renderedPosts = posts.map((post) => (
@@ -63,6 +105,10 @@ export default function UserPage({  }) {
             <img src={post.filename} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt={`Post ${post.postid}`} />
         </div>
     ));
+
+    if (full_name === "") {
+        return <div>Loading~</div>;
+    }
 
     return (
         <div className="user_contents">
@@ -75,10 +121,21 @@ export default function UserPage({  }) {
                     <div className="user_id">
                         <p style={{ marginRight: '40px' }}>{username}</p>
                         {lognameIsUsername ? (
-                            <Link to={`/accounts/edit/`}>edit profile</Link>
-                            ) : (
-                                ""
-                            )}
+                            <>
+                                <Link to={`/accounts/edit/`}>edit profile</Link>
+                                <input type="submit" value="logout" onClick={logout} style={{ marginLeft: '30px',fontSize: '18px' }} />
+                            </>
+                        ) : (
+                            <div>
+                                <input
+                                    type="submit"
+                                    value={logname_follows_username ? "unfollow" : "follow"}
+                                    onClick={() => (logname_follows_username ? handleUnfollow(username) : handleFollow(username))}
+                                    style={{fontSize: '18px' }}
+                                />
+                            </div>
+                            
+                        )}
                     </div>
 
                     <div className="user_stats">
@@ -96,6 +153,16 @@ export default function UserPage({  }) {
                         {full_name}
                     </div>
                 </div>
+            </div>
+            
+            <div>
+                {logname === username && (
+                    <form action="/api/v1/posts/" method="POST" encType="multipart/form-data">
+                        <input type="file" name="file" accept="image/*" required />
+                        <input type="submit" name="create_post" value="upload new post" />
+                        <input type="hidden" name="operation" value="create" />
+                    </form>
+                )}
             </div>
 
             {/* Posts */}
