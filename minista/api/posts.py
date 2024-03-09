@@ -68,7 +68,7 @@ def get_posts():
     current_url = current_url.rstrip('?')
     offset = page * size
     if size <= 0 or page < 0:
-        flask.abort(400, "Bad Request")
+        return flask.jsonify({}), 400
 
     context = {
             "results": [],
@@ -841,3 +841,70 @@ def get_following_page(user_url_slug):
 def logout():
     session.clear()
     return flask.jsonify({}), 204
+
+
+@minista.app.route('/api/v1/posts/', methods=['POST'])
+def post_posts():
+    """Display / route."""
+    print("post_posts!")
+    # Connect to database
+    connection = minista.model.get_db()
+    if "logged_in_user" in session:
+        print("logged_in_user!")
+        # Get values from the POST request form
+        logname = session["logged_in_user"]
+        operation = flask.request.form.get('operation')
+        redirect = f"/users/{logname}/"
+        target_url = flask.request.args.get("target", redirect)
+
+        if operation == "create":
+            # Unpack flask object
+            fileobj = flask.request.files["file"]
+            filename = fileobj.filename
+            if not filename:
+                return flask.jsonify({}), 400
+            
+            stem = uuid.uuid4().hex
+            suffix = pathlib.Path(filename).suffix.lower()
+            uuid_basename = f"{stem}{suffix}"
+            # Save to disk
+            fileobj.save(minista.app.config["UPLOAD_FOLDER"]/uuid_basename)
+
+            cur = connection.execute(
+                " INSERT INTO posts(filename, owner) "
+                "VALUES (?, ?) ",
+                (uuid_basename, logname)
+            )
+        elif operation == "delete":
+            post_id = int(flask.request.form.get('postid'))
+
+            cur = connection.execute(
+                "SELECT owner, filename FROM posts WHERE postid = ?",
+                (post_id,)
+            )
+            
+            post_info = cur.fetchone()
+
+            if not post_info or logname != post_info["owner"]:
+                return flask.jsonify({}), 400
+
+            filenames = [post_info["filename"]]
+            directory = os.path.join(os.getcwd(), 'var', 'uploads')
+
+            for filename in filenames:
+                image_path = os.path.join(directory, filename)
+                try:
+                    os.remove(image_path)
+                except OSError as e:
+                    print(f"Error deleting image {filename}: {e}")
+
+            connection.execute("DELETE FROM posts WHERE postid = ?", (post_id,))
+            connection.execute("DELETE FROM comments WHERE postid = ?", (post_id,))
+            connection.execute("DELETE FROM likes WHERE postid = ?", (post_id,))
+            connection.commit()
+
+            print("committed!")
+
+        return flask.redirect(target_url)
+    print("not logged_in_user!")
+    return flask.redirect("/accounts/login/")
