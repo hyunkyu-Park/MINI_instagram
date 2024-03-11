@@ -405,7 +405,7 @@ def show_explore():
             )
         ]
 
-        return flask.render_template("explore.html", **context)
+        return flask.render_template("index.html", **context)
     target_url = "/accounts/login/"
     return flask.redirect(target_url)
 

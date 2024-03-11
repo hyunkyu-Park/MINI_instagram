@@ -835,7 +835,7 @@ def get_following_page(user_url_slug):
         )
     ]
 
-    return flask.jsonify(**context)
+    return flask.jsonify(**context), 200
 
 @minista.app.route('/api/v1/accounts/logout/', methods=['POST'])
 def logout():
@@ -849,62 +849,113 @@ def post_posts():
     print("post_posts!")
     # Connect to database
     connection = minista.model.get_db()
-    if "logged_in_user" in session:
-        print("logged_in_user!")
-        # Get values from the POST request form
-        logname = session["logged_in_user"]
-        operation = flask.request.form.get('operation')
-        redirect = f"/users/{logname}/"
-        target_url = flask.request.args.get("target", redirect)
+    logname = check_auth()
+    if logname is None:
+        return flask.jsonify({"error": "Invalid Auth"}), 403
+    
+    # Get values from the POST request form
+    operation = flask.request.form.get('operation')
+    redirect = f"/users/{logname}/"
+    target_url = flask.request.args.get("target", redirect)
 
-        if operation == "create":
-            # Unpack flask object
-            fileobj = flask.request.files["file"]
-            filename = fileobj.filename
-            if not filename:
-                return flask.jsonify({}), 400
-            
-            stem = uuid.uuid4().hex
-            suffix = pathlib.Path(filename).suffix.lower()
-            uuid_basename = f"{stem}{suffix}"
-            # Save to disk
-            fileobj.save(minista.app.config["UPLOAD_FOLDER"]/uuid_basename)
+    if operation == "create":
+        # Unpack flask object
+        fileobj = flask.request.files["file"]
+        filename = fileobj.filename
+        if not filename:
+            return flask.jsonify({}), 400
+        
+        stem = uuid.uuid4().hex
+        suffix = pathlib.Path(filename).suffix.lower()
+        uuid_basename = f"{stem}{suffix}"
+        # Save to disk
+        fileobj.save(minista.app.config["UPLOAD_FOLDER"]/uuid_basename)
 
-            cur = connection.execute(
-                " INSERT INTO posts(filename, owner) "
-                "VALUES (?, ?) ",
-                (uuid_basename, logname)
-            )
-        elif operation == "delete":
-            post_id = int(flask.request.form.get('postid'))
+        cur = connection.execute(
+            " INSERT INTO posts(filename, owner) "
+            "VALUES (?, ?) ",
+            (uuid_basename, logname)
+        )
+    elif operation == "delete":
+        post_id = int(flask.request.form.get('postid'))
 
-            cur = connection.execute(
-                "SELECT owner, filename FROM posts WHERE postid = ?",
-                (post_id,)
-            )
-            
-            post_info = cur.fetchone()
+        cur = connection.execute(
+            "SELECT owner, filename FROM posts WHERE postid = ?",
+            (post_id,)
+        )
+        
+        post_info = cur.fetchone()
 
-            if not post_info or logname != post_info["owner"]:
-                return flask.jsonify({}), 400
+        if not post_info or logname != post_info["owner"]:
+            return flask.jsonify({}), 400
 
-            filenames = [post_info["filename"]]
-            directory = os.path.join(os.getcwd(), 'var', 'uploads')
+        filenames = [post_info["filename"]]
+        directory = os.path.join(os.getcwd(), 'var', 'uploads')
 
-            for filename in filenames:
-                image_path = os.path.join(directory, filename)
-                try:
-                    os.remove(image_path)
-                except OSError as e:
-                    print(f"Error deleting image {filename}: {e}")
+        for filename in filenames:
+            image_path = os.path.join(directory, filename)
+            try:
+                os.remove(image_path)
+            except OSError as e:
+                print(f"Error deleting image {filename}: {e}")
 
-            connection.execute("DELETE FROM posts WHERE postid = ?", (post_id,))
-            connection.execute("DELETE FROM comments WHERE postid = ?", (post_id,))
-            connection.execute("DELETE FROM likes WHERE postid = ?", (post_id,))
-            connection.commit()
+        connection.execute("DELETE FROM posts WHERE postid = ?", (post_id,))
+        connection.execute("DELETE FROM comments WHERE postid = ?", (post_id,))
+        connection.execute("DELETE FROM likes WHERE postid = ?", (post_id,))
+        connection.commit()
 
-            print("committed!")
+        print("committed!")
 
-        return flask.redirect(target_url)
-    print("not logged_in_user!")
-    return flask.redirect("/accounts/login/")
+    return flask.redirect(target_url)
+
+
+@minista.app.route('/api/v1/explore/')
+def get_explore():
+
+    connection = minista.model.get_db()
+    logname = check_auth()
+    if logname is None:
+        return flask.jsonify({"error": "Invalid Auth"}), 403
+    
+    context = {
+        "logname": logname,
+        "not_following": []
+    }
+
+    cur = connection.execute(
+        "SELECT username "
+        "FROM users "
+        "WHERE username != ? AND username NOT IN ("
+        "    SELECT username2 "
+        "    FROM following "
+        "    WHERE username1 == ?) ",
+        (logname, logname)
+    )
+
+    result = cur.fetchall()
+    not_following_users = []
+    for res in result:
+        not_following_users.append(res["username"])
+    user_imgs = []
+    for user in not_following_users:
+        cur = connection.execute(
+            "SELECT filename "
+            "FROM users "
+            "WHERE username == ? ",
+            (user, )
+        )
+        user_img = cur.fetchone()
+        user_imgs.append(user_img["filename"])
+    context["not_following"] = [
+        {
+            "username": user,
+            "user_img_url": f"/uploads/{user_img}"
+        }
+        for user, user_img in zip(
+            not_following_users,
+            user_imgs
+        )
+    ]
+
+    return flask.jsonify(**context), 200
+

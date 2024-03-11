@@ -102,7 +102,9 @@ export default function UserPage({  }) {
 
     const renderedPosts = posts.map((post) => (
         <div key={post.postid} className="user_posts">
-            <img src={post.filename} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt={`Post ${post.postid}`} />
+            <Link to={`/posts/${post.postid}`}>
+                <img src={post.filename} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt={`Post ${post.postid}`} />
+            </Link>
         </div>
     ));
 
