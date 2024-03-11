@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import Post from "./post";
 import '../static/css/style.css'; 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PostDetail from "./post_detail";
 import UserPage from "./userPage";
 import UserEditPage from "./userEditPage"
@@ -17,7 +17,7 @@ const root = createRoot(document.getElementById("reactEntry"));
 
 
 root.render(
-  <Router>
+  <BrowserRouter>
     <div>
       <Routes>
         <Route 
@@ -67,5 +67,5 @@ root.render(
 
       </Routes>
     </div>
-  </Router>
+  </BrowserRouter>
 );
