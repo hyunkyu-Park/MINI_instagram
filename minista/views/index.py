@@ -22,69 +22,7 @@ def show_index():
     connection = minista.model.get_db()
     if "logged_in_user" in session:
         logname = session["logged_in_user"]
-        cur = connection.execute(
-            "SELECT username2 "
-            "FROM following "
-            "WHERE username1 == ? ",
-            (logname, )
-        )
-        post_owners = cur.fetchall()
-        post_owners_li = []
-        for post_owner in post_owners:
-            post_owners_li.append(post_owner["username2"])
-        post_owners_li.append(logname)
-
-        posts = []
-        for post_owner in post_owners_li:
-            cur = connection.execute(
-                "SELECT posts.postid, posts.filename, \
-                    posts.owner, posts.created, \
-                    COUNT(likes.postid) as like_count "
-                "FROM posts "
-                "LEFT JOIN likes ON posts.postid = likes.postid "
-                "WHERE posts.owner == ? "
-                "GROUP BY posts.postid "
-                "ORDER BY posts.postid DESC",
-                (post_owner, )
-            )
-            result = cur.fetchall()
-            if result:
-                for post in result:
-                    cur = connection.execute(
-                        "SELECT filename "
-                        "FROM users "
-                        "WHERE username == ? ",
-                        (post_owner, )
-                    )
-                    user_image_result = cur.fetchone()
-                    post["user_image"] = \
-                        user_image_result["filename"] \
-                        if user_image_result else ""
-
-                    cur = connection.execute(
-                        "SELECT commentid, text, owner "
-                        "FROM comments "
-                        "WHERE postid == ? "
-                        "ORDER BY commentid ASC ",
-                        (post["postid"], )
-                    )
-                    post["comments"] = cur.fetchall()
-                    cur = connection.execute(
-                        "SELECT COUNT(*) as is_like "
-                        "FROM likes "
-                        "WHERE owner = ? AND postid = ?",
-                        (logname, post["postid"])
-                    )
-                    is_like = cur.fetchone()["is_like"]
-                    post["is_like"] = bool(is_like)
-                    posts.append(post)
-        sorted_posts = sorted(posts, key=lambda x: x['postid'], reverse=True)
-        for post in sorted_posts:
-            real_time = arrow.get(post["created"])
-            post["created"] = real_time.humanize()
-        context = {}
-        context["logname"] = logname
-        context["posts"] = sorted_posts
+        context ={"logname": logname}
 
         return flask.render_template("index.html", **context)
     target_url = "/accounts/login/"

@@ -1,7 +1,7 @@
-# """REST API for users."""
-# import flask
-# import minista
-# from minista.api.posts import check_auth
+"""REST API for users."""
+import flask
+import minista
+from minista.api.posts import check_auth
 
 # @minista.app.route('/api/v1/users/<user_url_slug>/')
 # def get_user_page(user_url_slug):
