@@ -4588,17 +4588,19 @@ function Followers(_ref) {
       to: "/users/".concat(follower.username)
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("span", {
       className: "user_id"
-    }, follower.username)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("span", {
+    }, follower.username)), logname !== follower.username && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, follower.logname_follows_username ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("span", {
       className: "user_stats"
-    }, "Status: ", follower.logname_follows_username ? "following" : "not following"), logname !== follower.username && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, follower.logname_follows_username ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("button", {
+    }, "Status: following"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("button", {
       onClick: function onClick() {
         return handleUnfollow(follower.username);
       }
-    }, "unfollow") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("button", {
+    }, "unfollow")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("span", {
+      className: "user_stats"
+    }, "Status: not following"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("button", {
       onClick: function onClick() {
         return handleFollow(follower.username);
       }
-    }, "follow"))));
+    }, "follow")))));
   });
   var handleFollow = function handleFollow(followerUsername) {
     var formData = new FormData();
@@ -4719,17 +4721,19 @@ function Following(_ref) {
       to: "/users/".concat(f.username)
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("span", {
       className: "user_id"
-    }, f.username)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("span", {
+    }, f.username)), logname !== f.username && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, f.logname_follows_username ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("span", {
       className: "user_stats"
-    }, "Status: ", f.logname_follows_username ? "following" : "not following"), logname !== f.username && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, f.logname_follows_username ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("button", {
+    }, "Status: following"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("button", {
       onClick: function onClick() {
         return handleUnfollow(f.username);
       }
-    }, "unfollow") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("button", {
+    }, "unfollow")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("span", {
+      className: "user_stats"
+    }, "Status: not following"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("button", {
       onClick: function onClick() {
         return handleFollow(f.username);
       }
-    }, "follow"))));
+    }, "follow")))));
   });
   var handleFollow = function handleFollow(followerUsername) {
     var formData = new FormData();

@@ -54,13 +54,18 @@ export default function Followers({  }) {
                 <Link to={`/users/${follower.username}`}>
                     <span className="user_id">{follower.username}</span>
                 </Link>
-                <span className="user_stats">Status: {follower.logname_follows_username ? "following" : "not following"}</span>
                 {logname !== follower.username && (
                     <div>
                         {follower.logname_follows_username ? (
-                            <button onClick={() => handleUnfollow(follower.username)}>unfollow</button>
+                            <div>
+                                <span className="user_stats">Status: following</span>
+                                <button onClick={() => handleUnfollow(follower.username)}>unfollow</button>
+                            </div>
                         ) : (
-                            <button onClick={() => handleFollow(follower.username)}>follow</button>
+                            <div>
+                                <span className="user_stats">Status: not following</span>
+                                <button onClick={() => handleFollow(follower.username)}>follow</button>
+                            </div>
                         )}
                     </div>
                 )}
