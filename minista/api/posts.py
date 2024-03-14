@@ -268,6 +268,7 @@ def create_like():
     )
     new_likeid = cur_insert.lastrowid
     url = f"/api/v1/likes/{new_likeid}/"
+    print("created id", new_likeid)
     return flask.jsonify({"likeid": new_likeid, "url": url}), 201
 
 
@@ -296,6 +297,7 @@ def delete_like(likeid):
         "DELETE FROM likes WHERE likeid = ?",
         (likeid,)
     )
+    print("deleted id", likeid)
 
     return flask.jsonify({}), 204
 
