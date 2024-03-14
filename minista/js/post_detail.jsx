@@ -127,16 +127,16 @@ export default function PostDetail({  }) {
 
                     <div className="post_footer">
                         <div className="post_likes">
-                        <p>
-                            {likes.numLikes} {likes.numLikes === 1 ? "like" : "likes"}
-                        </p>
-                        <Button
-                            likesUrl={likes.url ? likes.url : ""}
-                            postid={postId}
-                            lognameLikesThis={likes.lognameLikesThis}
-                            numLikes={likes.numLikes}
-                            setLikes={setLikes}
-                        />
+                            <p>
+                                {likes.numLikes} {likes.numLikes === 1 ? "like" : "likes"}
+                            </p>
+                            <Button
+                                likesUrl={likes.url ? likes.url : ""}
+                                postid={postId}
+                                lognameLikesThis={likes.lognameLikesThis}
+                                numLikes={likes.numLikes}
+                                setLikes={setLikes}
+                            />
                         </div>
                         
                         <div className="comments">
