@@ -286,7 +286,7 @@ def create():
     cur = connection.execute(
         "INSERT INTO users (username, fullname, email, filename, password)\
             VALUES (?, ?, ?, ?, ?)",
-        (username, fullname, email, filename, password_db_string)
+        (username, fullname, email, uuidbasename, password_db_string)
     )
     return flask.redirect("/")
 
