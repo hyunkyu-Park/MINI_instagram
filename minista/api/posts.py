@@ -94,8 +94,9 @@ def get_posts():
             "LIMIT ? OFFSET ?",
             (logname, logname, size, offset, )
         )
-        first_row = cur1.fetchall()
-        postid_lte = first_row[0]["postid"]
+        first_row = cur1.fetchone()
+        if first_row:
+            postid_lte = first_row["postid"]
 
     cur = connection.execute(
         "WITH FollowingPosts AS ( "
@@ -246,21 +247,8 @@ def create_like():
         (postid,)
     )
     post_exists = cur_post.fetchone()
-    if post_exists is not None:
-        post_exists = True
-    else:
+    if post_exists is None:
         return flask.jsonify({"error": "Post ID not found"}), 404
-
-    cur_like = connection.execute(
-        "SELECT likeid FROM likes WHERE postid = ?",
-        (postid,)
-    )
-    existing_like = cur_like.fetchone()
-
-    if existing_like is not None:
-        likeid = existing_like['likeid']
-        url = f"/api/v1/likes/{likeid}/"
-        return flask.jsonify({"likeid": likeid, "url": url}), 200
 
     cur_insert = connection.execute(
         "INSERT INTO likes (postid, owner) VALUES (?, ?)",
@@ -268,7 +256,6 @@ def create_like():
     )
     new_likeid = cur_insert.lastrowid
     url = f"/api/v1/likes/{new_likeid}/"
-    print("created id", new_likeid)
     return flask.jsonify({"likeid": new_likeid, "url": url}), 201
 
 

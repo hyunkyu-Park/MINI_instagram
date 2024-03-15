@@ -4382,6 +4382,8 @@ function Button(_ref) {
       credentials: "same-origin"
     }).then(function (response) {
       if (!response.ok) throw Error(response.statusText);
+      console.log("likesUrl");
+      console.log(likesUrl);
       var tempLikes = {
         lognameLikesThis: false,
         numLikes: numLikes - 1,
@@ -4393,11 +4395,16 @@ function Button(_ref) {
     });
   };
   var like = function like() {
+    var check = "".concat(url, "?postid=").concat(postid);
+    console.log("check");
+    console.log(check);
     fetch("".concat(url, "?postid=").concat(postid), {
       method: "POST",
       credentials: "same-origin"
     }).then(function (response) {
       if (!response.ok) throw Error(response.statusText);
+      console.log("likesUrl");
+      console.log(likesUrl);
       return response.json();
     }).then(function (data) {
       var tempLikes = {
@@ -5359,6 +5366,8 @@ function Post(_ref) {
       if (!ignoreStaleRequest) {
         setResults(data.results);
         setNext(data.next);
+        console.log(111);
+        console.log(data);
       }
     })["catch"](function (error) {
       return console.log(error);
