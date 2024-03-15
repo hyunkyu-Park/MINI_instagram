@@ -432,7 +432,8 @@ def get_user_page(user_url_slug):
     cur = connection.execute(
         "SELECT postid, filename "
         "FROM posts "
-        "WHERE owner = ?",
+        "WHERE owner = ?"
+        "ORDER BY postid DESC",
         (user_url_slug,)
     )
     user_posts = cur.fetchall()
