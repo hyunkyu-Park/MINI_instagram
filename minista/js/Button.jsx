@@ -17,7 +17,8 @@ export default function Button({
     })
       .then((response) => {
         if (!response.ok) throw Error(response.statusText);
-
+        console.log("likesUrl")
+        console.log(likesUrl)
         const tempLikes = {
           lognameLikesThis: false,
           numLikes: numLikes - 1,
@@ -29,12 +30,17 @@ export default function Button({
   };
 
   const like = () => {
+    let check = `${url}?postid=${postid}`
+    console.log("check")
+    console.log(check)
     fetch(`${url}?postid=${postid}`, {
       method: "POST",
       credentials: "same-origin",
     })
       .then((response) => {
         if (!response.ok) throw Error(response.statusText);
+        console.log("likesUrl")
+        console.log(likesUrl)
         return response.json();
       })
       .then((data) => {

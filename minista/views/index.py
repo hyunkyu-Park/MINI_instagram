@@ -43,6 +43,7 @@ def show_user_page(user_url_slug):
 @minista.app.route('/uploads/<filename>')
 def upload_file(filename):
     """Display / route."""
+    print("upload_file?")
     if "logged_in_user" not in session:
         abort(403)
 
@@ -193,6 +194,7 @@ def post_comments():
 @minista.app.route('/accounts/', methods=['POST'])
 def accounts_operations():
     """Display / route."""
+    print("cccccccccc")
     operation = flask.request.form.get('operation')
     target_url = flask.request.args.get("target", "/")
     if operation == "login":
@@ -266,9 +268,13 @@ def create():
     result = cur.fetchone()
     if result:
         abort(409)
+    print("file saver")
     fileobj = flask.request.files["file"]
+    print("file obj", fileobj)
     filename = fileobj.filename
+    print("file name", filename)
     uuidbasename = f"{uuid.uuid4().hex}{pathlib.Path(filename).suffix.lower()}"
+    print("uuidbasename", uuidbasename)
     fileobj.save(minista.app.config["UPLOAD_FOLDER"]/uuidbasename)
     session["logged_in_user"] = username
 

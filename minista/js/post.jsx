@@ -19,6 +19,8 @@ export default function Post({ url }) {
         if (!ignoreStaleRequest) {
           setResults(data.results);
           setNext(data.next);
+          console.log(111)
+          console.log(data)
         }
       })
       .catch((error) => console.log(error));
