@@ -48,19 +48,30 @@ Utilizes pagination techniques and the React InfiniteScroll library.
 The project started as server-side dynamic pages and is currently undergoing refactoring towards client-side dynamic pages.
 It enhances user experience through account management, social features, and the implementation of infinite scroll.
 
-## My Project Notes
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-### Using only client side? Can I use the existing code?
+# My Project Notes
+
+## Using only client side? Can I use the existing code?
 Rather than discarding all existing codes and grinding the entire structure, modify existing codes and implement api endpoint for client side dynamic pages on top of them for code reuse.
 
-### Overlapped file name. 
+## Overlapped file name. 
 Situation: I saved the image using raw name as it is and saved it in the database, and a query error occurred
 
 Cause: The names of photos saved by users may overlap ex: dog.jpg
 
 Resolution: Create random UUIDs using uuid.uuid4(.hex), change them to lowercase using pathlib.path(filename).suffix.lower() and save them (unifying by lowercase since not all environments are case sensitive)
 
-### Page infinite loading issue
+## Page infinite loading issue
 Situation: When user click a button depending on whether user follow or not, I wrote the code to change the status to Follow->Unfollow or Unfollow->Page. But Infinite Loading occured
 
 Cause: Implemented function call not function reference <br>
@@ -80,7 +91,7 @@ Since the function is executed as soon as the page loads, caution is required as
 
 In summary, while Method 1 ensures that the function is called only when the button is clicked (function reference), Method 2 executes the function immediately upon page load, potentially leading to undesired consequences (function call).
 
-### Calling server side code instead of client side code
+## Calling server side code instead of client side code
 
 Situation: The first time user call the Followers page, the page is using proper client side api endpoint, but when I refresh, it uses server side code(old one)
 
@@ -92,7 +103,7 @@ But I could not recognized that the return statement was wrong, so it took time 
 When refactoring code, I should always observe that there is no conflict between the old code and the updated code, and the existing design. 
 It would be more effective to check the pieces in advance that could cause conflicts when designing before writing the actual code.
 
-### Query for create_like 
+## Query for create_like 
 
 Situation: Error occurs when users cancel like and press like again
 
@@ -101,7 +112,7 @@ Cause: Wrong Query logic, my code check if the user likes the post in the javasc
 Resolution: Before writing the code in the future, let's distinguish between what JavaScript will solve and what will be solved using sql. Let's also think about which one would be more efficient!
 
 
-### User experience improvement
+## User experience improvement
 
 Situation: if the size of the image files are big, it takes few seconds two render the page
 
