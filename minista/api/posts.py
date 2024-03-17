@@ -288,7 +288,6 @@ def delete_like(likeid):
 
     return flask.jsonify({}), 204
 
-
 @minista.app.route('/api/v1/comments/', methods=['POST'])
 def add_comment():
     """Add comment."""
