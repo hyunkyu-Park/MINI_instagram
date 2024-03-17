@@ -13,7 +13,7 @@ INSERT INTO users(username, fullname, email, filename, password)
 VALUES ('alice', 'H. alice', 'alice@umich.edu', 'alice.jpeg', 'sha512$a45ffdcc71884853a2cba9e6bc55e812$c739cef1aec45c6e345c8463136dc1ae2fe19963106cf748baf87c7102937aa96928aa1db7fe1d8da6bd343428ff3167f4500c8a61095fb771957b4367868fb8');
 
 INSERT INTO posts(postid, filename, owner)
-VALUES (1, 'house.jpeg', 'hyunkp');
+VALUES (1, 'p4.jpeg', 'hyunkp');
 
 INSERT INTO posts(postid, filename, owner)
 VALUES (2, 'f_Photo.jpeg', 'husky_leah');
@@ -40,7 +40,8 @@ INSERT INTO posts(filename, owner)
 VALUES ('p3.jpeg', 'hyunkp');
 
 INSERT INTO posts(filename, owner)
-VALUES ('p4.jpeg', 'hyunkp');
+VALUES ('house.jpeg', 'hyunkp');
+
 
 INSERT INTO likes(likeid, owner, postid)
 VALUES (1, 'hyunkp', 1);
@@ -71,6 +72,15 @@ VALUES (9, 'husky_leah', 5);
 
 INSERT INTO likes(likeid, owner, postid)
 VALUES (10, 'husky_leah', 6);
+
+INSERT INTO likes(likeid, owner, postid)
+VALUES (11, 'husky_leah', 10);
+
+INSERT INTO likes(likeid, owner, postid)
+VALUES (12, 'hyunkp', 10);
+
+INSERT INTO likes(likeid, owner, postid)
+VALUES (13, 'bram', 10);
 
 INSERT INTO following(username1, username2)
 VALUES ('hyunkp', 'husky_leah');
@@ -113,3 +123,9 @@ VALUES (6, 'hyunkp', 1, 'Nice weather');
 
 INSERT INTO comments(commentid, owner, postid, text)
 VALUES (7, 'alice', 4, 'My yesterday!');
+
+INSERT INTO comments(commentid, owner, postid, text)
+VALUES (8, 'hyunkp', 10, 'Wonderful building!');
+
+INSERT INTO comments(commentid, owner, postid, text)
+VALUES (9, 'husky_leah', 10, 'I love this picture!');
