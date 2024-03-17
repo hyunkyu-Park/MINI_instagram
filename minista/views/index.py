@@ -94,103 +94,6 @@ def show_post_page(postid_url_slug):
     target_url = "/accounts/login/"
     return flask.redirect(target_url)
 
-@minista.app.route('/likes/', methods=['POST'])
-def like_post():
-    """Display / route."""
-    print("this is never called??")
-    # Connect to database
-    connection = minista.model.get_db()
-    if "logged_in_user" in session:
-        # Get values from the POST request form
-        operation = flask.request.form.get('operation')
-        postid = int(flask.request.form.get('postid'))
-        target_url = flask.request.args.get("target", "/")
-        logname = session["logged_in_user"]
-
-        # Perform like or unlike operation
-        # (In a real app, this is where you'd interact with your database)
-        if operation == 'like':
-            cur1 = connection.execute(
-                "SELECT likeid "
-                "FROM likes "
-                "WHERE owner = ? AND postid = ?",
-                (logname, postid)
-            )
-            result = cur1.fetchone()
-            if result is None:
-                connection.execute(
-                    "INSERT INTO likes (owner, postid) VALUES (?, ?)",
-                    (logname, postid)
-                )
-            else:
-                abort(409)
-        if operation == 'unlike':
-            cur1 = connection.execute(
-                "SELECT likeid "
-                "FROM likes "
-                "WHERE owner = ? AND postid = ?",
-                (logname, postid)
-            )
-            result = cur1.fetchone()
-            if result:
-                connection.execute(
-                    "DELETE FROM likes WHERE owner = ? AND postid = ? ",
-                    (logname, postid)
-                )
-            else:
-                abort(409)
-        return flask.redirect(target_url)
-    target_url = "/accounts/login/"
-    return flask.redirect(target_url)
-
-@minista.app.route('/comments/', methods=['POST'])
-def post_comments():
-    """Display / route."""
-    ""
-    # Connect to database
-    print("this is never called1??")
-    connection = minista.model.get_db()
-    if "logged_in_user" in session:
-        # Get values from the POST request form
-        operation = flask.request.form.get('operation')
-        postid = flask.request.form.get('postid')
-        text = flask.request.form.get('text')
-        target_url = flask.request.args.get("target", "/")
-        commentid = flask.request.form.get('commentid')
-        logname = session["logged_in_user"]
-
-        if operation == "create":
-            if text:
-                cur = connection.execute(
-                    "INSERT INTO comments \
-                    (owner, postid, text) VALUES (?, ?, ?)",
-                    (logname, postid, text)
-                )
-            else:
-                abort(400)
-
-        if operation == "delete":
-
-            cur = connection.execute(
-                "SELECT owner "
-                "FROM comments "
-                "WHERE commentid = ?",
-                (commentid, )
-            )
-            owner = cur.fetchone()
-
-            if not owner or owner["owner"] != logname:
-                abort(403)
-            else:
-                cur = connection.execute(
-                    "DELETE FROM comments WHERE commentid = ? ",
-                    (commentid, )
-                )
-                connection.commit()
-        return flask.redirect(target_url)
-    target_url = "accounts/login/"
-    return flask.redirect(target_url)
-
 @minista.app.route('/accounts/', methods=['POST'])
 def accounts_operations():
     """Display / route."""
@@ -291,48 +194,49 @@ def create():
     return flask.redirect("/")
 
 
-@minista.app.route('/accounts/delete/', methods=['POST'])
-def delete():
-    """Display / route."""
-    connection = minista.model.get_db()
-    # if not session["logged_in_user"]:
-    if "logged_in_user" not in session:
-        abort(403)
-    username = session["logged_in_user"]
+# @minista.app.route('/accounts/delete/', methods=['POST'])
+# def delete():
+#     """Display / route."""
+#     print("serverside account delete")
+#     connection = minista.model.get_db()
 
-    cur = connection.execute(
-        "SELECT filename FROM posts WHERE owner = ?",
-        (username, )
-    )
-    filenames = [result["filename"] for result in cur.fetchall()]
-    directory = os.path.join(os.getcwd(), 'var', 'uploads')
-    for filename in filenames:
-        image_path = os.path.join(directory, filename)
-        try:
-            os.remove(image_path)
-        except OSError as e:
-            print(f"Error deleting image {filename}: {e}")
+#     if "logged_in_user" not in session:
+#         abort(403)
+#     username = session["logged_in_user"]
 
-    cur1 = connection.execute(
-        "SELECT filename FROM users WHERE username = ?",
-        (username, )
-    )
-    filenames2 = [result["filename"] for result in cur1.fetchall()]
-    directory = os.path.join(os.getcwd(), 'var', 'uploads')
-    for filename in filenames2:
-        image_path = os.path.join(directory, filename)
-        try:
-            os.remove(image_path)
-        except OSError as e:
-            print(f"Error deleting image {filename}: {e}")
+#     cur = connection.execute(
+#         "SELECT filename FROM posts WHERE owner = ?",
+#         (username, )
+#     )
+#     filenames = [result["filename"] for result in cur.fetchall()]
+#     directory = os.path.join(os.getcwd(), 'var', 'uploads')
+#     for filename in filenames:
+#         image_path = os.path.join(directory, filename)
+#         try:
+#             os.remove(image_path)
+#         except OSError as e:
+#             print(f"Error deleting image {filename}: {e}")
 
-    cur = connection.execute(
-        "DELETE FROM users WHERE username = ?",
-        (username, )
-    )
-    session.clear()
-    target_url = flask.request.args.get("target", "/")
-    return flask.redirect(target_url)
+#     cur1 = connection.execute(
+#         "SELECT filename FROM users WHERE username = ?",
+#         (username, )
+#     )
+#     filenames2 = [result["filename"] for result in cur1.fetchall()]
+#     directory = os.path.join(os.getcwd(), 'var', 'uploads')
+#     for filename in filenames2:
+#         image_path = os.path.join(directory, filename)
+#         try:
+#             os.remove(image_path)
+#         except OSError as e:
+#             print(f"Error deleting image {filename}: {e}")
+
+#     cur = connection.execute(
+#         "DELETE FROM users WHERE username = ?",
+#         (username, )
+#     )
+#     session.clear()
+#     target_url = flask.request.args.get("target", "/")
+#     return flask.redirect(target_url)
 
 @minista.app.route('/accounts/login/')
 def login_page():
@@ -352,34 +256,32 @@ def create_page():
 @minista.app.route('/accounts/edit/')
 def edit_page():
     """Display / route."""
-    print("you should not see this message")
-    context = {}
-    connection = minista.model.get_db()
-    cur = connection.execute(
-        "SELECT username, fullname, email, filename "
-        "FROM users "
-        "WHERE username = ? ",
-        (session["logged_in_user"], )
-    )
-    user_info = cur.fetchall()
-    context["username"] = user_info[0]["username"]
-    context["full_name"] = user_info[0]["fullname"]
-    context["email"] = user_info[0]["email"]
-    context["user_photo_url"] = user_info[0]["filename"]
-    return flask.render_template("index.html", **context)
+    if "logged_in_user" in session:
+        logname = session["logged_in_user"]
+        context ={"logname": logname}
+
+        return flask.render_template("index.html", **context)
+    target_url = "/accounts/login/"
+    return flask.redirect(target_url)
 
 @minista.app.route('/accounts/delete/')
 def delete_page():
     """Display / route."""
-    print("this is never called2??")
-    context = {}
-    context["username"] = session["logged_in_user"]
-    return flask.render_template("index.html", **context)
+    if "logged_in_user" in session:
+        logname = session["logged_in_user"]
+        context ={"logname": logname}
+
+        return flask.render_template("index.html", **context)
+    target_url = "/accounts/login/"
+    return flask.redirect(target_url)
 
 @minista.app.route('/accounts/password/')
 def password_page():
     """Display / route."""
-    print("this is never called3??")
-    context = {}
-    context["logname"] = session["logged_in_user"]
-    return flask.render_template("index.html", **context)
+    if "logged_in_user" in session:
+        logname = session["logged_in_user"]
+        context ={"logname": logname}
+
+        return flask.render_template("index.html", **context)
+    target_url = "/accounts/login/"
+    return flask.redirect(target_url)
