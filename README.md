@@ -5,8 +5,8 @@ old: https://www.youtube.com/watch?v=LGtg9R7kAVc
 current: https://youtu.be/FPLNeisLifc
 
 ## Introduction
-This project begins with server-side dynamic pages and is currently undergoing refactoring to transition into client-side dynamic pages. 
-It consists of a total of 11 webpages, each focusing on specific functionalities.
+This project begins with server-side dynamic pages and is currently undergoing refactoring to transition into client-side dynamic pages.
+This is single page application and it consists of a total of 11 webpages(in users view), each focusing on specific functionalities.
 
 ## Features and Structure
    <pre>
