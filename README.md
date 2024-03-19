@@ -1,6 +1,8 @@
 # Mini Instagram Project - Web Application
 
-https://www.youtube.com/watch?v=LGtg9R7kAVc
+old: https://www.youtube.com/watch?v=LGtg9R7kAVc
+
+current: https://youtu.be/FPLNeisLifc
 
 ## Introduction
 This project begins with server-side dynamic pages and is currently undergoing refactoring to transition into client-side dynamic pages. 

@@ -51,16 +51,21 @@ export default function Post({ url }) {
   ));
 
   return (
-    <div className="post">
-      <InfiniteScroll
-        dataLength={results.length}
-        next={fetchMoreData}
-        hasMore={next !== ""}
-        loader={<h4>Loading...</h4>}
-      >
-        {renderedPosts}
-      </InfiniteScroll>
-    </div>
+    <>
+      <div className="red-bar"></div>
+
+      <div className="post">
+        <InfiniteScroll
+          dataLength={results.length}
+          next={fetchMoreData}
+          hasMore={next !== ""}
+          loader={<h4>Loading...</h4>}
+        >
+          {renderedPosts}
+        </InfiniteScroll>
+      </div>
+    </>
+    
   );
 }
 

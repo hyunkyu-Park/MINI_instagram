@@ -5303,6 +5303,7 @@ function Double(_ref) {
     src: imgUrl,
     alt: "image_url",
     onDoubleClick: handleDoubleClick,
+    loading: "lazy",
     style: {
       width: '100%',
       height: 'auto',
@@ -5402,14 +5403,16 @@ function Post(_ref) {
       resultUrl: result.url
     });
   });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement((react__WEBPACK_IMPORTED_MODULE_2___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
+    className: "red-bar"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     className: "post"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(react_infinite_scroll_component__WEBPACK_IMPORTED_MODULE_3__["default"], {
     dataLength: results.length,
     next: fetchMoreData,
     hasMore: next !== "",
     loader: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("h4", null, "Loading...")
-  }, renderedPosts));
+  }, renderedPosts)));
 }
 Post.propTypes = {
   url: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().string).isRequired
@@ -5755,7 +5758,8 @@ function PostInfo(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("img", {
     src: ownerImgUrl,
     alt: "owner_image",
-    className: "post_user_profile"
+    className: "post_user_profile",
+    loading: "lazy"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", {
     className: "post_user_name"
   }, owner))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("a", {
