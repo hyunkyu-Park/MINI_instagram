@@ -27,7 +27,7 @@ function Double({ imgUrl, postid, setLikes, lognameLikesThis, numLikes }) {
 
   return (
     <div>
-      <img src={imgUrl} alt="image_url" onDoubleClick={handleDoubleClick} style={{ width: '100%', height: 'auto', maxHeight: '800px' }}/>
+      <img src={imgUrl} alt="image_url" onDoubleClick={handleDoubleClick} loading="lazy" style={{ width: '100%', height: 'auto', maxHeight: '800px' }}/>
     </div>
   );
 }
