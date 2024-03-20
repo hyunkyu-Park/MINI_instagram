@@ -23,6 +23,7 @@
 }
 
 .post{
+    margin-top: 10px;
     border: 1px solid var(--border);
     border-radius: 4px;
 
@@ -260,4 +261,3 @@ border-radius: 5px;
     overflow: hidden;
     border-radius: 8px;
 }
-

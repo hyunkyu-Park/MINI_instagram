@@ -52,8 +52,6 @@ export default function Post({ url }) {
 
   return (
     <>
-      <div className="red-bar"></div>
-
       <div className="post">
         <InfiniteScroll
           dataLength={results.length}
