@@ -12,10 +12,12 @@
       </a>
     </div>
     
-    <div class="top_right">
-      <a href="/explore/" style="font-size: x-large;">explore</a> |
-      <a href="/users/{{logname}}/" style="font-size: x-large;">{{logname}}</a>
-    </div>
+    {% if logname %}
+      <div class="top_right">
+        <a href="/explore/" style="font-size: x-large;">explore</a> |
+        <a href="/users/{{logname}}/" style="font-size: x-large;">{{logname}}</a>
+      </div>
+    {% endif %}
 
     <div id="reactEntry">
       Loading ...

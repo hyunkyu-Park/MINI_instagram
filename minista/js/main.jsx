@@ -11,6 +11,8 @@ import DeleteAccount from "./deleteAccount"
 import Followers from "./Followers"
 import Following from "./Following"
 import Explore from "./Explore";
+import LoginPage from "./Login"
+import CreatePage from "./Create";
 
 // Create a root
 const root = createRoot(document.getElementById("reactEntry"));
@@ -63,6 +65,16 @@ root.render(
         <Route
           path="/explore/"
           element={<Explore/>}
+        />
+
+        <Route
+          path="/accounts/login/"
+          element={<LoginPage/>}
+        />
+
+        <Route
+          path="/accounts/create/"
+          element={<CreatePage/>}
         />
 
       </Routes>
