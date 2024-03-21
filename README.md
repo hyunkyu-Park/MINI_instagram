@@ -116,5 +116,13 @@ Resolution: Before writing the code in the future, let's distinguish between wha
 
 Situation: if the size of the image files are big, it takes few seconds two render the page
 
-Studying transition andd see if it can resolve this issue
+Studying transition and see if it can resolve this issue
 
+Resolution: Applying loading="lazy". It optimizes performance by delaying the loading of elements until the user scrolls to the image or element, which can reduce the initial page loading time and reduce data usage, providing a better experience for the user.
+
+
+## No image file being called on server
+
+Situation: used aws ec2, the website can not find image files.
+
+I suspect it's because I use the relative path instead of the absolute path
