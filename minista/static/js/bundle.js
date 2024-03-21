@@ -4525,9 +4525,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
+
 function CreatePage() {
   var handleSubmit = function handleSubmit(event) {
     event.preventDefault();
+
+    // Get form input values
+    var username = event.target.elements.username.value;
+    var password = event.target.elements.password.value;
+
+    // Check username length
+    if (username.length < 6) {
+      alert("Username must be at least 6 characters long");
+      event.target.elements.username.value = '';
+      return;
+    }
+
+    // Check username length and password complexity
+    if (!isPasswordValid(password)) {
+      alert("password must contain at least 8 characters including numbers, alphabets, and special characters.");
+      event.target.elements.password.value = '';
+      return;
+    }
 
     // Create FormData object using Form data
     var formData = new FormData(event.target);
@@ -4549,6 +4568,12 @@ function CreatePage() {
       // reset the username inside of inputs in form
       event.target.elements.username.value = '';
     });
+  };
+
+  // Function to check password complexity
+  var isPasswordValid = function isPasswordValid(password) {
+    var passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
+    return passwordRegex.test(password);
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     onSubmit: handleSubmit,
