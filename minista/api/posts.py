@@ -80,14 +80,14 @@ def get_posts():
     if postid_lte is None:
         cur1 = connection.execute(
             "WITH FollowingPosts AS ( "
-            "SELECT p.postid "
-            "FROM posts p "
-            "WHERE p.owner = ? "
-            "UNION "
-            "SELECT p.postid "
-            "FROM posts p "
-            "JOIN following f ON p.owner = f.username2 "
-            "WHERE f.username1 = ? ) "
+                "SELECT p.postid "
+                "FROM posts p "
+                "WHERE p.owner = ? "
+                "UNION "
+                "SELECT p.postid "
+                "FROM posts p "
+                "JOIN following f ON p.owner = f.username2 "
+                "WHERE f.username1 = ? ) "
             "SELECT fp.postid "
             "FROM FollowingPosts fp "
             "ORDER BY fp.postid DESC "
@@ -97,6 +97,7 @@ def get_posts():
         first_row = cur1.fetchone()
         if first_row:
             postid_lte = first_row["postid"]
+            print("postid_lte:", postid_lte)
 
     cur = connection.execute(
         "WITH FollowingPosts AS ( "
