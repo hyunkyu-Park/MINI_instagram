@@ -5548,6 +5548,9 @@ function Post(_ref) {
         setNext(data.next);
         console.log(111);
         console.log(data);
+        if (data.results.length === 0) {
+          window.location.href = "/explore/"; // 클라이언트 측에서 리디렉션 처리
+        }
       }
     })["catch"](function (error) {
       return console.log(error);

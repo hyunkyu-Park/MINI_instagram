@@ -21,6 +21,9 @@ export default function Post({ url }) {
           setNext(data.next);
           console.log(111)
           console.log(data)
+          if (data.results.length === 0) {
+            window.location.href = "/explore/"; // 클라이언트 측에서 리디렉션 처리
+          }
         }
       })
       .catch((error) => console.log(error));
