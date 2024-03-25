@@ -6,32 +6,32 @@ current: https://youtu.be/FPLNeisLifc
 
 ## Introduction
 This project begins with server-side dynamic pages and is currently undergoing refactoring to transition into client-side dynamic pages.
-This is single page application and it consists of a total of 11 webpages(in users view), each focusing on specific functionalities.
+This is single page application and it consists of a total of 11 webpages(in users view), each focusing on specific functionalities
 
 ## Features and Structure
    <pre>
 1. Account Creation
-  • Allows users to create a new account.
+  • Allows users to create a new account
 2. Login
-  • Allows users to log in.
+  • Allows users to log in
 3. Main Feed
-  • Presents the user's main feed with infinite scroll functionality.
+  • Presents the user's main feed with infinite scroll functionality
 4. Account Deletion
-  • Enables users to delete their accounts.
+  • Enables users to delete their accounts
 5. Account Information Modification
-  • Provides a page for users to modify their account information.
+  • Provides a page for users to modify their account information
 6. New User Recommendations
-  • Recommends new users to the current user.
+  • Recommends new users to the current user
 7. Followers
-  • Shows the list of followers for a user.
+  • Shows the list of followers for a user
 8. Following
-  • Displays the list of users being followed by a user.
+  • Displays the list of users being followed by a user
 9. Password Modification
-  • Provides a page for users to modify their passwords.
+  • Provides a page for users to modify their passwords
 10. Post Detail
-  • Shows detailed information about a specific post.
+  • Shows detailed information about a specific post
 11. User Page
-  • Displays a page for a specific user.
+  • Displays a page for a specific user
 </pre>
 
 ## Technology Stack
@@ -41,7 +41,7 @@ Database: SQLite3
 Server Hosting: AWS EC2
 Password Management: SHA-512 Algorithm
 Infinite Scroll Implementation:
-Utilizes pagination techniques and the React InfiniteScroll library.
+Utilizes pagination techniques and the React InfiniteScroll library
 </pre>
 
 ## Notes
@@ -112,13 +112,23 @@ Cause: Wrong Query logic, my code check if the user likes the post in the javasc
 Resolution: Before writing the code in the future, let's distinguish between what JavaScript will solve and what will be solved using sql. Let's also think about which one would be more efficient!
 
 
-## User experience improvement
+## User experience improvement -- user feedback 1
 
-Situation: if the size of the image files are big, it takes few seconds two render the page
+Situation: Sometimes, the main page takes few seconds two render the page
 
-Studying transition and see if it can resolve this issue
+Cause: When image files are large or the internet connection is not good, it takes time to fetch multiple post images, resulting in a poor user experience.
 
 Resolution: Applying loading="lazy". It optimizes performance by delaying the loading of elements until the user scrolls to the image or element, which can reduce the initial page loading time and reduce data usage, providing a better experience for the user.
+
+※ Studying transition and see if it can resolve this issue
+
+## User experience improvement -- user feedback 2
+
+Situation: When creating an account for the first time, the main page feels empty, giving a dull impression.
+
+Cause: There is no content to display on the main page when there are no users being followed or when there are no posts from the user and the users being followed.
+
+Resolution: In case there are no posts to display on the main page, redirect the user to the explore page to naturally encourage interaction with other users and improve user experience.
 
 
 ## No image file being called on server
@@ -126,3 +136,5 @@ Resolution: Applying loading="lazy". It optimizes performance by delaying the lo
 Situation: used aws ec2, the website can not find image files.
 
 I suspect it's because I use the relative path instead of the absolute path
+
+## 
