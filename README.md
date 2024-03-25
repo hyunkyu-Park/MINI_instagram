@@ -130,6 +130,12 @@ Cause: There is no content to display on the main page when there are no users b
 
 Resolution: In case there are no posts to display on the main page, redirect the user to the explore page to naturally encourage interaction with other users and improve user experience.
 
+## User experience improvement -- user feedback 2
+
+Situation: The password criteria for creating an account and for modifying the password afterward are different. It would be better if the password requirements are visible.
+
+Resolution: 
+
 
 ## No image file being called on server
 
