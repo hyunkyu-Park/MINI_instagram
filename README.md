@@ -120,7 +120,20 @@ Cause: When image files are large or the internet connection is not good, it tak
 
 Resolution: Applying loading="lazy". It optimizes performance by delaying the loading of elements until the user scrolls to the image or element, which can reduce the initial page loading time and reduce data usage, providing a better experience for the user.
 
-※ Studying transition and see if it can resolve this issue
+++Additional update(03/25/2024)  
+Display a mosaic-style background instead of showing loading text when the main page is loading for the first time.  
+
+1. Create Placeholder Elements:  
+Design placeholder elements that resemble the layout of posts, including images, titles, and other relevant information.
+2. Render Placeholder Elements During Initial Loading:  
+While the main page is loading for the first time, render these placeholder elements instead of actual post content.  
+3. Replace Placeholder Elements with Actual Content:  
+Once the actual post content is loaded, replace the placeholder elements with the real posts dynamically.
+
+![Screen Recording 2024-03-25 at 9 43 51 PM](https://github.com/hyunkyu-Park/MINI_instagram/assets/68415173/b7eb537f-8532-41d0-bb31-ae34306cca45)
+
+
+※ Studying transition and see if it can resolve this issue  
 
 ## User experience improvement -- user feedback 2
 
@@ -130,11 +143,17 @@ Cause: There is no content to display on the main page when there are no users b
 
 Resolution: In case there are no posts to display on the main page, redirect the user to the explore page to naturally encourage interaction with other users and improve user experience.
 
-## User experience improvement -- user feedback 2
+## User experience improvement -- user feedback 3
 
 Situation: The password criteria for creating an account and for modifying the password afterward are different. It would be better if the password requirements are visible.
 
 Resolution: 
+1. Modify Password Change Page:  
+• Increase the font size for better readability.  
+• Add text to indicate the password requirements.  
+2. Update Error Handling:  
+• Handle different types of errors returned from the API when changing the password.  
+• Display corresponding error messages for each type of error.  
 
 
 ## No image file being called on server
