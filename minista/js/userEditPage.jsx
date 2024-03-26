@@ -76,20 +76,27 @@ export default function UserEditPage({ }) {
 
     return (
         <div>
-            <h2>Edit account</h2>
+            <style>
+                {`
+                    .custom-p {
+                        font-size: 24px;
+                    }
+                `}
+            </style>
+            <h1>Edit account</h1>
 
             <div>
-                <img src={userPhotoUrl} alt="owner_image" className="user_img" />
+                <img src={userPhotoUrl} alt="owner_image" className="user_img_for_edit_profile" />
             </div>
 
             <div>
-                <p>{username}</p>
+                <p className="custom-p">{username}</p>
             </div>
 
             <form onSubmit={handleSubmit} encType="multipart/form-data">
-                <label htmlFor="file">Photo:</label>
-                <input type="file" name="file" id="file" accept="image/*" />
-                <label htmlFor="fullname">Name:</label>
+                <label htmlFor="file" className="custom-p">Photo:</label>
+                <input type="file" name="file" id="file" accept="image/*" className="custom-p" />
+                <label htmlFor="fullname" className="custom-p">Name:</label>
                 <input
                     type="text"
                     name="fullname"
@@ -97,8 +104,9 @@ export default function UserEditPage({ }) {
                     value={fullName}
                     onChange={handleFullNameChange}
                     required
+                    className="custom-p"
                 />
-                <label htmlFor="email">Email:</label>
+                <label htmlFor="email" className="custom-p">Email:</label>
                 <input
                     type="text"
                     name="email"
@@ -106,13 +114,14 @@ export default function UserEditPage({ }) {
                     value={email}
                     onChange={handleEmailChange}
                     required
+                    className="custom-p"
                 />
-                <input type="submit" name="update" value="Submit" />
+                <input type="submit" name="update" value="Submit" className="custom-p" />
                 <input type="hidden" name="operation" value="edit_account" />
             </form>
 
-            <p><a href="/accounts/password/">Change Password</a></p>
-            <p><a href="/accounts/delete/">Delete Account</a></p>
+            <p><a href="/accounts/password/" className="custom-p">Change Password</a></p>
+            <p><a href="/accounts/delete/" className="custom-p">Delete Account</a></p>
         </div>
     );
 }

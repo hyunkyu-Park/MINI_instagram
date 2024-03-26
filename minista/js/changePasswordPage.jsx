@@ -31,41 +31,60 @@ export default function ChangePassword({ }) {
         };
     }, []);
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
-        try {
-            // Perform password change logic here
-            // You can use the state variables oldPassword, newPassword1, and newPassword2
+        if (!isPasswordValid(newPassword1)) {
+            alert("password must contain at least 8 characters including numbers, alphabets, and special characters.");
+            event.target.elements.newPassword1.value = '';
+            return;
+        }
+    
+        if (!isPasswordValid(newPassword2)) {
+            alert("password must contain at least 8 characters including numbers, alphabets, and special characters.");
+            event.target.elements.newPassword2.value = '';
+            return;
+        }
 
-            // Example: Fetch request to change the password
-            const response = await fetch(apiUrl, {
-                method: "POST",
-                credentials: "same-origin",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                },
-                body: new URLSearchParams({
-                    password: oldPassword,
-                    new_password1: newPassword1,
-                    new_password2: newPassword2,
-                    operation: "update_password",
-                }).toString(),
-            });
-
+        fetch(apiUrl, {
+            method: "POST",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: new URLSearchParams({
+                password: oldPassword,
+                new_password1: newPassword1,
+                new_password2: newPassword2,
+                operation: "update_password",
+            }).toString(),
+        })
+        .then((response) => {
             if (!response.ok) {
                 throw Error(response.statusText);
             }
-
             setErrorMessage("")
             setOkMessage("Successfully changed!")
+        })
+        .catch((error) => {
+            if(error.message == "UNAUTHORIZED"){
+                setErrorMessage("New password 1 and New password 2 are different");
+                setOkMessage("")
+            }
+            else if(error.message == "FORBIDDEN"){
+                setErrorMessage("Wrong Current Password");
+                setOkMessage("")
+            }
+            else{
+                console.error(error);
+            }
+        });
+    };
 
-            // Password changed successfully, handle the response as needed
-        } catch (error) {
-            console.error(error);
-            setErrorMessage(error.message);
-            setOkMessage("")
-        }
+
+    const isPasswordValid = (password) => {
+        const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
+        return passwordRegex.test(password);
     };
 
     return (
@@ -73,7 +92,7 @@ export default function ChangePassword({ }) {
             <h2>Change Password</h2>
             {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
             <form onSubmit={handleSubmit}>
-                <label htmlFor="oldPassword">Old Password:</label>
+                <label htmlFor="oldPassword">Current Password:</label>
                 <input
                     type="password"
                     id="oldPassword"
@@ -105,8 +124,11 @@ export default function ChangePassword({ }) {
             </form>
             {okMessage && <div style={{ color: "blue" }}>{okMessage}</div>}
             <p>
-                <a href="/accounts/edit/">Back to Account Edit</a>
+                password must contain at least 8 characters including numbers, alphabets, and special characters
             </p>
+            <h4>
+                <a href="/accounts/edit/">Back to Account Edit</a>
+            </h4>
         </div>
     );
 }
