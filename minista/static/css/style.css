@@ -226,6 +226,14 @@ border-radius: 5px;
     margin-left: 30px;
 }
 
+.user_img_for_edit_profile {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 30px;
+}
+
 .user_info {
     padding-left: 100px;
 }
@@ -261,3 +269,4 @@ border-radius: 5px;
     overflow: hidden;
     border-radius: 8px;
 }
+

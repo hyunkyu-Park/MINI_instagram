@@ -57,7 +57,29 @@ export default function PostInfo({ resultUrl }) {
   }, [resultUrl]);
 
   if (postId === "") {
-    return <div>Loading~</div>;
+    return (
+      <div className="contents">
+        <div className="posts">
+            <div className="post_header" style={{ backgroundColor: 'white', width: 'auto', height: '20px' }}>
+              <div className="post_profile" style={{ backgroundColor: 'rgb(240, 240, 240)', width: '180px', height: '25px' }}></div>
+              <div style={{ backgroundColor: 'rgb(240, 240, 240)', width: '50px', height: '25px' }}></div>
+            </div>
+  
+            <div style={{ backgroundColor: 'rgb(240, 240, 240)', width: 'auto', height: '600px'}}>
+            </div>
+  
+            <div className="post_footer">
+              <div className="post_likes" style={{ backgroundColor: 'rgb(240, 240, 240)', width: '60px', height: '20px' }}></div>
+              
+              <div className="comments">
+                <div style={{ backgroundColor: 'rgb(240, 240, 240)', width: '180px', height: '20px' }}></div>
+                <div style={{ backgroundColor: 'rgb(240, 240, 240)', width: '180px', height: '20px', marginTop: "3px"}}></div>
+                <div style={{ backgroundColor: 'rgb(240, 240, 240)', width: '180px', height: '20px', marginTop: "3px" }}></div>
+              </div>
+            </div>
+        </div>
+      </div>
+    )
   }
 
   const renderedComments = comments.map((comment) => (
@@ -84,6 +106,8 @@ export default function PostInfo({ resultUrl }) {
     </div>
   ));
 
+
+  
   return (
     <div className="contents">
       <div className="posts">

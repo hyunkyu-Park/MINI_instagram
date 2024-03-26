@@ -5074,46 +5074,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ ChangePassword)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
-/* harmony import */ var _babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/objectDestructuringEmpty */ "./node_modules/@babel/runtime/helpers/esm/objectDestructuringEmpty.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
-
-
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/objectDestructuringEmpty */ "./node_modules/@babel/runtime/helpers/esm/objectDestructuringEmpty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
 function ChangePassword(_ref) {
-  (0,_babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_2__["default"])(_ref);
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(""),
-    _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useState, 2),
+  (0,_babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref);
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+    _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState, 2),
     logname = _useState2[0],
     setLogname = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(""),
-    _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useState3, 2),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+    _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState3, 2),
     oldPassword = _useState4[0],
     setOldPassword = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(""),
-    _useState6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useState5, 2),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+    _useState6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState5, 2),
     newPassword1 = _useState6[0],
     setNewPassword1 = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(""),
-    _useState8 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useState7, 2),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+    _useState8 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState7, 2),
     newPassword2 = _useState8[0],
     setNewPassword2 = _useState8[1];
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(""),
-    _useState10 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useState9, 2),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+    _useState10 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState9, 2),
     errorMessage = _useState10[0],
     setErrorMessage = _useState10[1];
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(""),
-    _useState12 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useState11, 2),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+    _useState12 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState11, 2),
     okMessage = _useState12[0],
     setOkMessage = _useState12[1];
   var apiUrl = "/api/v1/accounts/password/";
-  (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(function () {
+  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
     var ignoreStaleRequest = false;
     fetch(apiUrl, {
       credentials: "same-origin"
@@ -5132,67 +5127,61 @@ function ChangePassword(_ref) {
       ignoreStaleRequest = true;
     };
   }, []);
-  var handleSubmit = /*#__PURE__*/function () {
-    var _ref2 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default().mark(function _callee(event) {
-      var response;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default().wrap(function _callee$(_context) {
-        while (1) switch (_context.prev = _context.next) {
-          case 0:
-            event.preventDefault();
-            _context.prev = 1;
-            _context.next = 4;
-            return fetch(apiUrl, {
-              method: "POST",
-              credentials: "same-origin",
-              headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-              },
-              body: new URLSearchParams({
-                password: oldPassword,
-                new_password1: newPassword1,
-                new_password2: newPassword2,
-                operation: "update_password"
-              }).toString()
-            });
-          case 4:
-            response = _context.sent;
-            if (response.ok) {
-              _context.next = 7;
-              break;
-            }
-            throw Error(response.statusText);
-          case 7:
-            setErrorMessage("");
-            setOkMessage("Successfully changed!");
-
-            // Password changed successfully, handle the response as needed
-            _context.next = 16;
-            break;
-          case 11:
-            _context.prev = 11;
-            _context.t0 = _context["catch"](1);
-            console.error(_context.t0);
-            setErrorMessage(_context.t0.message);
-            setOkMessage("");
-          case 16:
-          case "end":
-            return _context.stop();
-        }
-      }, _callee, null, [[1, 11]]);
-    }));
-    return function handleSubmit(_x) {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("h2", null, "Change Password"), errorMessage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("div", {
+  var handleSubmit = function handleSubmit(event) {
+    event.preventDefault();
+    if (!isPasswordValid(newPassword1)) {
+      alert("password must contain at least 8 characters including numbers, alphabets, and special characters.");
+      event.target.elements.newPassword1.value = '';
+      return;
+    }
+    if (!isPasswordValid(newPassword2)) {
+      alert("password must contain at least 8 characters including numbers, alphabets, and special characters.");
+      event.target.elements.newPassword2.value = '';
+      return;
+    }
+    fetch(apiUrl, {
+      method: "POST",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: new URLSearchParams({
+        password: oldPassword,
+        new_password1: newPassword1,
+        new_password2: newPassword2,
+        operation: "update_password"
+      }).toString()
+    }).then(function (response) {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      setErrorMessage("");
+      setOkMessage("Successfully changed!");
+    })["catch"](function (error) {
+      if (error.message == "UNAUTHORIZED") {
+        setErrorMessage("New password 1 and New password 2 are different");
+        setOkMessage("");
+      } else if (error.message == "FORBIDDEN") {
+        setErrorMessage("Wrong Current Password");
+        setOkMessage("");
+      } else {
+        console.error(error);
+      }
+    });
+  };
+  var isPasswordValid = function isPasswordValid(password) {
+    var passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
+    return passwordRegex.test(password);
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("h2", null, "Change Password"), errorMessage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     style: {
       color: "red"
     }
-  }, errorMessage), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("form", {
+  }, errorMessage), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("form", {
     onSubmit: handleSubmit
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("label", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("label", {
     htmlFor: "oldPassword"
-  }, "Old Password:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("input", {
+  }, "Current Password:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("input", {
     type: "password",
     id: "oldPassword",
     name: "oldPassword",
@@ -5201,9 +5190,9 @@ function ChangePassword(_ref) {
       return setOldPassword(e.target.value);
     },
     required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("label", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("label", {
     htmlFor: "newPassword1"
-  }, "New Password:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("input", {
+  }, "New Password:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("input", {
     type: "password",
     id: "newPassword1",
     name: "newPassword1",
@@ -5212,9 +5201,9 @@ function ChangePassword(_ref) {
       return setNewPassword1(e.target.value);
     },
     required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("label", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("label", {
     htmlFor: "newPassword2"
-  }, "Confirm New Password:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("input", {
+  }, "Confirm New Password:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("input", {
     type: "password",
     id: "newPassword2",
     name: "newPassword2",
@@ -5223,19 +5212,19 @@ function ChangePassword(_ref) {
       return setNewPassword2(e.target.value);
     },
     required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("input", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("input", {
     type: "submit",
     name: "update_password",
     value: "Submit"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("input", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("input", {
     type: "hidden",
     name: "operation",
     value: "update_password"
-  })), okMessage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("div", {
+  })), okMessage && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     style: {
       color: "blue"
     }
-  }, okMessage), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default().createElement("a", {
+  }, okMessage), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, "password must contain at least 8 characters including numbers, alphabets, and special characters"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("h4", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("a", {
     href: "/accounts/edit/"
   }, "Back to Account Edit")));
 }
@@ -5903,7 +5892,68 @@ function PostInfo(_ref) {
     };
   }, [resultUrl]);
   if (postId === "") {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", null, "Loading~");
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+      className: "contents"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+      className: "posts"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+      className: "post_header",
+      style: {
+        backgroundColor: 'white',
+        width: 'auto',
+        height: '20px'
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+      className: "post_profile",
+      style: {
+        backgroundColor: 'rgb(240, 240, 240)',
+        width: '180px',
+        height: '25px'
+      }
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+      style: {
+        backgroundColor: 'rgb(240, 240, 240)',
+        width: '50px',
+        height: '25px'
+      }
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+      style: {
+        backgroundColor: 'rgb(240, 240, 240)',
+        width: 'auto',
+        height: '600px'
+      }
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+      className: "post_footer"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+      className: "post_likes",
+      style: {
+        backgroundColor: 'rgb(240, 240, 240)',
+        width: '60px',
+        height: '20px'
+      }
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+      className: "comments"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+      style: {
+        backgroundColor: 'rgb(240, 240, 240)',
+        width: '180px',
+        height: '20px'
+      }
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+      style: {
+        backgroundColor: 'rgb(240, 240, 240)',
+        width: '180px',
+        height: '20px',
+        marginTop: "3px"
+      }
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+      style: {
+        backgroundColor: 'rgb(240, 240, 240)',
+        width: '180px',
+        height: '20px',
+        marginTop: "3px"
+      }
+    })))));
   }
   var renderedComments = comments.map(function (comment) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
@@ -6073,50 +6123,61 @@ function UserEditPage(_ref) {
   if (username === "") {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, "Loading~");
   }
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("h2", null, "Edit account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("img", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("style", null, "\n                    .custom-p {\n                        font-size: 24px;\n                    }\n                "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("h1", null, "Edit account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("img", {
     src: userPhotoUrl,
     alt: "owner_image",
-    className: "user_img"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, username)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("form", {
+    className: "user_img_for_edit_profile"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
+    className: "custom-p"
+  }, username)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("form", {
     onSubmit: handleSubmit,
     encType: "multipart/form-data"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("label", {
-    htmlFor: "file"
+    htmlFor: "file",
+    className: "custom-p"
   }, "Photo:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("input", {
     type: "file",
     name: "file",
     id: "file",
-    accept: "image/*"
+    accept: "image/*",
+    className: "custom-p"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("label", {
-    htmlFor: "fullname"
+    htmlFor: "fullname",
+    className: "custom-p"
   }, "Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("input", {
     type: "text",
     name: "fullname",
     id: "fullname",
     value: fullName,
     onChange: handleFullNameChange,
-    required: true
+    required: true,
+    className: "custom-p"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("label", {
-    htmlFor: "email"
+    htmlFor: "email",
+    className: "custom-p"
   }, "Email:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("input", {
     type: "text",
     name: "email",
     id: "email",
     value: email,
     onChange: handleEmailChange,
-    required: true
+    required: true,
+    className: "custom-p"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("input", {
     type: "submit",
     name: "update",
-    value: "Submit"
+    value: "Submit",
+    className: "custom-p"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("input", {
     type: "hidden",
     name: "operation",
     value: "edit_account"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("a", {
-    href: "/accounts/password/"
+    href: "/accounts/password/",
+    className: "custom-p"
   }, "Change Password")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("a", {
-    href: "/accounts/delete/"
+    href: "/accounts/delete/",
+    className: "custom-p"
   }, "Delete Account")));
 }
 
@@ -6600,6 +6661,14 @@ border-radius: 5px;
     margin-left: 30px;
 }
 
+.user_img_for_edit_profile {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 30px;
+}
+
 .user_info {
     padding-left: 100px;
 }
@@ -6635,7 +6704,8 @@ border-radius: 5px;
     overflow: hidden;
     border-radius: 8px;
 }
-`, "",{"version":3,"sources":["webpack://./minista/static/css/style.css"],"names":[],"mappings":"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","sourcesContent":[".top_right {\n    position: absolute;\n    top: 0;\n    right: 0;\n    margin-top: 1%;\n    margin-right: 1%;\n}\n\n.contents{\n    width: 100%;\n    max-width: 614px;\n    margin: 0 auto;\n    display: flex;\n    flex-direction: column;\n}\n\n.posts {\n    border: 1px solid #ccc;\n    display: flex;\n    flex-direction: column;\n    flex: 1;\n    gap: 24px;\n}\n\n.post{\n    margin-top: 10px;\n    border: 1px solid var(--border);\n    border-radius: 4px;\n\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n    overflow: hidden;\n}\n\n.post_header{\n    background-color: var(--primary);\n    border-bottom: 1px solid var(--border);\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    padding: 16px;\n    height: 40px;\n}\n\n.post_profile{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n.post_user_profile{\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    margin-top: 10%;\n    margin-left: 10%;\n    overflow: hidden;\n    position: relative;\n    vertical-align: middle;\n    float: left;\n}\n\n.post_user_name{\n    margin-left: 120%;\n    margin-top: 35%;\n}\n\n.post_timestamp{\n    margin-left: auto;\n    background-color: transparent;\n    border: none;\n    cursor: pointer;\n}\n\n\n.post_footer{\n    /* padding: 4px 8px 12px; */\n    background-color: var(--primary);\n    display: flex;\n    flex-direction: column;\n    gap: 4px;\n}\n\n.post_likes{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    height: 25px;\n}\n\n.post_description{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n.comment{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n\n\n\n\n/* 포스트 컨테이너 스타일링 */\n.post-container {\n    border: 1px solid #ccc;\n    margin: 20px auto;\n    max-width: 600px;\n    background-color: #ffffff;\n}\n\n.post-header {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 5px; /* 적절한 여백 조정 */\n}\n\n.post-owner-info {\n    display: flex;\n    align-items: center;\n}\n\n.post-owner-username {\nmargin-left: 10px; /* 필요에 따라 조절 */\n}\n\n.post-container {\n    border: 1px solid #ccc;\n    margin: 20px auto;\n    max-width: 600px;\n    background-color: #ffffff;\n}\n\n/* 포스트 이미지 스타일링 */\n.post-image {\n    width: 300px;\n    height: auto;\n}\n\n/* 포스트 하단 스타일링 */\n.post-footer {\npadding: 10px;\n}\n\n.likes {\nfont-weight: bold;\n}\n\n.comment {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 10px; /* 적절한 여백 조정 */\n}\n\n.comment-content {\nflex-grow: 1; /* 나머지 공간을 채우도록 설정 */\n}\n\n.comment-actions {\nmargin-left: 10px; /* 필요에 따라 조절 */\n}\n\n/* 버튼 스타일링 */\nbutton {\n    cursor: pointer;\n    background-color: #3897f0;\n    color: #ffffff;\n    border: none;\n    padding: 4px 8px;\n    border-radius: 5px;\n    margin-right: 10px;\n}\n\n/* 모달 스타일링 (예시) */\n.modal {\ndisplay: none;\nposition: fixed;\ntop: 0;\nleft: 0;\nwidth: 100%;\nheight: 100%;\nbackground-color: rgba(0, 0, 0, 0.5);\njustify-content: center;\nalign-items: center;\n}\n\n.modal-content {\nbackground-color: #ffffff;\npadding: 20px;\nborder-radius: 5px;\n}\n\n.post-owner-image {\n    width: 50px; /* 적절한 크기로 조절 */\n    height: 50px; /* 적절한 크기로 조절 */\n    border-radius: 50%; /* 이미지를 원형으로 만들기 위한 속성 */\n    object-fit: cover; /* 이미지가 정사각형 영역을 가득 채우도록 함 */\n    margin-top: 30%;\n    margin-left: 30%;\n}\n\n.user_contents{\n    width: 100%;\n    max-width: 1024px;\n    margin: 0 auto;\n    display: flex;\n    flex-direction: column;\n}\n\n.user_header {\n    display: flex;\n    align-items: center;\n}\n\n.user_img {\n    width: 200px;\n    height: 200px;\n    border-radius: 50%;\n    overflow: hidden;\n    margin-left: 30px;\n}\n\n.user_info {\n    padding-left: 100px;\n}\n\n.user_id {\n    height: 30px;\n    display: flex;\n    align-items: center;\n    font-size: 32px;\n    margin-top: -50px;\n}\n\n.user_stats {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    font-size: 28px;\n}\n\n.full_name {\n    margin-top: 10px; /* 원하는 여백 값으로 조절 */\n    font-size: 24px;\n}\n\n.user_posts_grid {\n    display: grid;\n    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));\n    gap: 10px; /* 원하는 간격으로 조절 */\n}\n\n.user_posts {\n    position: relative;\n    overflow: hidden;\n    border-radius: 8px;\n}\n"],"sourceRoot":""}]);
+
+`, "",{"version":3,"sources":["webpack://./minista/static/css/style.css"],"names":[],"mappings":"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","sourcesContent":[".top_right {\n    position: absolute;\n    top: 0;\n    right: 0;\n    margin-top: 1%;\n    margin-right: 1%;\n}\n\n.contents{\n    width: 100%;\n    max-width: 614px;\n    margin: 0 auto;\n    display: flex;\n    flex-direction: column;\n}\n\n.posts {\n    border: 1px solid #ccc;\n    display: flex;\n    flex-direction: column;\n    flex: 1;\n    gap: 24px;\n}\n\n.post{\n    margin-top: 10px;\n    border: 1px solid var(--border);\n    border-radius: 4px;\n\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n    overflow: hidden;\n}\n\n.post_header{\n    background-color: var(--primary);\n    border-bottom: 1px solid var(--border);\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    padding: 16px;\n    height: 40px;\n}\n\n.post_profile{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n.post_user_profile{\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    margin-top: 10%;\n    margin-left: 10%;\n    overflow: hidden;\n    position: relative;\n    vertical-align: middle;\n    float: left;\n}\n\n.post_user_name{\n    margin-left: 120%;\n    margin-top: 35%;\n}\n\n.post_timestamp{\n    margin-left: auto;\n    background-color: transparent;\n    border: none;\n    cursor: pointer;\n}\n\n\n.post_footer{\n    /* padding: 4px 8px 12px; */\n    background-color: var(--primary);\n    display: flex;\n    flex-direction: column;\n    gap: 4px;\n}\n\n.post_likes{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    height: 25px;\n}\n\n.post_description{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n.comment{\n    display: flex;\n    align-items: center;\n    gap: 12px;\n}\n\n\n\n\n\n/* 포스트 컨테이너 스타일링 */\n.post-container {\n    border: 1px solid #ccc;\n    margin: 20px auto;\n    max-width: 600px;\n    background-color: #ffffff;\n}\n\n.post-header {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 5px; /* 적절한 여백 조정 */\n}\n\n.post-owner-info {\n    display: flex;\n    align-items: center;\n}\n\n.post-owner-username {\nmargin-left: 10px; /* 필요에 따라 조절 */\n}\n\n.post-container {\n    border: 1px solid #ccc;\n    margin: 20px auto;\n    max-width: 600px;\n    background-color: #ffffff;\n}\n\n/* 포스트 이미지 스타일링 */\n.post-image {\n    width: 300px;\n    height: auto;\n}\n\n/* 포스트 하단 스타일링 */\n.post-footer {\npadding: 10px;\n}\n\n.likes {\nfont-weight: bold;\n}\n\n.comment {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 10px; /* 적절한 여백 조정 */\n}\n\n.comment-content {\nflex-grow: 1; /* 나머지 공간을 채우도록 설정 */\n}\n\n.comment-actions {\nmargin-left: 10px; /* 필요에 따라 조절 */\n}\n\n/* 버튼 스타일링 */\nbutton {\n    cursor: pointer;\n    background-color: #3897f0;\n    color: #ffffff;\n    border: none;\n    padding: 4px 8px;\n    border-radius: 5px;\n    margin-right: 10px;\n}\n\n/* 모달 스타일링 (예시) */\n.modal {\ndisplay: none;\nposition: fixed;\ntop: 0;\nleft: 0;\nwidth: 100%;\nheight: 100%;\nbackground-color: rgba(0, 0, 0, 0.5);\njustify-content: center;\nalign-items: center;\n}\n\n.modal-content {\nbackground-color: #ffffff;\npadding: 20px;\nborder-radius: 5px;\n}\n\n.post-owner-image {\n    width: 50px; /* 적절한 크기로 조절 */\n    height: 50px; /* 적절한 크기로 조절 */\n    border-radius: 50%; /* 이미지를 원형으로 만들기 위한 속성 */\n    object-fit: cover; /* 이미지가 정사각형 영역을 가득 채우도록 함 */\n    margin-top: 30%;\n    margin-left: 30%;\n}\n\n.user_contents{\n    width: 100%;\n    max-width: 1024px;\n    margin: 0 auto;\n    display: flex;\n    flex-direction: column;\n}\n\n.user_header {\n    display: flex;\n    align-items: center;\n}\n\n.user_img {\n    width: 200px;\n    height: 200px;\n    border-radius: 50%;\n    overflow: hidden;\n    margin-left: 30px;\n}\n\n.user_img_for_edit_profile {\n    width: 400px;\n    height: 400px;\n    border-radius: 50%;\n    overflow: hidden;\n    margin-left: 30px;\n}\n\n.user_info {\n    padding-left: 100px;\n}\n\n.user_id {\n    height: 30px;\n    display: flex;\n    align-items: center;\n    font-size: 32px;\n    margin-top: -50px;\n}\n\n.user_stats {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    font-size: 28px;\n}\n\n.full_name {\n    margin-top: 10px; /* 원하는 여백 값으로 조절 */\n    font-size: 24px;\n}\n\n.user_posts_grid {\n    display: grid;\n    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));\n    gap: 10px; /* 원하는 간격으로 조절 */\n}\n\n.user_posts {\n    position: relative;\n    overflow: hidden;\n    border-radius: 8px;\n}\n\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

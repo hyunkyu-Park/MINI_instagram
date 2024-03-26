@@ -188,6 +188,9 @@ def update_password():
     password = flask.request.form.get('password')
     new_password1 = flask.request.form.get('new_password1')
     new_password2 = flask.request.form.get('new_password2')
+    print("check", password)
+    print("check", new_password1)
+    print("check", new_password2)
 
     if not password or not new_password1 or not new_password2:
         return flask.jsonify({}), 400
