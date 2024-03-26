@@ -130,6 +130,7 @@ While the main page is loading for the first time, render these placeholder elem
 3. Replace Placeholder Elements with Actual Content:  
 Once the actual post content is loaded, replace the placeholder elements with the real posts dynamically.
 
+During the gif file conversion process, it changed slower than the actual speed (actual user experience is about 3 times faster)  
 ![Screen Recording 2024-03-25 at 9 43 51 PM](https://github.com/hyunkyu-Park/MINI_instagram/assets/68415173/b7eb537f-8532-41d0-bb31-ae34306cca45)
 
 
