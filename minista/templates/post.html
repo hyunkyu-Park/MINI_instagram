@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="/static/css/style.css" rel="stylesheet" >
+        <title>minista</title>
+    </head>
+    <body>
+        <div class="post_profile">
+        <a href="/">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" width="48">
+        </a>
+        </div>
+        
+        <div class="top_right">
+        <a href="/explore/" style="font-size: x-large;">explore</a> |
+        <a href="/users/{{logname}}/" style="font-size: x-large;">{{logname}}</a>
+        </div>
+
+        <div id="reactEntry">
+        Loading ...
+        </div>
+        <!-- Load JavaScript -->
+        <script src="{{ url_for('static', filename='js/bundle.js') }}"></script>
+    </body>
+</html>

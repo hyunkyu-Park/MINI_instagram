@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Stop on errors
+# See https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+set -Eeuo pipefail
+
+# Check if the database file exists
+if [ ! -f var/minista.sqlite3 ]; then
+    echo "Error: can't find database var/minista.sqlite3"
+    echo "Try: ./bin/minista_db create"
+    exit 1
+fi
+
+# Run the development server
+flask --app minista --debug run --host 0.0.0.0 --port 8000
