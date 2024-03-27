@@ -32,15 +32,15 @@ export default function LoginPage() {
 
     return (
         <>
-            <a href="/accounts/login/">Login</a>
+            <a href="/accounts/login/" className="custom-p">Login</a>
             <form onSubmit={handleSubmit} method="post" encType="multipart/form-data">
-                <input type="text" name="username" placeholder="Username" required />
-                <input type="password" name="password" placeholder="Password" required />
-                <input type="submit" value="Login" />
+                <input className="custom-p" type="text" name="username" placeholder="Username" required />
+                <input className="custom-p" type="password" name="password" placeholder="Password" required />
+                <input className="custom-p" type="submit" value="Login" />
                 <input type="hidden" name="operation" value="login" />
             </form>
-            <p>Don't have an account??</p>
-            <Link to={`/accounts/create/`}>Sign up</Link>
+            <p className="custom-p">Don't have an account??</p>
+            <Link className="custom-p" to={`/accounts/create/`}>Sign up</Link>
         </>
     );
 }

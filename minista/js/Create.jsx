@@ -57,21 +57,21 @@ export default function CreatePage() {
     return (
         <>
             <form onSubmit={handleSubmit} method="post" encType="multipart/form-data">
-                <p>Photo</p>
-                <input type="file" name="file" required />
-                <p>Name</p>
-                <input type="text" name="fullname" placeholder="Full Name" required />
-                <p>Username</p>
-                <input type="text" name="username" placeholder="Username" required />
-                <p>Email</p>
-                <input type="text" name="email" placeholder="Email" required />
-                <p>Password</p>
-                <input type="password" name="password" placeholder="Password" required />
-                <input type="submit" name="signup" value="Sign Up" />
+                <p className="custom-p">Photo</p>
+                <input className="custom-p" type="file" name="file" required />
+                <p className="custom-p">Name</p>
+                <input className="custom-p" type="text" name="fullname" placeholder="Full Name" required />
+                <p className="custom-p">Username</p>
+                <input className="custom-p" type="text" name="username" placeholder="Username" required />
+                <p className="custom-p">Email</p>
+                <input className="custom-p" type="text" name="email" placeholder="Email" required />
+                <p className="custom-p">Password</p>
+                <input className="custom-p" type="password" name="password" placeholder="Password" required />
+                <input className="custom-p" type="submit" name="signup" value="Sign Up" />
                 <input type="hidden" name="operation" value="create" />
             </form>
 
-            <p>Already have an account? <a href="/accounts/login/">Login</a></p>
+            <p className="custom-p">Already have an account? <a href="/accounts/login/">Login</a></p>
         </>
     );
 }
