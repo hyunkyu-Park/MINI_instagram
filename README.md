@@ -69,14 +69,14 @@ Situation: I saved the image using raw name as it is and saved it in the databas
 
 Cause: The names of photos saved by users may overlap ex: dog.jpg
 
-Resolution: Create random UUIDs using uuid.uuid4(.hex), change them to lowercase using pathlib.path(filename).suffix.lower() and save them (unifying by lowercase since not all environments are case sensitive)
+Solution: Create random UUIDs using uuid.uuid4(.hex), change them to lowercase using pathlib.path(filename).suffix.lower() and save them (unifying by lowercase since not all environments are case sensitive)
 
 ## Page infinite loading issue
 Situation: When user click a button depending on whether user follow or not, I wrote the code to change the status to Follow->Unfollow or Unfollow->Page. But Infinite Loading occured
 
 Cause: Implemented function call not function reference <br>
 
-Resolution:  
+Solution:  
 <input type="submit" value="unfollow" onClick={() => handleUnfollow(username) }/> vs <input type="submit" value="unfollow" onClick={handleUnfollow(username)}/
 
 Method 1 (Function Reference):
@@ -97,7 +97,7 @@ Situation: The first time user call the Followers page, the page is using proper
 
 Cause: return flakes.render_template was set to old version html when calling serverside ->index.html
 
-Resolution: 
+Solution: 
 I tried to check all the codes from the time when the server-side code was called to the time when it was terminated.
 But I could not recognized that the return statement was wrong, so it took time to resolve the error. I learned that just because it's familiar to me, it's not the right code.  
 When refactoring code, I should always observe that there is no conflict between the old code and the updated code, and the existing design. 
@@ -109,7 +109,7 @@ Situation: Error occurs when users cancel like and press like again
 
 Cause: Wrong Query logic, my code check if the user likes the post in the javascript and it checks in the api endpoint.
 
-Resolution: Before writing the code in the future, let's distinguish between what JavaScript will solve and what will be solved using sql. Let's also think about which one would be more efficient!
+Solution: Before writing the code in the future, let's distinguish between what JavaScript will solve and what will be solved using sql. Let's also think about which one would be more efficient!
 
 
 ## User experience improvement -- user feedback 1
@@ -118,7 +118,7 @@ Situation: Sometimes, the main page takes few seconds two render the page
 
 Cause: When image files are large or the internet connection is not good, it takes time to fetch multiple post images, resulting in a poor user experience.
 
-Resolution: Applying loading="lazy". It optimizes performance by delaying the loading of elements until the user scrolls to the image or element, which can reduce the initial page loading time and reduce data usage, providing a better experience for the user.
+Solution: Applying loading="lazy". It optimizes performance by delaying the loading of elements until the user scrolls to the image or element, which can reduce the initial page loading time and reduce data usage, providing a better experience for the user.
 
 ++Additional update(03/25/2024)  
 Display a mosaic-style background instead of showing loading text when the main page is loading for the first time.  
@@ -142,13 +142,13 @@ Situation: When creating an account for the first time, the main page feels empt
 
 Cause: There is no content to display on the main page when there are no users being followed or when there are no posts from the user and the users being followed.
 
-Resolution: In case there are no posts to display on the main page, redirect the user to the explore page to naturally encourage interaction with other users and improve user experience.
+Solution: In case there are no posts to display on the main page, redirect the user to the explore page to naturally encourage interaction with other users and improve user experience.
 
 ## User experience improvement -- user feedback 3
 
 Situation: The password criteria for creating an account and for modifying the password afterward are different. It would be better if the password requirements are visible.
 
-Resolution: 
+Solution: 
 1. Modify Password Change Page:  
 • Increase the font size for better readability.  
 • Add text to indicate the password requirements.  
@@ -156,6 +156,16 @@ Resolution:
 • Handle different types of errors returned from the API when changing the password.  
 • Display corresponding error messages for each type of error.  
 
+## User experience improvement -- user feedback 4
+
+Situation:
+Feedback has been received that the elements on the login and account creation screens are too small and uncomfortable.
+
+Cause:
+The elements are too small, making it difficult for users to perceive text or input fields.
+
+Solution:
+Increased the font size to make the elements appear larger and more visible.
 
 ## No image file being called on server
 
