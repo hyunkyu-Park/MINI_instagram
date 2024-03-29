@@ -167,6 +167,24 @@ The elements are too small, making it difficult for users to perceive text or in
 Solution:
 Increased the font size to make the elements appear larger and more visible.
 
+## User experience improvement -- user feedback 5
+
+Situation:
+When the user posts a new post, the timestamp does not match.
+
+Cause:
+
+Solution:
+
+## User experience improvement -- user feedback 6
+
+Situation:
+It would be nice to have a button to show the entered password while entering it.
+
+Cause:
+
+Solution:
+
 ## No image file being called on server
 
 Situation: used aws ec2, the website can not find image files.
