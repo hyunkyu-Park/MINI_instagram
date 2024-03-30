@@ -7,6 +7,7 @@ export default function ChangePassword({ }) {
     const [newPassword2, setNewPassword2] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [okMessage, setOkMessage] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
     const apiUrl = `/api/v1/accounts/password/`;
 
@@ -88,43 +89,70 @@ export default function ChangePassword({ }) {
     };
 
     return (
-        <div>
+        <div className="password_change">
             <h2>Change Password</h2>
             {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="oldPassword">Current Password:</label>
-                <input
-                    type="password"
-                    id="oldPassword"
-                    name="oldPassword"
-                    value={oldPassword}
-                    onChange={(e) => setOldPassword(e.target.value)}
-                    required
-                />
-                <label htmlFor="newPassword1">New Password:</label>
-                <input
-                    type="password"
-                    id="newPassword1"
-                    name="newPassword1"
-                    value={newPassword1}
-                    onChange={(e) => setNewPassword1(e.target.value)}
-                    required
-                />
-                <label htmlFor="newPassword2">Confirm New Password:</label>
-                <input
-                    type="password"
-                    id="newPassword2"
-                    name="newPassword2"
-                    value={newPassword2}
-                    onChange={(e) => setNewPassword2(e.target.value)}
-                    required
-                />
-                <input type="submit" name="update_password" value="Submit" />
-                <input type="hidden" name="operation" value="update_password" />
-            </form>
+            <div className="passwords_container">
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label htmlFor="oldPassword" className="custom-p">Current Password:</label>
+                        <input
+                            className="password_input"
+                            type={showPassword ? "text" : "password"}
+                            id="oldPassword"
+                            name="oldPassword"
+                            value={oldPassword}
+                            onChange={(e) => setOldPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+                    
+                    <div>
+                        <label htmlFor="newPassword1" className="custom-p">New Password:</label>
+                        <input
+                            className="password_input"
+                            type={showPassword ? "text" : "password"}
+                            id="newPassword1"
+                            name="newPassword1"
+                            value={newPassword1}
+                            onChange={(e) => setNewPassword1(e.target.value)}
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <label htmlFor="newPassword2" className="custom-p">Confirm New Password:</label>
+                        <input
+                            className="password_input"
+                            type={showPassword ? "text" : "password"}
+                            id="newPassword2"
+                            name="newPassword2"
+                            value={newPassword2}
+                            onChange={(e) => setNewPassword2(e.target.value)}
+                            required
+                        />
+                    </div>
+                    
+                    <div>
+                        <label htmlFor="showPassword" className="password_input" >
+                            <input
+                                type="checkbox"
+                                id="showPassword"
+                                checked={showPassword}
+                                onChange={() => setShowPassword(!showPassword)}
+                            />
+                            Show Password
+                        </label>
+                    </div>
+                    
+                    <input type="submit" name="update_password" value="Submit" className="custom-p" style={{maxWidth: 200, float: "right"}} />
+                    <input type="hidden" name="operation" value="update_password" />
+                </form>
+            </div>
+            
             {okMessage && <div style={{ color: "blue" }}>{okMessage}</div>}
             <p>
-                password must contain at least 8 characters including numbers, alphabets, and special characters
+                Password must contain at least 8 characters including numbers, alphabets, and special characters
             </p>
             <h4>
                 <a href="/accounts/edit/">Back to Account Edit</a>

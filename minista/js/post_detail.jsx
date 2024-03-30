@@ -15,6 +15,10 @@ dayjs.extend(relativeTime);
 dayjs.extend(utc);
 
 export default function PostDetail({  }) {
+    var a = dayjs.utc()
+    a.format() // 2019-03-06T00:00:00Z
+    a.local().format() //2019-03-06T08:00:00+08:00
+
     const { id } = useParams();
 
 
@@ -47,7 +51,7 @@ export default function PostDetail({  }) {
             if (!ignoreStaleRequest) {
             setComments(data.comments);
             setComments_url(data.setComments_url)
-            setCreated(dayjs(data.created).fromNow());
+            setCreated(dayjs.utc(data.created).local().fromNow());
             setImgUrl(data.imgUrl);
             setLikes(data.likes);
             setLognameOwnsPost(data.lognameOwnsPost);
