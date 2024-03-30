@@ -36,7 +36,7 @@ export default function PostInfo({ resultUrl }) {
         // the request. Otherwise, update the state to trigger a new render.
         if (!ignoreStaleRequest) {
           setComments(data.comments);
-          setCreated(dayjs(data.created).fromNow());
+          setCreated(dayjs.utc(data.created).local().fromNow());
           setImgUrl(data.imgUrl);
           setLikes(data.likes);
           setOwner(data.owner);

@@ -273,3 +273,26 @@ border-radius: 5px;
 .custom-p {
     font-size: 24px;
 }
+
+.password_change{
+    width: 100%;
+    max-width: 788px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.passwords_container{
+    width: 100%;
+    max-width: 300px;
+    margin: 10 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.password_input {
+    width: 100%;
+    font-size: 24px;
+    display: flex;
+    justify-content:flex-end;
+}
