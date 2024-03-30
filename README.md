@@ -170,20 +170,18 @@ Increased the font size to make the elements appear larger and more visible.
 ## User experience improvement -- user feedback 5
 
 Situation:
-When the user posts a new post, the timestamp does not match.
+When the user posts a new post, the timestamp doesn't match.
 
-Cause:
+Cause: sqlite3 server time is based on UTC, resulting in a created time that doesn't match the user's time zone.
 
-Solution:
+Solution: Convert the user's time zone to UTC and then apply fromNow.
 
 ## User experience improvement -- user feedback 6
 
 Situation:
 It would be nice to have a button to show the entered password while entering it.
 
-Cause:
-
-Solution:
+Solution: Create a toggle switch for showing password visibility using toggle password visibility.
 
 ## No image file being called on server
 
