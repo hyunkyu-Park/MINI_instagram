@@ -296,3 +296,15 @@ border-radius: 5px;
     display: flex;
     justify-content:flex-end;
 }
+
+.create_container{
+    width: 100%;
+    max-width: 350px;
+    margin: 10 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.new_post_container{
+    margin: 15px;
+}

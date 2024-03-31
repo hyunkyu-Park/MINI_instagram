@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 export default function CreatePage() {
 
+    const [showPassword, setShowPassword] = useState(false);
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -55,23 +57,46 @@ export default function CreatePage() {
     };
 
     return (
-        <>
+        <div className="password_change">
+            
             <form onSubmit={handleSubmit} method="post" encType="multipart/form-data">
-                <p className="custom-p">Photo</p>
-                <input className="custom-p" type="file" name="file" required />
-                <p className="custom-p">Name</p>
-                <input className="custom-p" type="text" name="fullname" placeholder="Full Name" required />
-                <p className="custom-p">Username</p>
-                <input className="custom-p" type="text" name="username" placeholder="Username" required />
-                <p className="custom-p">Email</p>
-                <input className="custom-p" type="text" name="email" placeholder="Email" required />
-                <p className="custom-p">Password</p>
-                <input className="custom-p" type="password" name="password" placeholder="Password" required />
-                <input className="custom-p" type="submit" name="signup" value="Sign Up" />
-                <input type="hidden" name="operation" value="create" />
+                <div className="create_container">
+                    <p className="custom-p">Photo</p>
+                    <input className="custom-p" type="file" name="file" required />
+                </div>
+                
+                <div className='passwords_container'>
+                    <p className="custom-p">Name</p>
+                    <input className="password_input" type="text" name="fullname" placeholder="Full Name" required />
+                    <p className="custom-p">Username</p>
+                    <input className="password_input" type="text" name="username" placeholder="Username" required />
+                    <p className="custom-p">Email</p>
+                    <input className="password_input" type="text" name="email" placeholder="Email" required />
+                    <p className="custom-p">Password</p>
+                    <input 
+                        className="password_input" 
+                        type={showPassword ? "text" : "password"}
+                        name="password" 
+                        placeholder="Password" 
+                        required />
+                    <div>
+                        <label htmlFor="showPassword" className="password_input" >
+                            <input
+                                style={{margin: 10}}
+                                type="checkbox"
+                                id="showPassword"
+                                checked={showPassword}
+                                onChange={() => setShowPassword(!showPassword)}
+                            />
+                            Show Password
+                        </label>
+                    </div>
+                    <input className="custom-p" type="submit" name="signup" value="Sign Up" />
+                    <input type="hidden" name="operation" value="create" />
+                </div>
+                
             </form>
-
             <p className="custom-p">Already have an account? <a href="/accounts/login/">Login</a></p>
-        </>
+        </div>
     );
 }
