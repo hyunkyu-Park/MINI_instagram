@@ -183,6 +183,18 @@ It would be nice to have a button to show the entered password while entering it
 
 Solution: Create a toggle switch for showing password visibility using toggle password visibility.
 
+## User experience improvement -- user feedback 7
+
+Situation: Requirement for each post to be visually distinguished from one another.  
+
+Solution: Added small spaces between each post to visually separate them.  
+
+Situation: Each post's image had different sizes, causing them to not appear uniformly.  
+
+Cause: The images were displayed at their own sizes without regard to the width and height of the parent container, .user_posts. This led to inconsistency in the aspect ratios of the images, resulting in an inconsistent appearance among the posts.  
+
+Solution: Updated CSS to set the width and height of the .user_posts container, ensuring that the images are displayed uniformly. Additionally, I added small spaces between each post to visually separate them, meeting the requirement for visual distinction between posts.  
+
 ## No image file being called on server
 
 Situation: used aws ec2, the website can not find image files.
