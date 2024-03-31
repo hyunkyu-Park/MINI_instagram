@@ -159,9 +159,9 @@ export default function UserPage({  }) {
             
             <div>
                 {logname === username && (
-                    <form action="/api/v1/posts/" method="POST" encType="multipart/form-data">
-                        <input type="file" name="file" accept="image/*" required />
-                        <input type="submit" name="create_post" value="upload new post" />
+                    <form className="new_post_container" action="/api/v1/posts/" method="POST" encType="multipart/form-data">
+                        <input style={{fontSize:18}} type="file" name="file" accept="image/*" required />
+                        <input style={{fontSize:18}} type="submit" name="create_post" value="upload new post" />
                         <input type="hidden" name="operation" value="create" />
                     </form>
                 )}

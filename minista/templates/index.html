@@ -4,18 +4,23 @@
     <meta charset="UTF-8">
     <link href="/static/css/style.css" rel="stylesheet" >
     <title>minista</title>
+    <style>
+      .logo-image {
+        width: 64px; /* 원하는 로고 이미지의 크기 */
+      }
+    </style>
   </head>
   <body>
     <div class="post_profile">
-      <a href="/">
-        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" width="48">
+      <a href="/" class="logo-link">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo-image">
       </a>
     </div>
     
     {% if logname %}
       <div class="top_right">
-        <a href="/explore/" style="font-size: x-large;">explore</a> |
-        <a href="/users/{{logname}}/" style="font-size: x-large;">{{logname}}</a>
+        <a href="/explore/" class="explore-link" style="font-size: xx-large;">explore</a> |
+        <a href="/users/{{logname}}/" class="logname-link" style="font-size: xx-large;">{{logname}}</a>
       </div>
     {% endif %}
 
