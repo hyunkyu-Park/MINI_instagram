@@ -7,6 +7,13 @@ import pathlib
 import uuid
 import os
 
+@minista.app.route('/accounts/auth/')
+def aws_auth():
+    """AWS Auth."""
+    if "logged_in_user" not in session:
+        flask.abort(403)
+    return ""
+    
 
 def check_auth():
     """Chekcking Auth."""
@@ -151,7 +158,6 @@ def get_posts():
             "next": "",
         }
     return flask.jsonify(**context)
-
 
 @minista.app.route('/api/v1/posts/<int:postid_url_slug>/')
 def get_post(postid_url_slug):

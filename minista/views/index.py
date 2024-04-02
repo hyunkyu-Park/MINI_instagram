@@ -46,10 +46,10 @@ def upload_file(filename):
         abort(403)
 
     directory = minista.app.config["UPLOAD_FOLDER"]
-    file_path = os.path.join(directory, filename)
-    if not os.path.isfile(file_path):
-        abort(404)
-    directory = os.path.join(os.getcwd(), 'var', 'uploads')
+    # file_path = os.path.join(directory, filename)
+    # if not os.path.isfile(file_path):
+    #     abort(404)
+    # directory = os.path.join(os.getcwd(), 'var', 'uploads')
     return flask.send_from_directory(directory, filename)
 
 @minista.app.route('/users/<user_url_slug>/followers/')
