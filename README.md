@@ -210,4 +210,21 @@ Solution: Initially, I thought that the issue is my lack of experience with AWS
 This experience underscored the importance of comprehending the logic and functions employed in any code, irrespective of one's familiarity with it. I gleaned the lesson that it is imperative to document and understand the overall logic of a codebase before deploying it.
 
 
+## User experience improvement -- user feedback 7
+
+Situation: When the user name is long, the user name in the post is displayed vertically, making it difficult to read.
+
+## User experience improvement -- user feedback 8
+
+Situation: Errors related to account creation are only displayed as 'existing username'.
+
+## User experience improvement -- user feedback 9
+
+Situation: Set up HTTPS and configure the cookie secure attribute.
+
+## User experience improvement -- user feedback 10
+
+Situation: secure realted issue - Verify input sanitization.
+
+
 ## 
