@@ -1,5 +1,7 @@
 # Mini Instagram Project - Web Application
 
+website: minista.pro
+
 old 1: https://www.youtube.com/watch?v=LGtg9R7kAVc
 
 old 2: https://youtu.be/FPLNeisLifc
@@ -199,8 +201,13 @@ Solution: Updated CSS to set the width and height of the .user_posts container, 
 
 ## No image file being called on server
 
-Situation: used aws ec2, the website can not find image files.
+Situation: When running the code on AWS EC2, the website was unable to find image files.
 
-I suspect it's because I use the relative path instead of the absolute path
+Cause: The issue occurred because the Nginx web server configuration file ('/etc/nginx/conf.d/minista.conf') was configured to check '/accounts/auth' when accessing the '/uploads' route. However, in the actual code, a different API name was used. As a result, with each GET request for an image file, an unspecified API was continuously called, leading to a 500 server error on the web page and a GET /accounts/auth 404 error in the Flask log.
+
+Solution: Initially, I thought that the issue is my lack of experience with AWS because the code worked fine in my local environment. I spent the first three days searching through all AWS-related documentation but couldn't find any relevant information. Afterward, I started examining Flask server logs and discovered a different error being triggered than what was expected on the website. Even though my code does not have api called '/accounts/auth' but the server was trying to call it. I tracked where the relevant function was called and I was able to find it in the config file
+
+This experience underscored the importance of comprehending the logic and functions employed in any code, irrespective of one's familiarity with it. I gleaned the lesson that it is imperative to document and understand the overall logic of a codebase before deploying it.
+
 
 ## 
