@@ -67,17 +67,18 @@ export default function CreatePage() {
                 
                 <div className='passwords_container'>
                     <p className="custom-p">Name</p>
-                    <input className="password_input" type="text" name="fullname" placeholder="Full Name" required />
+                    <input className="password_input" type="text" name="fullname" placeholder="Full Name" maxlength="20" required />
                     <p className="custom-p">Username</p>
-                    <input className="password_input" type="text" name="username" placeholder="Username" required />
+                    <input className="password_input" type="text" name="username" placeholder="Username" maxlength="30" required />
                     <p className="custom-p">Email</p>
-                    <input className="password_input" type="text" name="email" placeholder="Email" required />
+                    <input className="password_input" type="text" name="email" placeholder="Email" maxlength="20" required />
                     <p className="custom-p">Password</p>
                     <input 
                         className="password_input" 
                         type={showPassword ? "text" : "password"}
                         name="password" 
                         placeholder="Password" 
+                        maxlength="20"
                         required />
                     <div>
                         <label htmlFor="showPassword" className="password_input" >
