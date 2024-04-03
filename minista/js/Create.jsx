@@ -69,9 +69,9 @@ export default function CreatePage() {
                     <p className="custom-p">Name</p>
                     <input className="password_input" type="text" name="fullname" placeholder="Full Name" maxlength="20" required />
                     <p className="custom-p">Username</p>
-                    <input className="password_input" type="text" name="username" placeholder="Username" maxlength="30" required />
+                    <input className="password_input" type="text" name="username" placeholder="Username" maxlength="20" required />
                     <p className="custom-p">Email</p>
-                    <input className="password_input" type="text" name="email" placeholder="Email" maxlength="20" required />
+                    <input className="password_input" type="text" name="email" placeholder="Email" maxlength="30" required />
                     <p className="custom-p">Password</p>
                     <input 
                         className="password_input" 

@@ -103,8 +103,9 @@ export default function UserEditPage({ }) {
                     id="fullname"
                     value={fullName}
                     onChange={handleFullNameChange}
-                    required
+                    maxlength="20"
                     className="custom-p"
+                    required
                 />
                 <label htmlFor="email" className="custom-p">Email:</label>
                 <input
@@ -113,8 +114,9 @@ export default function UserEditPage({ }) {
                     id="email"
                     value={email}
                     onChange={handleEmailChange}
-                    required
+                    maxlength="30"
                     className="custom-p"
+                    required
                 />
                 <input type="submit" name="update" value="Submit" className="custom-p" />
                 <input type="hidden" name="operation" value="edit_account" />

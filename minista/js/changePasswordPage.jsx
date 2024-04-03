@@ -103,6 +103,7 @@ export default function ChangePassword({ }) {
                             name="oldPassword"
                             value={oldPassword}
                             onChange={(e) => setOldPassword(e.target.value)}
+                            maxlength="20"
                             required
                         />
                     </div>
@@ -116,6 +117,7 @@ export default function ChangePassword({ }) {
                             name="newPassword1"
                             value={newPassword1}
                             onChange={(e) => setNewPassword1(e.target.value)}
+                            maxlength="20"
                             required
                         />
                     </div>
@@ -129,6 +131,7 @@ export default function ChangePassword({ }) {
                             name="newPassword2"
                             value={newPassword2}
                             onChange={(e) => setNewPassword2(e.target.value)}
+                            maxlength="20"
                             required
                         />
                     </div>
