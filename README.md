@@ -40,7 +40,7 @@ This is single page application and it consists of a total of 11 webpages(in use
 
 ## Technology Stack
 <pre>
-Server: Python Flask
+Server: Python Flask, Nginx
 Database: SQLite3
 Server Hosting: AWS EC2
 Password Management: SHA-512 Algorithm
