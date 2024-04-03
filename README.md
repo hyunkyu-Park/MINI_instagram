@@ -1,6 +1,6 @@
 # Mini Instagram Project - Web Application
 
-website: minista.pro
+website: [minista.pro](https://minista.pro/)
 
 old 1: https://www.youtube.com/watch?v=LGtg9R7kAVc
 
