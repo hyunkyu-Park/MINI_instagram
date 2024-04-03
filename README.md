@@ -218,6 +218,11 @@ Situation: When the user name is long, the user name in the post is displayed ve
 
 Situation: Errors related to account creation are only displayed as 'existing username'.
 
+Cause: I thought the only error that could occur on the server side was "existing username," but I unexpectedly encountered a 413 error.  
+[nginx] 413 Request Entity Too Large Error: When using nginx as a reverse proxy, if user try to upload a large file, user may encounter a 413 Request Entity Too Large error message.  
+
+Solution: I adjusted the client_max_body_size setting. client_max_body_size limits the size of requests that can be sent. The default value is 1MB. Requests cannot exceed the value set here in the Content-Length header. Although it can limit the size of requests such as POST or PUT, it is typically used to prevent malicious attempts to fill up the disk by uploading excessively large files.  
+
 ## User experience improvement -- user feedback 9
 
 Situation: Set up HTTPS and configure the cookie secure attribute.
