@@ -120,9 +120,9 @@ export default function PostInfo({ resultUrl }) {
               </a>
             </div>
             <div>
-              <a href={`/posts/${postId}/`}>
-                {created}
-              </a>
+            <a href={`/posts/${postId}/`}>
+              {created}
+            </a>
             </div>
           </div>
 

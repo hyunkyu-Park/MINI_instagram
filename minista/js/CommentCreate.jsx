@@ -47,6 +47,7 @@ export default function Comment({ postid, setComments }) {
           className="ui input"
           type="text"
           value={text}
+          maxlength="40"
           onChange={handleChange}
         />
       </form>
