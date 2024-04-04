@@ -8,7 +8,7 @@
 
 .contents{
     width: 100%;
-    max-width: 614px;
+    max-width: 500px;
     margin: 20px auto 0;
     display: flex;
     flex-direction: column;
@@ -33,40 +33,51 @@
     overflow: hidden;
 }
 
+.article_post{
+    border: 1px solid var(--border);
+    border-radius: 4px;
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
 .post_header{
     background-color: var(--primary);
     border-bottom: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 16px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     padding-left: 8px;
-    height: 40px;
+    padding-right: 8px;
+    height: 60px;
 }
 
 .post_profile{
+    width: 40%;
+    height: 100%;
     display: flex;
     align-items: center;
-    gap: 12px;
 }
 
 .post_user_profile{
     width: 50px;
     height: 50px;
-    max-width: 50px;
-    max-height: 50px;
     border-radius: 50%;
-    margin-top: 10%;
-    margin-left: 10%;
-    overflow: hidden;
-    position: relative;
-    vertical-align: middle;
-    float: left;
+}
+
+.post_profile a {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* 링크 텍스트 밑줄 제거 */
 }
 
 .post_user_name{
-    margin-left: 130%;
-    margin-top: 40%;
+    margin-left: 10%;
+    font-size: 20px;
 }
 
 .post_timestamp{
@@ -75,7 +86,6 @@
     border: none;
     cursor: pointer;
 }
-
 
 .post_footer{
     /* padding: 4px 8px 12px; */

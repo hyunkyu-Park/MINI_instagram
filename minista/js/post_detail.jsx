@@ -106,20 +106,20 @@ export default function PostDetail({  }) {
     return (
         <div className="contents">
             <div className="posts">
-                <article className="post">
+                <article className="article_post">
                     <div className="post_header">
                         <div className="post_profile">
-                        <a href={`/users/${owner}/`}>
-                            <img src={ownerImgUrl} alt="owner_image" className="post_user_profile" />
-                            <p className="post_user_name">{owner}</p>
-                        </a>
+                            <a href={`/users/${owner}/`}>
+                                <img src={ownerImgUrl} alt="owner_image" className="post_user_profile" />
+                                <p className="post_user_name">{owner}</p>
+                            </a>
                         </div>
                         <div>
-                            <a href={`/posts/${postId}/`}>{created}</a>
+                            <a href={`/posts/${postId}/`} style={{ fontSize: "16px" }}>{created}</a>
                         </div>
                     </div>
 
-                    <div>
+                    <div style={{ maxWidth: '100%', height: 'auto', maxHeight: '600px', overflow: 'hidden' }}>
                         <Double
                         imgUrl={imgUrl}
                         postid={postId}

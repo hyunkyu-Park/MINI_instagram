@@ -11,11 +11,19 @@ export default function CreatePage() {
         // Get form input values
         const username = event.target.elements.username.value;
         const password = event.target.elements.password.value;
+        const email = event.target.elements.email.value;
 
         // Check username length
         if (username.length < 6 ) {
             alert("Username must be at least 6 characters long");
             event.target.elements.username.value = '';
+            return;
+        }
+
+        // Check email format
+        if (!isEmailValid(email)) {
+            alert("Invalid email format");
+            event.target.elements.email.value = '';
             return;
         }
 
@@ -48,6 +56,12 @@ export default function CreatePage() {
                 // reset the username inside of inputs in form
                 event.target.elements.username.value = '';
             });
+    };
+
+    const isEmailValid = (email) => {
+        // Regular expression for validating email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
     };
 
     // Function to check password complexity
