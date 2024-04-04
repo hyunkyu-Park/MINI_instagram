@@ -212,7 +212,11 @@ This experience underscored the importance of comprehending the logic and functi
 
 ## User experience improvement -- user feedback 7
 
-Situation: When the user name is long, the user name in the post is displayed vertically, making it difficult to read.
+Situation: When the user name is long, it is displayed vertically in the post, affecting readability.  
+
+Cause: The CSS styles were tested only in an environment with short English user IDs, leading to vertical display issues when longer names were displayed in different languages.  
+
+Solution: After testing with expanded data, it was confirmed that the styles did not apply as expected. Additional scenarios were considered, and the styling was modified accordingly by dividing and addressing each section.  
 
 ## User experience improvement -- user feedback 8
 
