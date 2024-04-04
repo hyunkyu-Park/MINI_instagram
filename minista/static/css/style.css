@@ -8,7 +8,7 @@
 
 .contents{
     width: 100%;
-    max-width: 614px;
+    max-width: 500px;
     margin: 20px auto 0;
     display: flex;
     flex-direction: column;
@@ -50,35 +50,34 @@
     justify-content: space-between;
     align-items: center;
     padding-top: 4px;
-    padding-bottom: 8px;
+    padding-bottom: 4px;
     padding-left: 8px;
-    height: 40px;
+    padding-right: 8px;
+    height: 60px;
 }
 
 .post_profile{
+    width: 40%;
+    height: 100%;
     display: flex;
     align-items: center;
-    gap: 12px;
-    /* max-width: 50px;
-    max-height: 50px; */
-    position: relative;
 }
 
 .post_user_profile{
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    margin-top: 10%;
-    margin-left: 10%;
-    overflow: hidden;
-    position: relative;
-    vertical-align: middle;
-    float: left;
+}
+
+.post_profile a {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* 링크 텍스트 밑줄 제거 */
 }
 
 .post_user_name{
-    margin-left: 100%;
-    margin-top: 20%;
+    margin-left: 10%;
+    font-size: 20px;
 }
 
 .post_timestamp{
