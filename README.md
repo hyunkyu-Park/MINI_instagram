@@ -235,5 +235,9 @@ Situation: Set up HTTPS and configure the cookie secure attribute.
 
 Situation: secure realted issue - Verify input sanitization.
 
+## User experience improvement -- user feedback 11
+
+change font, button change, crop function
+
 
 ## 
