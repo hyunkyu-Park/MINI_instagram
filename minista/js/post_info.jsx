@@ -115,12 +115,16 @@ export default function PostInfo({ resultUrl }) {
           <div className="post_header">
             <div className="post_profile">
               <a href={`/users/${owner}/`}>
-                <img src={ownerImgUrl} alt="owner_image" className="post_user_profile" />
-                <p className="post_user_name">{owner}</p>
+                <div>
+                  <img src={ownerImgUrl} alt="owner_image" className="post_user_profile" />
+                </div>
+                <div>
+                  <p className="post_user_name">{owner}</p>
+                </div>      
               </a>
             </div>
             <div>
-              <a href={`/posts/${postId}/`} style={{ fontSize: "16px" }}>
+              <a href={`/posts/${postId}/`}>
                 {created}
               </a>
             </div>   
