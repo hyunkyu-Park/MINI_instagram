@@ -76,6 +76,7 @@
 }
 
 .post_user_name{
+    display: inline-block;
     margin-left: 10%;
 }
 
