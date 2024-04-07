@@ -6,8 +6,7 @@ import pathlib
 APPLICATION_ROOT = '/'
 
 # Secret key for encrypting cookies
-SECRET_KEY = b'FIXME SET WITH: $ python3 -c \
-    "import os; print(os.urandom(24))" '
+SECRET_KEY = b'GP\xf4q[J\xd3\xddv\xf2\xcd\xda0CA\x96D\xb4\xdb~\x86h\x13'
 SESSION_COOKIE_NAME = 'login'
 
 # File Upload to var/uploads/
