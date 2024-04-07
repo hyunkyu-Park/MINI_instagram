@@ -14,6 +14,7 @@ import arrow
 import minista
 
 app = flask.Flask(__name__)
+app.config['SESSION_COOKIE_SECURE'] = True
 
 
 @minista.app.route('/')
