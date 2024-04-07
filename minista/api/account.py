@@ -7,6 +7,9 @@ from flask import abort, session
 import minista
 from minista.api.posts import check_auth
 
+app = flask.Flask(__name__)
+app.config['SESSION_COOKIE_SECURE'] = True
+
 @minista.app.route('/api/v1/accounts/create/', methods=['POST'])
 def create():
     """Display / route."""
