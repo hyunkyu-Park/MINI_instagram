@@ -1,3 +1,12 @@
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+a:link,
+a:visited {
+    color: inherit; /* 링크의 기본 색상을 상속 */
+    text-decoration: none; /* 링크 텍스트 밑줄 제거 */
+}
+
 .top_right {
     position: absolute;
     top: 0;
@@ -78,6 +87,7 @@
 .post_user_name{
     white-space: nowrap;
     margin-left: 10%;
+    font-weight: 500;
 }
 
 .post_timestamp{
@@ -222,6 +232,7 @@ border-radius: 5px;
     width: 100%;
     max-width: 1024px;
     margin: 0 auto;
+    margin-top: 3%;
     display: flex;
     flex-direction: column;
 }
@@ -275,6 +286,7 @@ border-radius: 5px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 10px; /* 원하는 간격으로 조절 */
+    margin-top: 2%;
 }
 
 .user_posts {
@@ -327,5 +339,5 @@ border-radius: 5px;
 }
 
 .new_post_container{
-    margin: 15px;
+    margin: 1%;
 }
