@@ -4,6 +4,9 @@ import flask
 # app is a single object used by all the code modules in this package
 app = flask.Flask(__name__)  # pylint: disable=invalid-name
 
+#turn on cookie secure option
+app.config['SESSION_COOKIE_SECURE'] = True
+
 # Read settings from config module (minista/config.py)
 app.config.from_object('minista.config')
 
