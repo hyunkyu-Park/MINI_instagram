@@ -2,8 +2,6 @@ import flask
 import minista
 from minista.api.posts import check_auth
 
-app = flask.Flask(__name__)
-app.config['SESSION_COOKIE_SECURE'] = True
 
 @minista.app.route('/api/v1/users/<user_url_slug>/followers/', methods=['GET'])
 def get_followers_page(user_url_slug):

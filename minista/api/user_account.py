@@ -7,8 +7,6 @@ import uuid
 import os
 from minista.api.posts import check_auth
 
-app = flask.Flask(__name__)
-app.config['SESSION_COOKIE_SECURE'] = True
 
 @minista.app.route('/api/v1/users/<user_url_slug>/')
 def get_user_page(user_url_slug):

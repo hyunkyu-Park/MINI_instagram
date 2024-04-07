@@ -18,3 +18,6 @@ MAX_CONTENT_LENGTH = 16 * 1024 * 1024
 
 # Database file is var/minista.sqlite3
 DATABASE_FILENAME = minista_ROOT/'var'/'minista.sqlite3'
+
+# Turn on cookie secure option
+SESSION_COOKIE_SECURE = True
