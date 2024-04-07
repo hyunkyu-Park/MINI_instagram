@@ -7,6 +7,9 @@ import pathlib
 import uuid
 import os
 
+app = flask.Flask(__name__)
+app.config['SESSION_COOKIE_SECURE'] = True
+
 @minista.app.route('/accounts/auth/')
 def aws_auth():
     """AWS Auth."""
@@ -64,6 +67,7 @@ def get_services():
 
 @minista.app.route('/api/v1/posts/')
 def get_posts():
+    print("sec check",app.config['SESSION_COOKIE_SECURE'])
     """Get the 10 newest posts."""
     logname = check_auth()
     if logname is None:
