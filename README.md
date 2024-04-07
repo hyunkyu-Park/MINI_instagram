@@ -237,7 +237,22 @@ Situation: secure realted issue - Verify input sanitization.
 
 ## User experience improvement -- user feedback 11
 
-change font, button change, crop function
+Situation:  
+1. The font is unclear, making it difficult to read the code.  
+2. When clicking on links, the font color changes, which is visually unappealing.  
 
+Causes:  
+1. The default font choice lacks attractiveness and does not engage the reader effectively. 
+2. Clicking on links triggers a change in font color based on default settings, leading to an inconsistent and unappealing interface.
+
+Solution:  
+1. Use a clear and easy-to-read font when providing code to improve readability.  
+2. Remove the feature that changes font color upon clicking links, maintaining a consistent interface with the default font color.  
+
+## User experience improvement -- user feedback 12
+applying crop function
+
+## User experience improvement -- user feedback 13
+user pic does not have to be required
 
 ## 
