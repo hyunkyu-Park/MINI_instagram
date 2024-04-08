@@ -229,17 +229,21 @@ Cause: I thought the only error that could occur was "duplicate record errors" b
 
 Solution: I adjusted the client_max_body_size setting. client_max_body_size limits the size of requests that can be sent. The default value is 1MB. Requests cannot exceed the value set here in the Content-Length header. Although it can limit the size of requests such as POST or PUT, it is typically used to prevent malicious attempts to fill up the disk by uploading excessively large files.  
 
-## User experience improvement -- user feedback 10
+## Security vulnerabilities issue
 
-Situation: Set up HTTPS and configure the cookie secure attribute.
+Situation: need for security measures to prevent malicious code injection.
 
-## User experience improvement -- user feedback 11
-
-Situation: Secure realted issue 
-
-Solution: 
+Solution:  
 Using special character filtering and regular expressions to validate input data, and employing parameterized queries to protect against attacks such as SQL injection.  
 Regularly utilize security check services to inspect website security.  
+
+++Additional update(04/07/2024)  
+Situation: Identified security vulnerabilities related to cookies using a website security verification service.
+
+Solution:  
+Use SESSION_COOKIE_SECURE = True, to enhance cookie security.  
+Set SESSION_COOKIE_HTTPONLY = True, to protect against XSS attacks.  
+Configure SESSION_COOKIE_SAMESITE = 'Strict', to prevent cookies from being sent to other sites.  
 
 ## User experience improvement -- user feedback 12
 
