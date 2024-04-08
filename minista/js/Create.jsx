@@ -29,7 +29,7 @@ export default function CreatePage() {
 
         // Check username length and password complexity
         if (!isPasswordValid(password)) {
-            alert("password must contain at least 8 characters including numbers, alphabets, and special characters.");
+            alert("password must contain at least 8 characters including numbers, alphabets, and special characters. No space!!!");
             event.target.elements.password.value = '';
             return;
         }
@@ -66,7 +66,7 @@ export default function CreatePage() {
 
     // Function to check password complexity
     const isPasswordValid = (password) => {
-        const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
+        const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$/;
         return passwordRegex.test(password);
     };
 
@@ -81,18 +81,18 @@ export default function CreatePage() {
                 
                 <div className='passwords_container'>
                     <p className="custom-p">Name</p>
-                    <input className="password_input" type="text" name="fullname" placeholder="Full Name" maxlength="20" required />
+                    <input className="password_input" type="text" name="fullname" placeholder="Full Name" maxLength="20" required />
                     <p className="custom-p">Username</p>
-                    <input className="password_input" type="text" name="username" placeholder="Username" maxlength="15" required />
+                    <input className="password_input" type="text" name="username" placeholder="Username" maxLength="15" required />
                     <p className="custom-p">Email</p>
-                    <input className="password_input" type="text" name="email" placeholder="Email" maxlength="30" required />
+                    <input className="password_input" type="text" name="email" placeholder="Email" maxLength="30" required />
                     <p className="custom-p">Password</p>
                     <input 
                         className="password_input" 
                         type={showPassword ? "text" : "password"}
                         name="password" 
                         placeholder="Password" 
-                        maxlength="20"
+                        maxLength="20"
                         required />
                     <div>
                         <label htmlFor="showPassword" className="password_input" >

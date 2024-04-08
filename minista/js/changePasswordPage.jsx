@@ -84,8 +84,10 @@ export default function ChangePassword({ }) {
 
 
     const isPasswordValid = (password) => {
-        const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
+        const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$/;
         return passwordRegex.test(password);
+
+        
     };
 
     return (

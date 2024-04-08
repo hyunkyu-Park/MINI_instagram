@@ -49,8 +49,25 @@ export default function UserEditPage({ }) {
         setEmail(event.target.value);
     };
 
+    const isEmailValid = (email) => {
+        // Regular expression for validating email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        // Get form input values
+        const email = event.target.elements.email.value;
+
+        // Check email format
+        if (!isEmailValid(email)) {
+            alert("Invalid email format");
+            event.target.elements.email.value = '';
+            return;
+        }
+
         
         // Create FormData object using Form data
         const formData = new FormData(event.target);
@@ -103,7 +120,7 @@ export default function UserEditPage({ }) {
                     id="fullname"
                     value={fullName}
                     onChange={handleFullNameChange}
-                    maxlength="20"
+                    maxLength="20"
                     className="custom-p"
                     required
                 />
@@ -114,7 +131,7 @@ export default function UserEditPage({ }) {
                     id="email"
                     value={email}
                     onChange={handleEmailChange}
-                    maxlength="30"
+                    maxLength="30"
                     className="custom-p"
                     required
                 />
