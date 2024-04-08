@@ -43,9 +43,11 @@ This is single page application and it consists of a total of 11 webpages(in use
 Server: Python Flask, Nginx
 Database: SQLite3
 Server Hosting: AWS EC2
+   
 Password Management: SHA-512 Algorithm
 Infinite Scroll Implementation:
 Utilizes pagination techniques and the React InfiniteScroll library
+Deployed the project using AWS services such as EC2, Route 53, and Elastic Beanstalk
 </pre>
 
 ## Notes
@@ -210,7 +212,7 @@ Solution: Initially, I thought that the issue is my lack of experience with AWS
 This experience underscored the importance of comprehending the logic and functions employed in any code, irrespective of one's familiarity with it. I gleaned the lesson that it is imperative to document and understand the overall logic of a codebase before deploying it.
 
 
-## User experience improvement -- user feedback 7
+## User experience improvement -- user feedback 8
 
 Situation: When the user name is long, it is displayed vertically in the post, affecting readability.  
 
@@ -218,7 +220,7 @@ Cause: The CSS styles were tested only in an environment with short English user
 
 Solution: After testing with expanded data, it was confirmed that the styles did not apply as expected. Additional scenarios were considered, and the styling was modified accordingly by dividing and addressing each section.  
 
-## User experience improvement -- user feedback 8
+## User experience improvement -- user feedback 9
 
 Situation: Errors related to account creation are only displayed as 'existing username'.
 
@@ -227,15 +229,19 @@ Cause: I thought the only error that could occur was "duplicate record errors" b
 
 Solution: I adjusted the client_max_body_size setting. client_max_body_size limits the size of requests that can be sent. The default value is 1MB. Requests cannot exceed the value set here in the Content-Length header. Although it can limit the size of requests such as POST or PUT, it is typically used to prevent malicious attempts to fill up the disk by uploading excessively large files.  
 
-## User experience improvement -- user feedback 9
+## User experience improvement -- user feedback 10
 
 Situation: Set up HTTPS and configure the cookie secure attribute.
 
-## User experience improvement -- user feedback 10
-
-Situation: secure realted issue - Verify input sanitization.
-
 ## User experience improvement -- user feedback 11
+
+Situation: Secure realted issue 
+
+Solution: 
+Using special character filtering and regular expressions to validate input data, and employing parameterized queries to protect against attacks such as SQL injection.  
+Regularly utilize security check services to inspect website security.  
+
+## User experience improvement -- user feedback 12
 
 Situation:  
 1. The font is unclear, making it difficult to read the code.  
@@ -249,10 +255,10 @@ Solution:
 1. Use a clear and easy-to-read font when providing code to improve readability.  
 2. Remove the feature that changes font color upon clicking links, maintaining a consistent interface with the default font color.  
 
-## User experience improvement -- user feedback 12
+## User experience improvement -- user feedback 13
 applying crop function
 
-## User experience improvement -- user feedback 13
+## User experience improvement -- user feedback 14
 user pic does not have to be required
 
 ## 
