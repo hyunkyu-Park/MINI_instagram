@@ -20,3 +20,5 @@ DATABASE_FILENAME = minista_ROOT/'var'/'minista.sqlite3'
 
 # Turn on cookie secure option
 SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Strict'
