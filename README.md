@@ -265,4 +265,19 @@ applying crop function
 ## User experience improvement -- user feedback 14
 user pic does not have to be required
 
+Refer to "from PIL import Image, ImageDraw, ImageFont"
+
+Frontend Side (Client):  
+
+When the user doesn't select a file, collect the username from the user input field.  
+Send an HTTP request to the server with the username data.  
+Handle the response from the server, which should contain the URL of the generated profile picture.  
+
+Server Side (Backend):  
+
+Receive the username data from the frontend.  
+Generate and save the profile picture based on the received username.  
+Generate a URL for the saved profile picture.  
+Send the URL back to the frontend as a response to the HTTP request.  
+
 ## 
