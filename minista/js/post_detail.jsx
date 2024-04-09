@@ -60,9 +60,8 @@ export default function PostDetail({  }) {
             setOwnerShowUrl(data.ownerShowUrl);
             setPostShowUrl(data.postShowUrl);
             setPostId(data.postid.toString());
-            console.log(222)
+            console.log(333)
             console.log(data)
-            console.log(postUrl)
             }
         })
         .catch((error) => console.log(error));
@@ -121,7 +120,7 @@ export default function PostDetail({  }) {
                         </div>
                     </div>
 
-                    <div style={{ maxWidth: '100%', height: 'auto', maxHeight: '600px', overflow: 'hidden' }}>
+                    <div style={{ width: '100%', height: 'auto', maxHeight: '600px' }}>
                         <Double
                         imgUrl={imgUrl}
                         postid={postId}

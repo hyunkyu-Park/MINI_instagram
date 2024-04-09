@@ -16,9 +16,9 @@ def create():
     password = flask.request.form.get('password')
     fullname = flask.request.form.get('fullname')
     email = flask.request.form.get('email')
-    file = flask.request.files.get('file')
+    fileobj = flask.request.files["file"]
     if not username or not password or not fullname \
-            or not email or not file:
+            or not email or not fileobj:
         return flask.jsonify({'error': 'Bad Request'}), 400
     cur = connection.execute(
         "SELECT username "
@@ -29,8 +29,6 @@ def create():
     result = cur.fetchone()
     if result:
         return flask.jsonify({'error': 'existing username'}), 409
-    print("file saver")
-    fileobj = flask.request.files["file"]
     print("file obj", fileobj)
     filename = fileobj.filename
     print("file name", filename)
