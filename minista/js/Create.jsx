@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 export default function CreatePage() {
 
     const [showPassword, setShowPassword] = useState(false);
+    //testing
+    const [imageUrl, setImageUrl] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -12,6 +14,26 @@ export default function CreatePage() {
         const username = event.target.elements.username.value;
         const password = event.target.elements.password.value;
         const email = event.target.elements.email.value;
+        const file = event.target.elements.file.value;
+
+        //testing
+        if(!file){
+            fetch(`/api/v1/accounts/generatePic/`,{
+                method: "POST",
+                credentials: "same-origin",
+                body: JSON.stringify({username: username})
+            })
+            .then((response) =>{
+                if (!response.ok) throw Error(response.statusText);
+                return response.json();
+            })
+            .then((data) => {
+                setImageUrl(data.profilePictureUrl)
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
 
         // Check username length
         if (username.length < 6 ) {
