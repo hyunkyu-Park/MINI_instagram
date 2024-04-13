@@ -83,3 +83,16 @@ def login():
     else:
         return flask.jsonify({'error': 'wrong password'}), 403
     return flask.jsonify({}), 200
+
+@minista.app.route('/api/v1/accounts/generatePic/', methods=['POST'])
+def generatePic():
+    username = flask.request.form.get('username')
+
+    # create profile pic based on username
+    # save the pic
+
+    # profile pic url
+    profile_picture_url = 'https://example.com/profile_pictures/{}'.format(username)
+
+    
+    return flask.jsonify({'profilePictureUrl': profile_picture_url})
