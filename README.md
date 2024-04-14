@@ -40,7 +40,9 @@ This is single page application and it consists of a total of 11 webpages(in use
 
 ## Technology Stack
 <pre>
-Server: Python Flask, Nginx
+Server: Nginx
+back-end: Python Flask
+front-end: Javascript React
 Database: SQLite3
 Server Hosting: AWS EC2
    
