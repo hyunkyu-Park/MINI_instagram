@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 export default function CreatePage() {
 
     const [showPassword, setShowPassword] = useState(false);
-    //testing
-    const [imageUrl, setImageUrl] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -15,25 +13,6 @@ export default function CreatePage() {
         const password = event.target.elements.password.value;
         const email = event.target.elements.email.value;
         const file = event.target.elements.file.value;
-
-        //testing
-        if(!file){
-            fetch(`/api/v1/accounts/generatePic/`,{
-                method: "POST",
-                credentials: "same-origin",
-                body: JSON.stringify({username: username})
-            })
-            .then((response) =>{
-                if (!response.ok) throw Error(response.statusText);
-                return response.json();
-            })
-            .then((data) => {
-                setImageUrl(data.profilePictureUrl)
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
 
         // Check username length
         if (username.length < 6 ) {
@@ -56,28 +35,48 @@ export default function CreatePage() {
             return;
         }
 
-        // Create FormData object using Form data
-        const formData = new FormData(event.target);
-
-        // Sending data to server
-        fetch(`/api/v1/accounts/create/`, {
-            method: "POST",
-            credentials: "same-origin",
-            body: formData,
-        })
-            .then((response) => {
+        // When the user does not give pic
+        if(!file){
+            const formData = new FormData(event.target);
+            fetch(`/api/v1/accounts/generatePic/`,{
+                method: "POST",
+                credentials: "same-origin",
+                body: formData,
+            })
+            .then((response) =>{
                 if (!response.ok) throw Error(response.statusText);
-                // Reload/Refrash the page when it is updated
-                console.log("success!")
                 window.location.replace('/');
             })
-            .catch((error) => {
-                console.log(error);
-                alert("existing username")
-
-                // reset the username inside of inputs in form
-                event.target.elements.username.value = '';
+            .catch(error => {
+                console.error('Error:', error);
             });
+        }
+
+        // When the user gives pic
+        else{
+            // Create FormData object using Form data
+            const formData = new FormData(event.target);
+
+            // Sending data to server
+            fetch(`/api/v1/accounts/create/`, {
+                method: "POST",
+                credentials: "same-origin",
+                body: formData,
+            })
+                .then((response) => {
+                    if (!response.ok) throw Error(response.statusText);
+                    // Reload/Refrash the page when it is updated
+                    window.location.replace('/');
+                })
+                .catch((error) => {
+                    console.log(error);
+                    alert("existing username")
+
+                    // reset the username inside of inputs in form
+                    event.target.elements.username.value = '';
+                });
+            }
+        
     };
 
     const isEmailValid = (email) => {
@@ -98,7 +97,7 @@ export default function CreatePage() {
             <form onSubmit={handleSubmit} method="post" encType="multipart/form-data">
                 <div className="create_container">
                     <p className="custom-p">Photo</p>
-                    <input className="custom-p" type="file" name="file" required />
+                    <input className="custom-p" type="file" name="file"  />
                 </div>
                 
                 <div className='passwords_container'>
