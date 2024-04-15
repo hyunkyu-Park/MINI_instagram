@@ -279,4 +279,9 @@ Backend Side (Server):
 3. Save the generated profile picture on the server.  
 
 This approach streamlines the signup process by allowing users to proceed without uploading a photo, with a profile picture automatically generated based on their username.  
+
+## Error handling update --  
+update: 04/15/2024  
+1. error handling update for create account && changePasswordPage  
+2. Start creating an error handling function that deals with commonly occurring errors  
 ## 
