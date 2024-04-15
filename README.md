@@ -264,7 +264,7 @@ Solution:
 ## User experience improvement -- user feedback 13
 applying crop function
 
-## User experience improvement -- user feedback 14
+## User experience improvement -- user feedback 14 (update: 04/14/2024)
 
 Situation: requiring a photo input during signup is cumbersome.
 
