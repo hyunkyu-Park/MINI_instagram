@@ -270,12 +270,13 @@ Situation: requiring a photo input during signup is cumbersome.
 
 Solution:  
 Frontend Side (Client):  
-If the user doesn't select a file, extract the username from the user input field.  
-Send an HTTP request to the server with the extracted username data.  
+1. If the user doesn't select a file, extract the username from the user input field.  
+2. Send an HTTP request to the server with the extracted username data.  
 
-Server Side (Backend):  
-Receive the username data from the frontend.  
-Generate a profile picture based on the received username using pillow library.  
-Save the generated profile picture on the server.  
+Backend Side (Server):  
+1. Receive the username data from the frontend.  
+2. Generate a profile picture based on the received username using pillow library.  
+3. Save the generated profile picture on the server.  
+
 This approach streamlines the signup process by allowing users to proceed without uploading a photo, with a profile picture automatically generated based on their username.  
 ## 
