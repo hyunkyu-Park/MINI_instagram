@@ -47,8 +47,15 @@ export default function CreatePage() {
                 if (!response.ok) throw Error(response.statusText);
                 window.location.replace('/');
             })
-            .catch(error => {
-                console.error('Error:', error);
+            .catch((error) => {
+                if(error.message == "CONFLICT"){
+                    alert("existing username");
+                    // reset the username inside of inputs in form
+                    event.target.elements.username.value = '';
+                }
+                else{
+                    console.error(error);
+                }
             });
         }
 
@@ -69,11 +76,14 @@ export default function CreatePage() {
                     window.location.replace('/');
                 })
                 .catch((error) => {
-                    console.log(error);
-                    alert("existing username")
-
-                    // reset the username inside of inputs in form
-                    event.target.elements.username.value = '';
+                    if(error.message == "CONFLICT"){
+                        alert("existing username");
+                        // reset the username inside of inputs in form
+                        event.target.elements.username.value = '';
+                    }
+                    else{
+                        console.error(error);
+                    }
                 });
             }
         
