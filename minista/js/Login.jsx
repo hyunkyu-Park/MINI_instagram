@@ -22,11 +22,12 @@ export default function LoginPage() {
                 window.location.replace('/');
             })
             .catch((error) => {
-                console.log(error);
-                alert("Wrong id or password")
-
-                // reset the values inside of inputs in form
-                event.target.reset();
+                if(error.message == "FORBIDDEN"){
+                    alert("Please check ID or Password");
+                }
+                else{
+                    alert(error);
+                }
             });
     };
 
