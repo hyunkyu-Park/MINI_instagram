@@ -43,7 +43,15 @@ export default function UserPage({  }) {
             console.log(data)
             }
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+            if(error.message == "NOT FOUND"){
+                alert("Page not found");
+                window.location.replace('/');
+            }
+            else{
+                alert(error);
+            }
+        });
 
         return () => {
         // This is a cleanup function that runs whenever the Post component
