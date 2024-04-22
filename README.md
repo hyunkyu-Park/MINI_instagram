@@ -283,5 +283,9 @@ This approach streamlines the signup process by allowing users to proceed withou
 ## Error handling update --  
 update: 04/15/2024  
 1. error handling update for create account && changePasswordPage  
-2. Start creating an error handling function that deals with commonly occurring errors  
+2. Start creating an error handling function that deals with commonly occurring errors
+
+update: 04/20/2024  
+1. followers & followings get error handling  
+2. user_account errors  
 ## 
