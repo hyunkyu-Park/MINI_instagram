@@ -8,13 +8,19 @@
       .logo-image {
         width: 64px; /* 원하는 로고 이미지의 크기 */
       }
+
+      .dark-mode {
+        background-color: black;
+        color: white;
+      }
     </style>
   </head>
   <body>
     <div class="post_profile">
       <a href="/" class="logo-link">
-        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo-image">
+        <img src="{{ url_for('static', filename='images/Michigan_logo.png') }}" alt="Logo" class="logo-image">
       </a>
+      <!-- <button onclick="darkmode()" id="button" style="margin-left: 10px;">Dark Mode</button> -->
     </div>
     
     {% if logname %}
@@ -25,6 +31,22 @@
     {% endif %}
 
     <div id="reactEntry"></div>
+
+    <!-- <script>
+      function darkmode(){
+        var body = document.body;
+        body.classList.toggle("dark-mode");
+
+        var button = document.getElementById("button");
+        if(button.innerHTML == "Dark Mode"){
+          button.innerHTML = "Light Mode";
+        }
+        else{
+          button.innerHTML = "Dark Mode";
+        }
+      }
+    </script> -->
+    
     <!-- Load JavaScript -->
     <script src="{{ url_for('static', filename='js/bundle.js') }}"></script>
   </body>
