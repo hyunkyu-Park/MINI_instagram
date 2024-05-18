@@ -287,5 +287,10 @@ update: 04/15/2024
 
 update: 04/20/2024  
 1. followers & followings get error handling  
-2. user_account errors  
+2. user_account errors
+
+## Dark Mode update: 05/18/2024
+![Screen Recording 2024-05-18 at 7 43 27 PM](https://github.com/hyunkyu-Park/MINI_instagram/assets/68415173/69f27239-9a7c-4f31-8d90-6e4293f5fdac)
+
+
 ## 
