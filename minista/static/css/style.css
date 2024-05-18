@@ -341,3 +341,14 @@ border-radius: 5px;
 .new_post_container{
     margin: 1%;
 }
+
+
+body {
+    background-color: white;
+    color: black;
+}
+
+body.dark-mode {
+background-color: black;
+color: white;
+}
