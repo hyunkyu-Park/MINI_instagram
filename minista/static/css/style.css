@@ -32,7 +32,7 @@ a:visited {
 }
 
 .post{
-    margin-top: 10px;
+    /* margin-top: 10px; */
     border: 1px solid var(--border);
     border-radius: 4px;
 

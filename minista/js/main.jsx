@@ -42,24 +42,28 @@ function App() {
   };
 
   return (
-    <div>
-      <button onClick={toggleDarkMode} style={{ marginTop: 10 }}>
-        {darkMode ? 'Light Mode' : 'Dark Mode'}
-      </button>
+    <div style={{ display: "flex" }}>
+      <div style={{ marginRight: 10 }}>
+        <button onClick={toggleDarkMode} style={{ marginTop: 10 }}>
+          {darkMode ? 'Light Mode' : 'Dark Mode'}
+        </button>
+      </div>
 
-      <Routes>
-        <Route path="/" element={<Post url="/api/v1/posts/" />} />
-        <Route path="/posts/:id/" element={<PostDetail />} />
-        <Route path="/users/:username/" element={<UserPage />} />
-        <Route path="/accounts/edit/" element={<UserEditPage />} />
-        <Route path="/accounts/password/" element={<ChangePassword />} />
-        <Route path="/accounts/delete/" element={<DeleteAccount />} />
-        <Route path="/users/:username/followers" element={<Followers />} />
-        <Route path="/users/:username/following" element={<Following />} />
-        <Route path="/explore/" element={<Explore />} />
-        <Route path="/accounts/login/" element={<LoginPage />} />
-        <Route path="/accounts/create/" element={<CreatePage />} />
-      </Routes>
+      <div style={{ flex: 1 }}>
+        <Routes>
+          <Route path="/" element={<Post url="/api/v1/posts/" />} />
+          <Route path="/posts/:id/" element={<PostDetail />} />
+          <Route path="/users/:username/" element={<UserPage />} />
+          <Route path="/accounts/edit/" element={<UserEditPage />} />
+          <Route path="/accounts/password/" element={<ChangePassword />} />
+          <Route path="/accounts/delete/" element={<DeleteAccount />} />
+          <Route path="/users/:username/followers" element={<Followers />} />
+          <Route path="/users/:username/following" element={<Following />} />
+          <Route path="/explore/" element={<Explore />} />
+          <Route path="/accounts/login/" element={<LoginPage />} />
+          <Route path="/accounts/create/" element={<CreatePage />} />
+        </Routes>
+      </div>
     </div>
   );
 }
