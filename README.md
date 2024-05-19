@@ -292,5 +292,7 @@ update: 04/20/2024
 ## Dark Mode update: 05/18/2024
 ![Screen Recording 2024-05-18 at 7 43 27 PM](https://github.com/hyunkyu-Park/MINI_instagram/assets/68415173/69f27239-9a7c-4f31-8d90-6e4293f5fdac)
 
+### add transition option: 05/19/2024
+![Screen Recording 2024-05-19 at 3 20 43 PM](https://github.com/hyunkyu-Park/MINI_instagram/assets/68415173/8c6d5daa-aae6-4ca6-a2e8-064b618350d6)
 
 ## 
