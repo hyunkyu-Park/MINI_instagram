@@ -346,9 +346,10 @@ border-radius: 5px;
 body {
     background-color: white;
     color: black;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 body.dark-mode {
-background-color: black;
-color: white;
+    background-color: black;
+    color: white;
 }
