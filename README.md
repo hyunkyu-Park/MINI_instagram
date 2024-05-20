@@ -289,10 +289,29 @@ update: 04/20/2024
 1. followers & followings get error handling  
 2. user_account errors
 
-## Dark Mode update: 05/18/2024
+## Update - Dark Mode : 05/18/2024
 ![Screen Recording 2024-05-18 at 7 43 27 PM](https://github.com/hyunkyu-Park/MINI_instagram/assets/68415173/69f27239-9a7c-4f31-8d90-6e4293f5fdac)
 
 ### add transition option: 05/19/2024
 ![Screen Recording 2024-05-19 at 3 20 43 PM](https://github.com/hyunkyu-Park/MINI_instagram/assets/68415173/8c6d5daa-aae6-4ca6-a2e8-064b618350d6)
+
+## Update - User search based on ID: 05/20/2024
+Situation: As the number of users increased, I anticipated the need for an ID-based search functionality and implemented it.  
+
+Implementation: I used the filter and includes functions to filter and store search results based on user input.
+
+Issues Encountered:  
+
+   - Problem: Initially, I stored users who were not being followed in the notFollowing state. I attempted to update notFollowing with search results, but this led to the issue where applying further filters on the filtered results prevented maintaining the initial notFollowing data.  
+
+   - Cause: The notFollowing array was being overwritten with search results, so the initial state could not be preserved.
+
+   - Solution: To resolve this, I stored the filtered results in a separate state variable filteredPeople.
+
+Changes Made:
+
+   - The notFollowing array retains the initial data.
+   - The filtered results are stored and used from the filteredPeople array.
+   - This approach allowed us to preserve the initial data while rendering the filtered results.
 
 ## 
