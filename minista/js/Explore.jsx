@@ -2,10 +2,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function Explore({  }) {
+export default function Explore() {
 
     const [logname, setLogname] = useState("");
     const [notFollowing, setNotFollowing] = useState([]);
+    const [searchedId, setSearchedId] = useState("");
+    const [filteredPeople, setFilteredPeople] = useState([]);
 
     useEffect(() => {
         // Declare a boolean flag that we can use to cancel the API request.
@@ -22,7 +24,7 @@ export default function Explore({  }) {
             if (!ignoreStaleRequest) {
                 setLogname(data.logname);
                 setNotFollowing(data.not_following)
-                
+                setFilteredPeople(data.not_following); // Initialize filteredPeople with not_following data
             }
         })
         .catch((error) => console.log(error));
@@ -41,7 +43,7 @@ export default function Explore({  }) {
 
 
 
-    const renderPeople = notFollowing.map((user) => (
+    const renderPeople = filteredPeople.map((user) => (
         <div key={user.username} className="user_header" style={{ marginBottom: '10px' }}>
             <Link to={`/users/${user.username}`}>
                 <img src={user.user_img_url} alt={`new_user ${user.username}`} className="user_img" />
@@ -74,9 +76,27 @@ export default function Explore({  }) {
         })
         .catch((error) => console.log('Follow error:', error));
     };
-    
+
+    const handleSearch = (event) => {
+        event.preventDefault();
+        const filtered = notFollowing.filter(user => user.username.includes(searchedId));
+        setFilteredPeople(filtered);
+    };
+
     return (
+    
         <div>
+            <form id="search-form" onSubmit={handleSearch} style={{ marginBottom: '20px' }}>
+                <input
+                    type="text"
+                    id="search"
+                    value={searchedId}
+                    onChange={(e) => setSearchedId(e.target.value)}
+                    placeholder="Search by User ID"
+                />
+                <button id="searchBtn" type="submit">search</button>
+            </form>
+
             <div>
                 <h2>Discover People</h2>
             </div>
