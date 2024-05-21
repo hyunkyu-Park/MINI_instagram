@@ -314,4 +314,9 @@ Changes Made:
    - The filtered results are stored and used from the filteredPeople array.
    - This approach allowed us to preserve the initial data while rendering the filtered results.
 
+### Additional update: 05/21/2024
+
+   - Adding User ID Search Functionality to the Followers Page
+   - Adding User ID Search Functionality to the Following Page
+
 ## 
