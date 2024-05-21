@@ -313,6 +313,8 @@ Changes Made:
    - The notFollowing array retains the initial data.
    - The filtered results are stored and used from the filteredPeople array.
    - This approach allowed us to preserve the initial data while rendering the filtered results.
+   - 
+![Screen Recording 2024-05-21 at 1 58 38 PM](https://github.com/hyunkyu-Park/MINI_instagram/assets/68415173/040168d5-8630-4fbc-be22-cdfb3337142e)
 
 ### Additional update: 05/21/2024
 
