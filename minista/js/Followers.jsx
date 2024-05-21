@@ -7,6 +7,8 @@ export default function Followers({  }) {
 
     const [logname, setLogname] = useState("");
     const [followers, setFollowers] = useState([]);
+    const [searchedId, setSearchedId] = useState("");
+    const [filteredFollowers, setFilteredFollowers] = useState([]);
 
     const followersUrl = `/api/v1/users/${username}/followers/`
 
@@ -25,6 +27,7 @@ export default function Followers({  }) {
             if (!ignoreStaleRequest) {
                 setLogname(data.logname);
                 setFollowers(data.followers);
+                setFilteredFollowers(data.followers);
                 console.log("called!")
                 console.log(data)
             }
@@ -53,7 +56,7 @@ export default function Followers({  }) {
 
 
 
-    const renderedFollowers = followers.map((follower) => (
+    const renderedFollowers = filteredFollowers.map((follower) => (
         <div key={follower.username} className="user_header" style={{ marginBottom: '10px' }}>
             <Link to={`/users/${follower.username}`}>
                 <img src={follower.user_img_url} alt={`Follower ${follower.username}`} className="user_img" />
@@ -115,9 +118,26 @@ export default function Followers({  }) {
         })
         .catch((error) => console.log('Unfollow error:', error));
     };
+
+    const handleSearch = (event) => {
+        event.preventDefault();
+        const filtered = followers.filter(user => user.username.includes(searchedId));
+        setFilteredFollowers(filtered);
+    };
     
     return (
         <div>
+            <form id="search-form" onSubmit={handleSearch} style={{ marginBottom: '20px' }}>
+                <input
+                    type="text"
+                    id="search"
+                    value={searchedId}
+                    onChange={(e) => setSearchedId(e.target.value)}
+                    placeholder="Search by User ID"
+                />
+                <button id="searchBtn" type="submit">search</button>
+            </form>
+
             <div>
                 <h2>Followers</h2>
             </div>

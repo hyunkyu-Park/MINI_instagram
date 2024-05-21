@@ -7,6 +7,8 @@ export default function Following({  }) {
 
     const [logname, setLogname] = useState("");
     const [following, setFollowing] = useState([]);
+    const [searchedId, setSearchedId] = useState("");
+    const [filteredFollwing, setFilteredFollwing] = useState([]);
 
     const followingUrl = `/api/v1/users/${username}/following/`
 
@@ -25,6 +27,7 @@ export default function Following({  }) {
             if (!ignoreStaleRequest) {
                 setLogname(data.logname);
                 setFollowing(data.following);
+                setFilteredFollwing(data.following);
                 // console.log("called!")
                 // console.log(data)
             }
@@ -53,7 +56,7 @@ export default function Following({  }) {
 
 
 
-    const renderFollowing = following.map((f) => (
+    const renderFollowing = filteredFollwing.map((f) => (
         <div key={f.username} className="user_header" style={{ marginBottom: '10px' }}>
             <Link to={`/users/${f.username}`}>
                 <img src={f.user_img_url} alt={`Following ${f.username}`} className="user_img" />
@@ -115,9 +118,26 @@ export default function Following({  }) {
         })
         .catch((error) => console.log('Unfollow error:', error));
     };
+
+    const handleSearch = (event) => {
+        event.preventDefault();
+        const filtered = following.filter(user => user.username.includes(searchedId));
+        setFilteredFollwing(filtered);
+    };
     
     return (
         <div>
+            <form id="search-form" onSubmit={handleSearch} style={{ marginBottom: '20px' }}>
+                <input
+                    type="text"
+                    id="search"
+                    value={searchedId}
+                    onChange={(e) => setSearchedId(e.target.value)}
+                    placeholder="Search by User ID"
+                />
+                <button id="searchBtn" type="submit">search</button>
+            </form>
+            
             <div>
                 <h2>Following</h2>
             </div>
