@@ -55,8 +55,6 @@ Deployed the project using AWS services such as EC2, Route 53, and Elastic Beans
 ## ER Diagram
 ![Minista_ERD](https://github.com/hyunkyu-Park/MINI_instagram/assets/68415173/b45194cc-41a8-44bb-97d0-0d61d5e7f4f0)
 
-#### Suggested ER Diagram - To implement user chat
-
 ## Notes
 The project started as server-side dynamic pages and is currently undergoing refactoring towards client-side dynamic pages.
 It enhances user experience through account management, social features, and the implementation of infinite scroll.
