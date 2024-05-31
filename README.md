@@ -9,7 +9,7 @@ old 2: https://youtu.be/FPLNeisLifc
 old 3: https://www.youtube.com/watch?v=myKAVkKYNxI
 
 ## Introduction
-This project begins with server-side dynamic pages and is currently undergoing refactoring to transition into client-side dynamic pages.
+This project begins with server-side dynamic pages and refactored to transition into client-side dynamic pages.
 This is single page application and it consists of a total of 11 webpages(in users view), each focusing on specific functionalities
 
 ## Features and Structure
@@ -56,7 +56,7 @@ Deployed the project using AWS services such as EC2, Route 53, and Elastic Beans
 ![Minista_ERD](https://github.com/hyunkyu-Park/MINI_instagram/assets/68415173/b45194cc-41a8-44bb-97d0-0d61d5e7f4f0)
 
 ## Notes
-The project started as server-side dynamic pages and is currently undergoing refactoring towards client-side dynamic pages.
+The project started as server-side dynamic pages and refactored towards client-side dynamic pages.
 It enhances user experience through account management, social features, and the implementation of infinite scroll.
 
 <br>
